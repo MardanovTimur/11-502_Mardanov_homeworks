@@ -54,7 +54,7 @@ public class graphImpl implements graph {
         for (int i = 0; i <= this.verticeCount; i++) {
             for (int j = 0; j<=this.verticeCount; j++) {
                 if (i == 0 && j == 0)
-                    System.out.println("*");
+                    System.out.print("* ");
                 else
                     System.out.print(matrix[i][j]+" ");
             }
