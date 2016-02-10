@@ -1,3 +1,8 @@
+package ru.itis.inform;
+
+import ru.itis.inform.graph;
+import ru.itis.inform.graphImpl;
+
 /**
  * Created by Тимур on 09.02.2016.
  */
