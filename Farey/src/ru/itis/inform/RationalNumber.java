@@ -14,7 +14,15 @@ public class RationalNumber {
         this.a = a;
         if (b != 0) {
             this.b = b;
-        }
+        } else throw new IllegalArgumentException();
+    }
+
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    public void setB(int b) {
+        this.b = b;
     }
 
     public int getA() {
