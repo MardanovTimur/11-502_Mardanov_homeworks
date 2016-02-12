@@ -27,7 +27,7 @@ public class FareySequenceGenerateArrayImpl implements FareySequenceGenerateArra
                 index++;
             }
 
-        } while (this.index<n);
+        } while (this.index<fixCount-1);
     }
 
     public void Print() {
@@ -40,7 +40,7 @@ public class FareySequenceGenerateArrayImpl implements FareySequenceGenerateArra
         mas[0] = new RationalNumber(0,1);
         mas[1] = new RationalNumber(1,1);
         for (int i = 2; i < 100; i++) {
-            mas[i] = new RationalNumber(-1, -1);
+            mas[i] = new RationalNumber();
         }
     }
 

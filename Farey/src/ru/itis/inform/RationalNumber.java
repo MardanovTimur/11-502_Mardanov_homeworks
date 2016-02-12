@@ -9,6 +9,12 @@ public class RationalNumber {
 
     private int b;
 
+    private final int DEFAULT = -1;
+
+    public RationalNumber() {
+        this.a = DEFAULT;
+        this.b = DEFAULT;
+    }
 
     public RationalNumber(int a, int b) {
         this.a = a;
