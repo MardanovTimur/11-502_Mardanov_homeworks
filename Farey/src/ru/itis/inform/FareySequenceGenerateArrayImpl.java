@@ -19,8 +19,7 @@ public class FareySequenceGenerateArrayImpl implements FareySequenceGenerateArra
         this.fixCount = 2;
         do {
             if (mas[index].getB() + mas[index+1].getB()<=this.n) {
-                mas[fixCount].setA(mas[index].getA()+mas[index+1].getA());
-                mas[fixCount].setB(mas[index].getB() + mas[index + 1].getB());
+                mas[fixCount] = new RationalNumber(mas[index].getA() + mas[index + 1].getA(),mas[index].getB() + mas[index + 1].getB());
                 fixCount++;
                 Shift(fixCount, mas, index);
             } else {
@@ -48,10 +47,8 @@ public class FareySequenceGenerateArrayImpl implements FareySequenceGenerateArra
        int buffer1 = mas[fixCount-1].getA();
        int buffer2 = mas[fixCount-1].getB();
         for (int i = fixCount-1; i>index+1; i--) {
-            mas[i].setA(mas[i-1].getA());
-            mas[i].setB(mas[i - 1].getB());
+            mas[i] = new RationalNumber(mas[i-1].getA(), mas[i - 1].getB());
         }
-        mas[index+1].setA(buffer1);
-        mas[index+1].setB(buffer2);
+        mas[index+1] = new RationalNumber(buffer1, buffer2);
     }
 }

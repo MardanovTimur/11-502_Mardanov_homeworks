@@ -23,14 +23,6 @@ public class RationalNumber {
         } else throw new IllegalArgumentException();
     }
 
-    public void setA(int a) {
-        this.a = a;
-    }
-
-    public void setB(int b) {
-        this.b = b;
-    }
-
     public int getA() {
         return this.a;
     }
