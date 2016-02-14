@@ -1,5 +1,7 @@
-.class
-.idea
-.git
-.iml
-.out
+#TimurMardanov 11 - 502#
+*.class
+*.jar
+*.idea
+*.git
+*.iml
+.out/
