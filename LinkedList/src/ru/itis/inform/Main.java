@@ -12,5 +12,12 @@ public class Main {
         ls.add(8);
 
         ls.printList();
+
+        System.out.println();
+
+        ls.remove(8);
+
+        ls.printList();
+      //  ls.printList();
     }
 }

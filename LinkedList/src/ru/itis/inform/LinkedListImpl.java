@@ -16,16 +16,16 @@ public class LinkedListImpl implements LinkedList {
         Node newNode = new Node(element);
         if (this.first == null) {
             this.first = newNode;
-            this.count++;
+            count++;
         } else {
             newNode.setNext(this.first);
             this.first = newNode;
-            this.count++;
+            count++;
         }
     }
 
     public void printList() {
-        Node r = this.first;
+        Node r = first;
         while (r!=null) {
             System.out.print(r.getValue()+" ");
             r = r.getNext();
@@ -34,8 +34,23 @@ public class LinkedListImpl implements LinkedList {
     }
 
     public void remove(int element) {
+        Node node = first;
 
+        for(int i = 0; i < count-1; i++) {
+            if ((i==0) && (node.getValue() == element)) {
+                node = node.setNext(first.);
+                count--;
+            }
+                else
+            if(node.getNext().getValue() == element) {
+                node.setNext(node.getNext().getNext());
+                count--;
+            }
+            node = node.getNext();
+        }
     }
+
+
 
 }
 
