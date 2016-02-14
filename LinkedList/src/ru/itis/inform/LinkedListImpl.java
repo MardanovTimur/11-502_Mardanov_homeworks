@@ -38,8 +38,9 @@ public class LinkedListImpl implements LinkedList {
 
         for(int i = 0; i < count-1; i++) {
             if ((i==0) && (node.getValue() == element)) {
-                node = node.setNext(first.);
+                first = node.getNext();
                 count--;
+                break;
             }
                 else
             if(node.getNext().getValue() == element) {
