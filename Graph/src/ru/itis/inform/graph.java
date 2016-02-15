@@ -7,4 +7,5 @@ public interface graph {
     void addVertex();
     void addEdge(int vertexA, int vertexB, int weightAB);
     void showGraph();
+    int[][] getFloid();
 }

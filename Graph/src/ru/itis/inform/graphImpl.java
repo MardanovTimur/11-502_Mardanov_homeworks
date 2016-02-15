@@ -61,4 +61,29 @@ public class graphImpl implements graph {
             System.out.println();
         }
     }
+
+
+    public int[][] getFloid() {
+
+        int d[][] =new int[this.verticeCount+1][this.verticeCount+1];
+
+        for (int i = 0; i<=this.verticeCount; i++) {
+            for (int j = 0; j<= this.verticeCount; j++) {
+                d[i][j] = matrix[i][j];
+            }
+        }
+
+        for (int i = 1; i<=this.verticeCount; i++){
+            for (int j = 1; j<=this.verticeCount; j++) {
+                for (int k = 1; k <= this.verticeCount; k++) {
+                    if (d[i][j]>matrix[i][k]+matrix[k][j] && matrix[i][k]!=0 && matrix[k][j]!=0) {
+                        d[i][j] = matrix[i][k]+matrix[k][j];
+                    }
+                }
+            }
+        }
+
+       return d;
+    }
+
 }

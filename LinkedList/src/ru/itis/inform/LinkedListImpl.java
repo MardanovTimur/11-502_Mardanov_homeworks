@@ -50,8 +50,5 @@ public class LinkedListImpl implements LinkedList {
             node = node.getNext();
         }
     }
-
-
-
 }
 
