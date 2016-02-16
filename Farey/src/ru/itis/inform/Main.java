@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         FareySequenceGenerateArrayImpl F = new FareySequenceGenerateArrayImpl();
-        F.Generate(12);
+        F.Generate(17);
         F.Print();
     }
 }

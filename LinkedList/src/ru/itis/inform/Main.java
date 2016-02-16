@@ -15,9 +15,9 @@ public class Main {
 
         System.out.println();
 
-        ls.remove(8);
+        ls.remove(3);
 
+        //ls.printList();
         ls.printList();
-      //  ls.printList();
     }
 }

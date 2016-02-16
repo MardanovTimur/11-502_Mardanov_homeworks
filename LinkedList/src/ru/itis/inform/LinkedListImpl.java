@@ -1,7 +1,7 @@
 package ru.itis.inform;
 
 /**
- * Created by Тимур on 14.02.2016.
+ * Created by пїЅпїЅпїЅпїЅпїЅ on 14.02.2016.
  */
 public class LinkedListImpl implements LinkedList {
     private Node first;
@@ -30,7 +30,6 @@ public class LinkedListImpl implements LinkedList {
             System.out.print(r.getValue()+" ");
             r = r.getNext();
         }
-
     }
 
     public void remove(int element) {
