@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c034d1e-9988-44e5-adbb-696f80a2c64e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/itis/inform/ListNode.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/itis/inform/ListNodeImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/itis/inform/Node.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Graph/src/ru/itis/inform/Floid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/11-502_Mardanov_homeworks/ru/itis/inform/Main.class" afterPath="$PROJECT_DIR$/out/production/11-502_Mardanov_homeworks/ru/itis/inform/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Graph/out/production/hw1/ru/itis/inform/Main.class" afterPath="$PROJECT_DIR$/../Graph/out/production/hw1/ru/itis/inform/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Graph/out/production/hw1/ru/itis/inform/graphImpl.class" afterPath="$PROJECT_DIR$/../Graph/out/production/hw1/ru/itis/inform/graphImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/itis/inform/FareySequenceGenerateArrayImpl.java" afterPath="$PROJECT_DIR$/src/ru/itis/inform/FareySequenceGenerateArrayImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/itis/inform/ListNodeImpl.java" afterPath="$PROJECT_DIR$/src/ru/itis/inform/ListNodeImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/itis/inform/Main.java" afterPath="$PROJECT_DIR$/src/ru/itis/inform/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Graph/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Graph/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Graph/src/ru/itis/inform/Main.java" afterPath="$PROJECT_DIR$/../Graph/src/ru/itis/inform/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Graph/src/ru/itis/inform/graph.java" afterPath="$PROJECT_DIR$/../Graph/src/ru/itis/inform/graph.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Graph/src/ru/itis/inform/graphImpl.java" afterPath="$PROJECT_DIR$/../Graph/src/ru/itis/inform/graphImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LinkedList/src/ru/itis/inform/LinkedListImpl.java" afterPath="$PROJECT_DIR$/../LinkedList/src/ru/itis/inform/LinkedListImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LinkedList/src/ru/itis/inform/Main.java" afterPath="$PROJECT_DIR$/../LinkedList/src/ru/itis/inform/Main.java" />
     </list>
     <ignored path="11-502_Mardanov_homeworks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/src/ru/itis/inform/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+              <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -53,9 +41,12 @@
       <file leaf-file-name="FareySequenceGenerateArrayImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/itis/inform/FareySequenceGenerateArrayImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.48770493">
-              <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-              <folding />
+            <state vertical-scroll-proportion="0.27813163">
+              <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+              <folding>
+                <element signature="e#921#922#0" expanded="true" />
+                <element signature="e#947#948#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/src/ru/itis/inform/ListNodeImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+              <caret line="48" column="28" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
               <folding>
                 <element signature="e#277#278#0" expanded="true" />
                 <element signature="e#310#311#0" expanded="true" />
@@ -110,6 +101,9 @@
       <projects_view />
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/ru/itis/inform/FareySequenceGenerateArrayImpl.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -119,10 +113,10 @@
         <option value="$PROJECT_DIR$/src/ru/itis/inform/FarreySeguenceGenerateArray.java" />
         <option value="$PROJECT_DIR$/src/ru/itis/inform/FareySequenceGenerateArray.java" />
         <option value="$PROJECT_DIR$/src/ru/itis/inform/RationalNumber.java" />
-        <option value="$PROJECT_DIR$/src/ru/itis/inform/Main.java" />
         <option value="$PROJECT_DIR$/src/ru/itis/inform/Node.java" />
         <option value="$PROJECT_DIR$/src/ru/itis/inform/ListNode.java" />
         <option value="$PROJECT_DIR$/src/ru/itis/inform/ListNodeImpl.java" />
+        <option value="$PROJECT_DIR$/src/ru/itis/inform/Main.java" />
         <option value="$PROJECT_DIR$/src/ru/itis/inform/FareySequenceGenerateArrayImpl.java" />
       </list>
     </option>
@@ -672,12 +666,12 @@
       <workItem from="1455488852285" duration="244000" />
       <workItem from="1455520757141" duration="127000" />
       <workItem from="1455533441306" duration="4092000" />
-      <workItem from="1455572025027" duration="12108000" />
+      <workItem from="1455572025027" duration="21585000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36857000" />
+    <option name="totallyTimeSpent" value="46334000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -685,11 +679,12 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.49121523" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18611987" sideWeight="0.24011713" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21293375" sideWeight="0.2532943" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21293375" sideWeight="0.75988287" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21293375" sideWeight="0.7467057" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1954612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -700,7 +695,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -754,7 +748,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -822,7 +819,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-          <folding />
+          <folding>
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -854,7 +854,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -886,7 +889,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -918,7 +924,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -950,7 +959,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
-          <folding />
+          <folding>
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -982,7 +994,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
-          <folding />
+          <folding>
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1014,7 +1029,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1038,7 +1056,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1092,7 +1113,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/itis/inform/RationalNumber.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.55737704">
           <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding />
         </state>
@@ -1118,7 +1139,7 @@
     <entry file="file://$PROJECT_DIR$/src/ru/itis/inform/ListNodeImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+          <caret line="48" column="28" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
           <folding>
             <element signature="e#277#278#0" expanded="true" />
             <element signature="e#310#311#0" expanded="true" />
@@ -1129,16 +1150,19 @@
     <entry file="file://$PROJECT_DIR$/src/ru/itis/inform/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/itis/inform/FareySequenceGenerateArrayImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48770493">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-          <folding />
+        <state vertical-scroll-proportion="0.27813163">
+          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+          <folding>
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#947#948#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

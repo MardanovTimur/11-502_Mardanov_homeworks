@@ -2,41 +2,44 @@ package ru.itis.inform;
 
 public class FareySequenceGenerateArrayImpl implements FareySequenceGenerateArray {
 
-    private ListNodeImpl list = new ListNodeImpl();
-
-
     private int n;
 
     private int fixCount;
     private int index;
-
+    private ListNodeImpl list;
 
     public void Generate(int n) {
+
         Initialize();
+
         this.n = n;
         this.fixCount = 2;
         do {
-            if (this.+ mas[index + 1].getB() <= this.n) {
-                mas[fixCount] = new RationalNumber(mas[index].getA() + mas[index + 1].getA(), mas[index].getB() + mas[index + 1].getB());
-                fixCount++;
-                Shift(fixCount, mas, index);
-            } else {
-                index++;
-            }
+            if (this.list.getFirst().getNext().getB() + this.list.getFirst().getB() <= this.n) {
+                Node node = list.getFirst();
 
+                Node newNode = new Node(node.getNext().getA() + node.getA(), node.getNext().getB() + node.getB());
+
+                newNode.setNext(node.getNext());
+                node.setNext(newNode);
+
+                fixCount++;
+
+                list.getFirst().setNext(list.getFirst().getNext());
+                } else {
+                    index++;
+                }
         } while (this.index < fixCount - 1);
     }
-
     public void Print() {
-        for (int i = 0; i < this.fixCount; i++) {
-            System.out.print(mas[i].getA() + "/" + mas[i].getB() + "  ");
-        }
+       list.show();
     }
 
     private void Initialize() {
-        ListNodeImpl list = new ListNodeImpl();
+        this.list = new ListNodeImpl();
         this.list.add(0, 1);
         this.list.add(1, 1);
+        //list.show();
     }
 
 

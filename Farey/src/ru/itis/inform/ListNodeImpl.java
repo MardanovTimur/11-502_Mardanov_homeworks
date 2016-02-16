@@ -18,19 +18,16 @@ public class ListNodeImpl implements ListNode {
 
     public void add(int a, int b) {
         Node newNode = new Node(a,b);
-        if (this.last == null) {
+        if (this.first == null) {
             this.first = newNode;
-            // this.count++;
+            this.count++;
         } else {
-            //this.first.setNext(newNode);
-            this.last.setNext(newNode);
-            this.last = newNode;
-
-            /*newNode.setNext(first);
-            this.first = newNode;*/
+            newNode.setNext(first);
+            this.first = newNode;
             this.count++;
         }
     }
+
 
     public void remove(int a, int b) {
         Node r = first;
@@ -49,10 +46,8 @@ public class ListNodeImpl implements ListNode {
     public void show() {
         Node f = first;
         while (f!=null) {
-            System.out.println(f.getA()+"/"+f.getB()+", ");
+            System.out.print(f.getA()+"/"+f.getB()+", ");
             f = f.getNext();
         }
     }
-
-    pubilc ListNodeImpl
 }
