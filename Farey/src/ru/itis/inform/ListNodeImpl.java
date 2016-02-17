@@ -46,7 +46,10 @@ public class ListNodeImpl implements ListNode {
     public void show() {
         Node f = first;
         while (f!=null) {
-            System.out.print(f.getA()+"/"+f.getB()+", ");
+            if (f.getNext()!=null)
+                System.out.print(f.getA()+"/"+f.getB()+", ");
+            else
+                System.out.print(f.getA()+"/"+f.getB()+".");
             f = f.getNext();
         }
     }
