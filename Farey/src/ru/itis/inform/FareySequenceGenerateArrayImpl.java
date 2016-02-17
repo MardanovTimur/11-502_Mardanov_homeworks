@@ -14,22 +14,24 @@ public class FareySequenceGenerateArrayImpl implements FareySequenceGenerateArra
 
         this.n = n;
         this.fixCount = 2;
+        boolean isEmpty = true;
+        Node node = list.getFirst();
         do {
-            if (this.list.getFirst().getNext().getB() + this.list.getFirst().getB() <= this.n) {
-                Node node = list.getFirst();
+
+
+                if (node.getNext().getB() + node.getB() <= this.n) {
 
                 Node newNode = new Node(node.getNext().getA() + node.getA(), node.getNext().getB() + node.getB());
 
+                    //Перессылка на следующий элемент
                 newNode.setNext(node.getNext());
                 node.setNext(newNode);
 
-                fixCount++;
-
-                list.getFirst().setNext(list.getFirst().getNext());
                 } else {
+                    node = node.getNext();
                     index++;
                 }
-        } while (this.index < fixCount - 1);
+        } while (node.getNext() != null);
     }
     public void Print() {
        list.show();
@@ -41,17 +43,4 @@ public class FareySequenceGenerateArrayImpl implements FareySequenceGenerateArra
         this.list.add(1, 1);
         //list.show();
     }
-
-
-
-
-  /*  private void Shift(int fixCount, RationalNumber mas[], int index) {
-       int buffer1 = mas[fixCount-1].getA();
-       int buffer2 = mas[fixCount-1].getB();
-        for (int i = fixCount-1; i>index+1; i--) {
-            mas[i] = new RationalNumber(mas[i-1].getA(), mas[i - 1].getB());
-        }
-        mas[index+1] = new RationalNumber(buffer1, buffer2);
-    }
-}*/
 }
