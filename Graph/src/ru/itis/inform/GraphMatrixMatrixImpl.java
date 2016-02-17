@@ -1,15 +1,8 @@
 package ru.itis.inform;
 
-import ru.itis.inform.graph;
-
-/**
- * Created by ����� on 09.02.2016.
- */
-public class graphImpl implements graph {
+public class GraphMatrixMatrixImpl implements GraphMatrix {
 
     public static final int Default_Size = 51;
-
-    private int directionValue;
 
     private int matrix[][];
 
@@ -17,11 +10,11 @@ public class graphImpl implements graph {
 
     private int verticeCount;
 
-    public graphImpl() {
+    public GraphMatrixMatrixImpl() {
         initGraph(Default_Size);
     }
 
-    public graphImpl(int value) {
+    public GraphMatrixMatrixImpl(int value) {
         initGraph(value);
     }
 
@@ -31,8 +24,12 @@ public class graphImpl implements graph {
         this.matrix = new int[maxSize+1][maxSize+1];
     }
 
+    public int[][] getMatrix() {
+        return matrix;
+    }
+
     public int getVerticeCount() {
-        return verticeCount;
+        return this.verticeCount;
     }
 
     @Override
@@ -43,10 +40,16 @@ public class graphImpl implements graph {
     }
 
     @Override
+    public void addEdgeNonDirection(int vertexA, int vertexB, int weightAB) {
+        if (vertexA<this.verticeCount+1 && vertexB<this.verticeCount+1) {
+            this.matrix[vertexA-1][vertexB-1] = weightAB;
+        } else throw new IllegalArgumentException();
+    }
+    @Override
     public void addEdge(int vertexA, int vertexB, int weightAB) {
         if (vertexA<this.verticeCount+1 && vertexB<this.verticeCount+1) {
-            this.directionValue++;
             this.matrix[vertexA-1][vertexB-1] = weightAB;
+            this.matrix[vertexB-1][vertexA-1] = weightAB;
         } else throw new IllegalArgumentException();
     }
 
@@ -60,28 +63,15 @@ public class graphImpl implements graph {
         }
     }
 
-
-    public int[][] getFloid() {
-
-        int d[][] =new int[this.verticeCount+1][this.verticeCount+1];
-
-        for (int i = 0; i< this.verticeCount; i++) {
-            for (int j = 0; j< this.verticeCount; j++) {
-                d[i][j] = matrix[i][j];
-            }
-        }
-
-        for (int i = 0; i<this.verticeCount; i++){
+    @Override
+    public void showGraph(int[][] matrix) {
+        for (int i = 0; i < this.verticeCount; i++) {
             for (int j = 0; j<this.verticeCount; j++) {
-                for (int k = 0; k < this.verticeCount; k++) {
-                    if (d[i][j]>matrix[i][k]+matrix[k][j] && matrix[i][k]!=0 && matrix[k][j]!=0) {
-                        d[i][j] = matrix[i][k]+matrix[k][j];
-                    }
-                }
+                System.out.print(matrix[i][j]+" ");
             }
+            System.out.println();
         }
-
-       return d;
     }
+
 
 }

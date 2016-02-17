@@ -1,35 +1,29 @@
 package ru.itis.inform;
 
-import ru.itis.inform.graph;
-import ru.itis.inform.graphImpl;
 
-/**
- * Created by ����� on 09.02.2016.
- */
 public class Main {
     public static void main(String[] args) {
-        graph g = new graphImpl();
+        GraphMatrixMatrixImpl graph = new GraphMatrixMatrixImpl();
 
-        g.addVertex();
-        g.addVertex();
-        g.addVertex();
+        graph.addVertex();
+        graph.addVertex();
+        graph.addVertex();
+        graph.addVertex();
 
+        graph.addEdgeNonDirection(1, 2, 2);
+        graph.addEdgeNonDirection(1, 3, 8);
+        graph.addEdgeNonDirection(2, 3, 3);
+        graph.addEdge(2,4,9);
 
-        g.addEdge(1, 2, 2);
-
-        g.addEdge(1, 3, 9);
-
-        g.addEdge(2, 3, 3);
-
-        g.showGraph();
+        graph.showGraph();
 
         System.out.println();
 
-        Floid floid = new Floid();
+        Floyd floyd = new Floyd(graph);
 
-        floid.setA(g.getFloid(),g.getVerticeCount());
+        floyd.runFloid();
 
-        floid.show();
+        graph.showGraph(floyd.getFloydMatrix());
 
     }
 }

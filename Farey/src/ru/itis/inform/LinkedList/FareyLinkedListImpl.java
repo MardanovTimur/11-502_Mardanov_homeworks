@@ -1,6 +1,6 @@
-package ru.itis.inform;
+package ru.itis.inform.LinkedList;
 
-public class FareySequenceGenerateArrayImpl implements FareySequenceGenerateArray {
+public class FareyLinkedListImpl implements FareyLinkedList {
 
     private int n;
 
@@ -14,14 +14,14 @@ public class FareySequenceGenerateArrayImpl implements FareySequenceGenerateArra
 
         this.n = n;
 
-        Node node = list.getFirst();
+        RationalNumber node = list.getFirst();
 
         do {
             if (node.getNext().getB() + node.getB() <= this.n) {
 
-                Node newNode = new Node(node.getNext().getA() + node.getA(), node.getNext().getB() + node.getB());
+                RationalNumber newNode = new RationalNumber(node.getNext().getA() + node.getA(), node.getNext().getB() + node.getB());
 
-                    //Перессылка на следующий элемент
+
                 newNode.setNext(node.getNext());
                 node.setNext(newNode);
 
@@ -34,8 +34,8 @@ public class FareySequenceGenerateArrayImpl implements FareySequenceGenerateArra
 
     private void Initialize() {
         this.list = new ListNodeImpl();
-        this.list.add(0, 1);
-        this.list.add(1, 1);
+        this.list.push(0, 1);
+        this.list.push(1, 1);
     }
 
     public void Print() {
