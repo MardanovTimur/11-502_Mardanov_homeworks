@@ -1,6 +1,6 @@
 package ru.itis.inform;
 
-public class GraphMatrixMatrixImpl implements GraphMatrix {
+public class GraphMatrixImpl implements DirectedGraph,Graph {
 
     public static final int Default_Size = 51;
 
@@ -8,13 +8,13 @@ public class GraphMatrixMatrixImpl implements GraphMatrix {
 
     private int maxSize = 0;
 
-    private int verticeCount;
+    private int verticeCount=0;
 
-    public GraphMatrixMatrixImpl() {
+    public GraphMatrixImpl() {
         initGraph(Default_Size);
     }
 
-    public GraphMatrixMatrixImpl(int value) {
+    public GraphMatrixImpl(int value) {
         initGraph(value);
     }
 
@@ -22,14 +22,6 @@ public class GraphMatrixMatrixImpl implements GraphMatrix {
         this.maxSize = value;
         this.verticeCount = 0;
         this.matrix = new int[maxSize+1][maxSize+1];
-    }
-
-    public int[][] getMatrix() {
-        return matrix;
-    }
-
-    public int getVerticeCount() {
-        return this.verticeCount;
     }
 
     @Override
@@ -41,15 +33,22 @@ public class GraphMatrixMatrixImpl implements GraphMatrix {
 
     @Override
     public void addEdgeNonDirection(int vertexA, int vertexB, int weightAB) {
-        if (vertexA<this.verticeCount+1 && vertexB<this.verticeCount+1) {
+        if (vertexA<=this.verticeCount && vertexB<=this.verticeCount) {
             this.matrix[vertexA-1][vertexB-1] = weightAB;
+            this.matrix[vertexB-1][vertexA-1] = weightAB;
         } else throw new IllegalArgumentException();
     }
     @Override
-    public void addEdge(int vertexA, int vertexB, int weightAB) {
-        if (vertexA<this.verticeCount+1 && vertexB<this.verticeCount+1) {
+    public void addEdgeDirection(int vertexA, int vertexB, int weightAB) {
+        if (vertexA<=this.verticeCount && vertexB<=this.verticeCount) {
             this.matrix[vertexA-1][vertexB-1] = weightAB;
-            this.matrix[vertexB-1][vertexA-1] = weightAB;
+        } else throw new IllegalArgumentException();
+    }
+
+    public void addEdge(int vertexA, int vertexB) {
+        if (vertexA<=this.verticeCount && vertexB<=this.verticeCount) {
+            this.matrix[vertexA-1][vertexB-1] = 1;
+            this.matrix[vertexB-1][vertexA-1] = 1;
         } else throw new IllegalArgumentException();
     }
 
@@ -63,7 +62,7 @@ public class GraphMatrixMatrixImpl implements GraphMatrix {
         }
     }
 
-    @Override
+
     public void showGraph(int[][] matrix) {
         for (int i = 0; i < this.verticeCount; i++) {
             for (int j = 0; j<this.verticeCount; j++) {
@@ -73,5 +72,26 @@ public class GraphMatrixMatrixImpl implements GraphMatrix {
         }
     }
 
+    public int[][] runFloyd() {
+
+        int d[][] =new int[this.verticeCount][this.verticeCount];
+
+        for (int i = 0; i< this.verticeCount; i++) {
+            for (int j = 0; j< this.verticeCount; j++) {
+                d[i][j] = matrix[i][j];
+            }
+        }
+
+        for (int i = 0; i<this.verticeCount; i++){
+            for (int j = 0; j<this.verticeCount; j++) {
+                for (int k = 0; k < this.verticeCount; k++) {
+                    if (d[i][j]>matrix[i][k]+matrix[k][j] && matrix[i][k]!=0 && matrix[k][j]!=0) {
+                        d[i][j] = matrix[i][k]+matrix[k][j];
+                    }
+                }
+            }
+        }
+        return d;
+    }
 
 }
