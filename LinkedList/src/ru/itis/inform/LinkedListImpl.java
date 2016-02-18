@@ -1,8 +1,6 @@
 package ru.itis.inform;
 
-/**
- * Created by ����� on 14.02.2016.
- */
+
 public class LinkedListImpl<T> implements LinkedList<T> {
     private Node<T> first;
     private int count;
@@ -14,7 +12,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
     public void add(T element) {
 
-        Node<T> newNode = new Node<>(element);
+        Node<T> newNode = new Node<T>(element);
 
         if (this.first == null) {
             this.first = newNode;
@@ -24,6 +22,22 @@ public class LinkedListImpl<T> implements LinkedList<T> {
             this.first = newNode;
         }
         this.count++;
+    }
+
+    public void push(T element) {
+        Node<T> newNode = new Node<>(element);
+
+        if (this.first == null) {
+            this.first = newNode;
+            this.count++;
+        } else {
+            Node<T> r = first;
+            while (r.getNext() != null) {
+                r = r.getNext();
+            }
+            r.setNext(newNode);
+            newNode.setPrevious(r);
+        }
     }
 
     public void printList() {

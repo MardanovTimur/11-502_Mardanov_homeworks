@@ -10,16 +10,15 @@ public class Main {
         list.add(3);
         list.add(5);
         list.add(8);
+        list.push(10);
 
         IteratorImpl<Integer> iterator = list.iterator();
 
-        //list.printList();
-
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next()+" ");
+        }
+        //Output: 8 5 3 2 1 10
         System.out.println();
 
-
-
-        //ls.printList();
-        //ls.printList();
     }
 }
