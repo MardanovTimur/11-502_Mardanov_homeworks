@@ -4,12 +4,12 @@ package ru.itis.inform.LinkedList;
  * Created by Тимур on 15.02.2016.
  */
 public class ListNodeImpl<T> implements ListNode<T> {
-    private RationalNumber<T> first;
-    private RationalNumber<T> last;
+    private Node<T> first;
+    private Node<T> last;
 
     private int count;
 
-    public RationalNumber<T> getFirst() {
+    public Node<T> getFirst() {
         return this.first;
     }
 
@@ -20,8 +20,8 @@ public class ListNodeImpl<T> implements ListNode<T> {
     }
 
     //Add first
-    public void add(T a, T b) {
-        RationalNumber<T> newNode = new RationalNumber<>(a, b);
+    public void add(T element) {
+        Node<T> newNode = new Node<>(element);
 
         newNode.setPrevious(null);
         if (first == null) {
@@ -36,8 +36,8 @@ public class ListNodeImpl<T> implements ListNode<T> {
 
 
     //Insert last element
-    public void push(T a, T b) {
-        RationalNumber<T> newNode = new RationalNumber<>(a, b);
+    public void push(T element) {
+        Node<T> newNode = new Node<>(element);
 
         this.last = null;
 
@@ -45,7 +45,7 @@ public class ListNodeImpl<T> implements ListNode<T> {
             this.first = newNode;
 
         } else {
-            RationalNumber<T> f = first;
+            Node<T> f = first;
             while (f.getNext() != null) {
                 f = f.getNext();
             }
@@ -57,13 +57,13 @@ public class ListNodeImpl<T> implements ListNode<T> {
     }
 
 
-    public void remove(T a, T b) {
-        RationalNumber<T> r = first;
+    public void remove(T element) {
+        Node<T> r = first;
         for (int i = 0; i < this.count - 1; i++) {
-            if (r.getNext().getA() == a && r.getNext().getB() == b) {
+            if (r.getNext().getValue() == element && r.getNext().getValue() == element) {
                 r.setNext(r.getNext().getNext());
                 break;
-            } else if (i == 0 && r.getA() == a && r.getB() == b) {
+            } else if (i == 0 && r.getValue() == element && r.getValue() == element) {
                 r.setNext(r.getNext());
             }
             r = r.getNext();
@@ -71,16 +71,16 @@ public class ListNodeImpl<T> implements ListNode<T> {
     }
 
     public void show() {
-        RationalNumber<T> f = first;
+        Node<T> f = first;
         while (f != null) {
             if (f.getNext() != null)
-                System.out.print(f.getA() + "/" + f.getB() + ", ");
+                System.out.print(f.getValue()+" ");
             else
-                System.out.print(f.getA() + "/" + f.getB() + ".");
+                System.out.print(f.getValue() + ".");
             f = f.getNext();
         }
     }
     public IteratorImpl<T> iterator() {
-        return new IteratorImpl<T>(this.first);
+        return new IteratorImpl<>(this.first);
     }
 }

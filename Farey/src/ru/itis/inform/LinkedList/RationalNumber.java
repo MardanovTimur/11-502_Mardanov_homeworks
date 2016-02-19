@@ -3,20 +3,13 @@ package ru.itis.inform.LinkedList;
 /**
  * Created by Тимур on 17.02.2016.
  */
-public class RationalNumber<T> {
-    private static final int DEFAULT = -1;
+public class RationalNumber {
 
-    private T a;
-    private T b;
+    private int a;
+    private int b;
 
-    private RationalNumber<T> next;
-    private RationalNumber<T> previous;
-
-
-
-    public RationalNumber(T a, T b) {
-        this.next = null;
-        if ((Integer)b != 0) {
+    public RationalNumber(int a, int b) {
+        if (b != 0) {
             this.a = a;
             this.b = b;
         } else  {
@@ -24,27 +17,12 @@ public class RationalNumber<T> {
         }
     }
 
-    public void setNext(RationalNumber<T> next) {
-        this.next = next;
-    }
 
-    public void setPrevious(RationalNumber<T> previous) {
-        this.previous = previous;
-    }
-
-    public RationalNumber<T> getNext() {
-        return next;
-    }
-
-    public RationalNumber<T> getPrevious() {
-        return previous;
-    }
-
-    public T getA() {
+    public int getA() {
         return a;
     }
 
-    public T getB() {
+    public int getB() {
         return b;
     }
 }

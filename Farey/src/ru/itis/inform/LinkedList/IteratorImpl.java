@@ -4,9 +4,9 @@ package ru.itis.inform.LinkedList;
  * Created by Тимур on 19.02.2016.
  */
 public class IteratorImpl<T> implements Iterator<T> {
-    private RationalNumber<T> current;
+    private Node<T> current;
 
-    public IteratorImpl(RationalNumber<T> first) {
+    public IteratorImpl(Node<T> first) {
         this.current = first;
     }
 
@@ -14,37 +14,47 @@ public class IteratorImpl<T> implements Iterator<T> {
         return current!=null;
     }
 
-    public RationalNumber<T> thisIterator(){
-        RationalNumber<T> f = this.current;
-        return f;
-    }
-
-    public RationalNumber<T> next() {
-        RationalNumber<T> f = current;
-
-        current = current.getNext();
-        return f;
+    public T next() {
+        T value = current.getValue();
+        Node<T> f = this.current;
+        this.current = f.getNext();
+        return value;
     }
 
 
-    public RationalNumber<T> previous() {
+    public T previous() {
         if (current.getPrevious() != null) {
-            RationalNumber<T> f = current.getPrevious();
-            current = current.getPrevious();
-            return f;
+            T value = current.getPrevious().getValue();
+            Node<T> f = this.current;
+            this.current = f.getPrevious();
+            return value;
         } else {
             throw  new IndexOutOfBoundsException();
         }
     }
 
-    public void insert(T a, T b) {
-        RationalNumber<T> clipboard = new RationalNumber<>(a, b);
-        RationalNumber<T> f = this.current;
+
+    public T peekNext() {
+        T value = current.getValue();
+        return value;
+    }
+
+    public T peekPrevious() {
+        T value = current.getPrevious().getValue();
+        return value;
+    }
+
+    public void insert(T element) {
+        Node<T> clipboard = new Node<>(element);
+        Node<T> f = this.current;
+
+
 
         clipboard.setPrevious(f.getPrevious());
         f.getPrevious().setNext(clipboard);
         clipboard.setNext(f);
         f.setPrevious(clipboard);
 
+        this.current = f.getPrevious();
     }
 }

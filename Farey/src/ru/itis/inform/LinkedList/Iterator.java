@@ -5,8 +5,9 @@ package ru.itis.inform.LinkedList;
  */
 public interface Iterator<T> {
     boolean hasNext();
-    RationalNumber<T> next();
-    RationalNumber<T> previous();
-    RationalNumber<T> thisIterator();
-    void insert(T a, T b);
+    T next();
+    T previous();
+    T peekNext();
+    T peekPrevious();
+    void insert(T element);
 }

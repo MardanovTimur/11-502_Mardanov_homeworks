@@ -4,41 +4,40 @@ public class FareyLinkedListImpl<T> implements FareyLinkedList<T> {
 
     private int n;
 
-    private ListNodeImpl<Integer> list;
-    private Iterator<Integer>  iterator;
+    private ListNodeImpl<RationalNumber> list;
+    private Iterator<RationalNumber>  iterator;
 
-    public void initialize(T n) {
-        this.list = new ListNodeImpl<Integer>();
-        list.push(0, 1);
-        list.push(1, 1);
-        this.n = (Integer)n;
+    public void initialize(int n) {
+        this.list = new ListNodeImpl<RationalNumber>();
+        list.push(new RationalNumber(0,1));
+        list.push(new RationalNumber(1,1));
+        this.n = n;
         this.iterator = list.iterator();
     }
 
     public void generate() {
+        //Итератор на второй элемент
+        iterator.next();
         while (iterator.hasNext()) {
-            if (iterator.thisIterator().getB() + iterator.next().getB() <=this.n) {
+            if (iterator.peekPrevious().getB() + iterator.peekNext().getB() <=this.n) {
 
-                iterator.previous();
+                int a = iterator.peekPrevious().getA()+iterator.peekNext().getA();
 
-                int a = iterator.next().getA()+iterator.next().getA();
-                iterator.previous();
-                iterator.previous();
-                int b = iterator.next().getB()+iterator.next().getB();
-                iterator.previous();
-                iterator.insert(a,b);
-
-                iterator.previous();
+                int b = iterator.peekPrevious().getB()+iterator.peekNext().getB();
+             //   System.out.println(a+"/"+b+" ");
+                iterator.insert(new RationalNumber(a,b));
+            } else {
+                iterator.next();
             }
         }
     }
 
     public void print() {
-    this.iterator = list.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next().getA()+"/");
-            iterator.previous();
-            System.out.println(iterator.next().getB()+" ");
+        IteratorImpl<RationalNumber> newIterator = list.iterator();
+        while (newIterator.hasNext()) {
+            System.out.print(newIterator.peekNext().getA()+"/");
+            System.out.print(newIterator.peekNext().getB()+" ");
+            newIterator.next();
         }
     }
 

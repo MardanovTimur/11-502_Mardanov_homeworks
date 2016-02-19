@@ -20,7 +20,8 @@ public class Main {
 
         System.out.println();
 
-        graph.showGraph(graph.runFloyd());
+        int[][] t = graph.runFloyd();
+        graph.showGraph(t);
 
         System.out.println("-------------------------------------------");
 

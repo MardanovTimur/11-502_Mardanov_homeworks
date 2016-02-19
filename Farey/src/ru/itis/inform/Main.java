@@ -13,7 +13,7 @@ public class Main {
         System.out.println();
 
         FareyLinkedListImpl L = new FareyLinkedListImpl();
-        L.initialize(3);
+        L.initialize(10);
         L.generate();
         L.print();
 
