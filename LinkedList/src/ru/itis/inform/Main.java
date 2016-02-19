@@ -18,7 +18,7 @@ public class Main {
             System.out.print(iterator.next()+" ");
         }
         //Output: 8 5 3 2 1 10
-        System.out.println();
+        System.out.println(iterator.previous());
 
     }
 }

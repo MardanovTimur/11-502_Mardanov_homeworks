@@ -1,44 +1,45 @@
 package ru.itis.inform.LinkedList;
 
-public class FareyLinkedListImpl implements FareyLinkedList {
+public class FareyLinkedListImpl<T> implements FareyLinkedList<T> {
 
     private int n;
 
-    private int fixCount;
-    private int index;
-    private ListNodeImpl list;
+    private ListNodeImpl<Integer> list;
+    private Iterator<Integer>  iterator;
 
-    public void Generate(int n) {
+    public void initialize(T n) {
+        this.list = new ListNodeImpl<Integer>();
+        list.push(0, 1);
+        list.push(1, 1);
+        this.n = (Integer)n;
+        this.iterator = list.iterator();
+    }
 
-        Initialize();
+    public void generate() {
+        while (iterator.hasNext()) {
+            if (iterator.thisIterator().getB() + iterator.next().getB() <=this.n) {
 
-        this.n = n;
+                iterator.previous();
 
-        RationalNumber node = list.getFirst();
+                int a = iterator.next().getA()+iterator.next().getA();
+                iterator.previous();
+                iterator.previous();
+                int b = iterator.next().getB()+iterator.next().getB();
+                iterator.previous();
+                iterator.insert(a,b);
 
-        do {
-            if (node.getNext().getB() + node.getB() <= this.n) {
-
-                RationalNumber newNode = new RationalNumber(node.getNext().getA() + node.getA(), node.getNext().getB() + node.getB());
-
-
-                newNode.setNext(node.getNext());
-                node.setNext(newNode);
-
-            } else {
-                node = node.getNext();
-                index++;
+                iterator.previous();
             }
-        } while (node.getNext() != null);
+        }
     }
 
-    private void Initialize() {
-        this.list = new ListNodeImpl();
-        this.list.push(0, 1);
-        this.list.push(1, 1);
+    public void print() {
+    this.iterator = list.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next().getA()+"/");
+            iterator.previous();
+            System.out.println(iterator.next().getB()+" ");
+        }
     }
 
-    public void Print() {
-        list.show();
-    }
 }

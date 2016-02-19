@@ -3,9 +3,9 @@ package ru.itis.inform.LinkedList;
 /**
  * Created by Тимур on 15.02.2016.
  */
-public interface ListNode {
-    void add(int a, int b);
-    void remove(int a,int b);
+public interface ListNode<T> {
+    void add(T a, T b);
+    void remove(T a,T b);
     void show();
-    void push(int a, int b);
+    void push(T a, T b);
 }

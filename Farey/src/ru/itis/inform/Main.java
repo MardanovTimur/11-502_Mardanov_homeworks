@@ -13,8 +13,10 @@ public class Main {
         System.out.println();
 
         FareyLinkedListImpl L = new FareyLinkedListImpl();
-        L.Generate(17);
-        L.Print();
+        L.initialize(3);
+        L.generate();
+        L.print();
+
     }
 
 }
