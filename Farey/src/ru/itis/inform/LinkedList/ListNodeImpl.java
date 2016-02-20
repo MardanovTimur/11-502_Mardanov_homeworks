@@ -19,6 +19,7 @@ public class ListNodeImpl<T> implements ListNode<T> {
 
     }
 
+
     //Add first
     public void add(T element) {
         Node<T> newNode = new Node<>(element);
@@ -56,7 +57,6 @@ public class ListNodeImpl<T> implements ListNode<T> {
         this.count++;
     }
 
-
     public void remove(T element) {
         Node<T> r = first;
         for (int i = 0; i < this.count - 1; i++) {
@@ -74,7 +74,7 @@ public class ListNodeImpl<T> implements ListNode<T> {
         Node<T> f = first;
         while (f != null) {
             if (f.getNext() != null)
-                System.out.print(f.getValue()+" ");
+                System.out.print(f.getValue() + " ");
             else
                 System.out.print(f.getValue() + ".");
             f = f.getNext();
@@ -85,15 +85,22 @@ public class ListNodeImpl<T> implements ListNode<T> {
         return new IteratorImpl<>(this.first);
     }
 
+
     class IteratorImpl<T> implements Iterator<T> {
         private Node<T> current;
+
+        int count = 2;
 
         public IteratorImpl(Node<T> first) {
             this.current = first;
         }
 
+        public int getCount() {
+            return count;
+        }
+
         public boolean hasNext() {
-            return current!=null;
+            return current != null;
         }
 
         public T next() {
@@ -111,7 +118,7 @@ public class ListNodeImpl<T> implements ListNode<T> {
                 this.current = f.getPrevious();
                 return value;
             } else {
-                throw  new IndexOutOfBoundsException();
+                throw new IndexOutOfBoundsException();
             }
         }
 
@@ -130,7 +137,7 @@ public class ListNodeImpl<T> implements ListNode<T> {
             Node<T> clipboard = new Node<>(element);
             Node<T> f = this.current;
 
-
+            this.count++;
 
             clipboard.setPrevious(f.getPrevious());
             f.getPrevious().setNext(clipboard);

@@ -8,7 +8,6 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
     public LinkedListImpl() {
         this.first = null;
-        this.last = null;
         this.count = 0;
     }
 
@@ -16,9 +15,10 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
         Node<T> newNode = new Node<T>(element);
 
+        this.last = null;
+
         if (this.first == null) {
             this.first = newNode;
-            this.last.setPrevious(first);
             this.first.setNext(last);
         } else {
             newNode.setNext(this.first);
@@ -44,14 +44,13 @@ public class LinkedListImpl<T> implements LinkedList<T> {
             r.setNext(newNode);
             newNode.setPrevious(r);
             newNode.setNext(last);
-            last.setPrevious(newNode);
         }
     }
 
     public void printList() {
         Node<T> r = first;
-        while (r!=null) {
-            System.out.print(r.getValue()+" ");
+        while (r != null) {
+            System.out.print(r.getValue() + " ");
             r = r.getNext();
         }
     }
@@ -59,14 +58,12 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     public void remove(T element) {
         Node<T> node = first;
 
-        for(int i = 0; i < count-1; i++) {
-            if ((i==0) && (node.getValue() == element)) {
+        for (int i = 0; i < count - 1; i++) {
+            if ((i == 0) && (node.getValue() == element)) {
                 first = node.getNext();
                 count--;
                 break;
-            }
-                else
-            if(node.getNext().getValue() == element) {
+            } else if (node.getNext().getValue() == element) {
                 node.setNext(node.getNext().getNext());
                 count--;
             }
@@ -79,7 +76,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         return new IteratorImpl<T>(this.first);
     }
 
-   public class IteratorImpl<T> implements Iterator<T> {
+    public class IteratorImpl<T> implements Iterator<T> {
 
         private Node<T> current;
 
@@ -89,11 +86,19 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
         @Override
         public boolean hasNext() {
-            return current != null;
+            return current.getNext() != null;
+        }
+
+        public T peekNext() {
+            return current.getValue();
+        }
+
+        public T peekPrevious() {
+            return current.getPrevious().getValue();
         }
 
         @Override
-        public T next(){
+        public T next() {
             T value = current.getValue();
             Node<T> f = current;
             this.current = f.getNext();
@@ -102,11 +107,11 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
         @Override
         public T previous() {
-            if (current.getPrevious()!=null) {
+            if (current.getPrevious() != null) {
                 Node<T> f = this.current;
                 T value = f.getPrevious().getValue();
                 this.current = f.getPrevious();
-                return  value;
+                return value;
             } else {
                 throw new IndexOutOfBoundsException();
             }

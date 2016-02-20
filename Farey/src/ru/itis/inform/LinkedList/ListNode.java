@@ -5,7 +5,10 @@ package ru.itis.inform.LinkedList;
  */
 public interface ListNode<T> {
     void add(T element);
+
     void remove(T element);
+
     void show();
+
     void push(T element);
 }

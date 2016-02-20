@@ -18,17 +18,16 @@ public class Main {
         iterator.insert(3);
         iterator.insert(4);
         iterator.next();
-        System.out.println(iterator.previous());
         iterator = list.iterator();
 
+        //show
         while (iterator.hasNext()) {
             System.out.print(iterator.next()+" ");
         }
+        System.out.println(iterator.peekNext()+ " ");
+        //show
 
-        //System.out.println(iterator.previous());
-
-        //Output: 8 5 3 2 1 10
-
+        System.out.println(iterator.previous());
 
     }
 }

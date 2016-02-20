@@ -12,7 +12,7 @@ public class RationalNumber {
         if (b != 0) {
             this.a = a;
             this.b = b;
-        } else  {
+        } else {
             throw new IllegalArgumentException();
         }
     }

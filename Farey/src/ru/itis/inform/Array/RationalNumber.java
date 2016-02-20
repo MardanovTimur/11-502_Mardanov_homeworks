@@ -7,11 +7,12 @@ public class RationalNumber {
     private int a;
     private int b;
     private static final int DEFAULT = -1;
+
     public RationalNumber(int a, int b) {
-        if (b!=0) {
+        if (b != 0) {
             this.a = a;
             this.b = b;
-        } else  {
+        } else {
             throw new IllegalArgumentException();
         }
     }
