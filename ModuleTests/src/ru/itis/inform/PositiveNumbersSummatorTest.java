@@ -20,11 +20,13 @@ public class PositiveNumbersSummatorTest {
     @org.junit.Test
     public void testSumm() throws Exception {
 
-        int actual = summator.summ(10, 6);
+        int actual[] = {summator.summ(1,2),summator.summ(3,5)};
 
-        int expected = 16;
+        int expected[] = {3,8};
 
-        assertEquals(expected, actual);
+        for (int i = 0; i < 2; i++) {
+            assertEquals(actual[i],expected[i]);
+        }
     }
 
     @org.junit.Test(expected = IllegalArgumentException.class)
@@ -33,4 +35,4 @@ public class PositiveNumbersSummatorTest {
     }
 }
 
-}
+

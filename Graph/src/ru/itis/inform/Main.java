@@ -11,10 +11,10 @@ public class Main {
         graph.addVertex();
 
 
-        graph.addEdgeDirection(1,2,5);
-        graph.addEdgeDirection(1,4,10);
-        graph.addEdgeDirection(2,4,3);
-        graph.addEdgeDirection(3,4,7);
+        graph.addEdgeDirection(1, 2, 5);
+        graph.addEdgeDirection(1, 4, 10);
+        graph.addEdgeDirection(2, 4, 3);
+        graph.addEdgeDirection(3, 4, 7);
 
         graph.showGraph();
 
@@ -32,9 +32,9 @@ public class Main {
         graphO.addVertex();
         graphO.addVertex();
 
-        graphO.addEdgeNonDirection(1,2,3);
-        graphO.addEdgeNonDirection(2,3,5);
-        graphO.addEdgeNonDirection(1,3,9);
+        graphO.addEdgeNonDirection(1, 2, 3);
+        graphO.addEdgeNonDirection(2, 3, 5);
+        graphO.addEdgeNonDirection(1, 3, 9);
 
         graphO.showGraph();
 
