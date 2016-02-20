@@ -24,7 +24,7 @@ public class FareyLinkedListImpl<T> implements FareyLinkedList<T> {
                 int a = iterator.peekPrevious().getA()+iterator.peekNext().getA();
 
                 int b = iterator.peekPrevious().getB()+iterator.peekNext().getB();
-             //   System.out.println(a+"/"+b+" ");
+
                 iterator.insert(new RationalNumber(a,b));
             } else {
                 iterator.next();
@@ -33,12 +33,13 @@ public class FareyLinkedListImpl<T> implements FareyLinkedList<T> {
     }
 
     public void print() {
-        IteratorImpl<RationalNumber> newIterator = list.iterator();
+        Iterator<RationalNumber> newIterator = list.iterator();
         while (newIterator.hasNext()) {
             System.out.print(newIterator.peekNext().getA()+"/");
             System.out.print(newIterator.peekNext().getB()+" ");
             newIterator.next();
         }
+
     }
 
 }
