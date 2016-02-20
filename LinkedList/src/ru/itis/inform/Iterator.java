@@ -7,5 +7,5 @@ public interface Iterator<T> {
     boolean hasNext();
     T next();
     T previous();
-    void Insert(T element);
+    void insert(T element);
 }

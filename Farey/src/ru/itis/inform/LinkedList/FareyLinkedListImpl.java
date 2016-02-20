@@ -39,6 +39,7 @@ public class FareyLinkedListImpl<T> implements FareyLinkedList<T> {
             System.out.print(newIterator.peekNext().getB()+" ");
             newIterator.next();
         }
+       // System.out.println(newIterator.previous().getA());
 
     }
 

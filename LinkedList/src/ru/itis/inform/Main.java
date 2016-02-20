@@ -12,13 +12,23 @@ public class Main {
         list.add(8);
         list.push(10);
 
-        IteratorImpl<Integer> iterator = list.iterator();
+        Iterator<Integer> iterator = list.iterator();
+
+        iterator.next();
+        iterator.insert(3);
+        iterator.insert(4);
+        iterator.next();
+        System.out.println(iterator.previous());
+        iterator = list.iterator();
 
         while (iterator.hasNext()) {
             System.out.print(iterator.next()+" ");
         }
+
+        //System.out.println(iterator.previous());
+
         //Output: 8 5 3 2 1 10
-        System.out.println(iterator.previous());
+
 
     }
 }
