@@ -1,5 +1,10 @@
-package ru.itis.inform.LinkedList;
+package ru.itis.inform;
 
+
+import ru.itis.inform.LinkedList.FareyLinkedListImpl;
+import ru.itis.inform.LinkedList.Iterator;
+import ru.itis.inform.LinkedList.ListNodeImpl;
+import ru.itis.inform.LinkedList.RationalNumber;
 
 import static org.junit.Assert.*;
 
@@ -55,6 +60,12 @@ public class FareyIterModuleTest {
                 return false;
         }
         return true;
+    }
+
+    @org.junit.Test(expected = IllegalArgumentException.class)
+    public void TestOnNegative() throws Exception {
+        ListNodeImpl<RationalNumber> exp = new ListNodeImpl<>();
+        exp.push(new RationalNumber(0,0));
     }
 
 

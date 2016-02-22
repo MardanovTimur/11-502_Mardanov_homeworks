@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         FareyArrayImpl A = new FareyArrayImpl();
-        A.generate(17);
+        A.generate(4);
         A.print();
 
         System.out.println();
