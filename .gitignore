@@ -1,6 +1,7 @@
 #TimurMardanov 11 - 502#
 *.class
-*.jar
+*.zip
+*.git
 *.idea
 *.git
 *.iml
