@@ -1,8 +1,22 @@
 #TimurMardanov 11 - 502#
+
+#Ignore End.(files)#
+
 *.class
 *.zip
 *.git
 *.idea
 *.git
 *.iml
+*.exe
+
+#Ignore Packages#
+
 .out/
+.classes/
+.generated-sources/
+.generated-test-sources/
+.maven-archiver/
+.maven-status/
+.surefile-reports/
+.test-classes/
