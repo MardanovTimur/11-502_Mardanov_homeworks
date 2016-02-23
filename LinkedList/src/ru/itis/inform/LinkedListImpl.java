@@ -33,9 +33,6 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
         if (this.first == null) {
             this.first = newNode;
-            first.setNext(last);
-            last.setNext(first);
-            this.count++;
         } else {
             Node<T> r = first;
             while (r.getNext() != null) {
@@ -45,6 +42,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
             newNode.setPrevious(r);
             newNode.setNext(last);
         }
+        this.count++;
     }
 
     public void printList() {
@@ -57,17 +55,27 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
     public void remove(T element) {
         Node<T> node = first;
-
-        for (int i = 0; i < count - 1; i++) {
-            if ((i == 0) && (node.getValue() == element)) {
+        boolean flag = true;
+        for (int i = 0; i < count-1 ; i++) {
+            if ((i == 0) && (node.getValue() == element) && (flag)) {
                 first = node.getNext();
                 count--;
+                flag  = false;
                 break;
-            } else if (node.getNext().getValue() == element) {
+            } else if ((node.getNext().getValue() == element) && (flag)) {
                 node.setNext(node.getNext().getNext());
                 count--;
+                flag = false;
             }
             node = node.getNext();
+        }
+        if (flag && (node.getValue() == element)) {
+            node = null;
+            flag = false;
+        }
+
+        if (flag) {
+            throw new NullPointerException();
         }
     }
 
