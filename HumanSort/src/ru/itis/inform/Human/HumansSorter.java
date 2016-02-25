@@ -9,6 +9,7 @@ import ru.itis.inform.Node;
  * Created by Тимур on 25.02.2016.
  */
 public class HumansSorter {
+
     public LinkedList<Human> sort(LinkedListImpl<Human> humanLinkedList) {
         ArrayList<LinkedListImpl<Human>> arrayList = new ArrayList<>();
 
@@ -22,6 +23,6 @@ public class HumansSorter {
         LinkedListImpl<Human> newHumanLinkedList = new LinkedListImpl<>();
         arrayList.append(newHumanLinkedList);
 
-        return ;
+        return newHumanLinkedList;
     }
 }
