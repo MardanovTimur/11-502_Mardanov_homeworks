@@ -10,18 +10,21 @@ import ru.itis.inform.Node;
  */
 public class HumansSorter {
 
-    public LinkedList<Human> sort(LinkedListImpl<Human> humanLinkedList) {
+    public LinkedListImpl<Human> sort(LinkedListImpl<Human> humanLinkedList) {
         ArrayList<LinkedListImpl<Human>> arrayList = new ArrayList<>();
 
         LinkedListImpl<Human> oldhumanLinkedList = humanLinkedList;
         Node<Human> r = oldhumanLinkedList.getFirst();
         while (r != null) {
+
             int currentAge = r.getValue().getAge();
-            arrayList.setIndex(currentAge).add(r.getValue());
+
+            arrayList.getIndex(currentAge).push(r.getValue());
+
             r = r.getNext();
         }
         LinkedListImpl<Human> newHumanLinkedList = new LinkedListImpl<>();
-        arrayList.append(newHumanLinkedList);
+        newHumanLinkedList = arrayList.append(newHumanLinkedList);
 
         return newHumanLinkedList;
     }

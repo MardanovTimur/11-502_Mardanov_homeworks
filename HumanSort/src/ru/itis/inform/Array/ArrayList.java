@@ -12,8 +12,14 @@ public class ArrayList<T> {
     private T elements[];
     private int count;
 
-    public T setIndex(int currentAge) {
+    public ArrayList(T[] elements) {
+        for (int i = 0; i<=100; i++)
+        this.elements[i] = new T();
+    }
+
+    public T getIndex(int currentAge) {
         this.count++;
+        elements[currentAge] = new ;
         return elements[currentAge];
     }
 

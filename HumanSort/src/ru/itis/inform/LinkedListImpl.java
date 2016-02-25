@@ -97,7 +97,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
         @Override
         public boolean hasNext() {
-            return current.getNext() != null;
+            return current != null;
         }
 
         public T peekNext() {
