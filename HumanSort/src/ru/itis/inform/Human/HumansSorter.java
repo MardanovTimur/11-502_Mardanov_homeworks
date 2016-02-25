@@ -19,9 +19,9 @@ public class HumansSorter {
             arrayList.setIndex(currentAge).add(r.getValue());
             r = r.getNext();
         }
+        LinkedListImpl<Human> newHumanLinkedList = new LinkedListImpl<>();
+        arrayList.append(newHumanLinkedList);
 
-        arrayList.
-
-        return
+        return ;
     }
 }

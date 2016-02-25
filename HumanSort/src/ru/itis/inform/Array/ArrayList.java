@@ -1,5 +1,9 @@
 package ru.itis.inform.Array;
 
+import ru.itis.inform.Human.Human;
+import ru.itis.inform.LinkedListImpl;
+import ru.itis.inform.Node;
+
 /**
  * Created by Тимур on 24.02.2016.
  */
@@ -13,15 +17,21 @@ public class ArrayList<T> {
         return elements[currentAge];
     }
 
-    public T append(T list) {
+    public T append(LinkedListImpl list) {
         for (int i = 0; i<=100; i++) {
             if (elements[i] != null) {
-                while (elements[i]!=null) {
-                    list.
+                LinkedListImpl<T> newLinkedList = new LinkedListImpl<>();
+
+                newLinkedList = (LinkedListImpl<T>) elements[i];
+                Node<T> newNode = newLinkedList.getFirst();
+
+                while (newNode != null) {
+                    list.push(newNode);
+                    newNode = newNode.getNext();
                 }
             }
         }
-        return list;
+        return (T)list;
     }
 
 
