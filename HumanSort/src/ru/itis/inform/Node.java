@@ -1,4 +1,5 @@
 package ru.itis.inform;
+import ru.itis.inform.Human.Human;
 
 /**
  * Created by Тимур on 24.02.2016.

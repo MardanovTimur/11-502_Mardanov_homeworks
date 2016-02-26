@@ -26,9 +26,7 @@ public class HumansReaderWriter {
 
             int age = sc.nextInt();
             String name = sc.nextLine();
-            //Maybe doesn't work
-            //sc.nextLine();
-            //
+
             human = new Human(age, name);
 
             humanLinkedList.push(human);
@@ -38,14 +36,16 @@ public class HumansReaderWriter {
     }
 
     public void writeHumans(String fileName, LinkedListImpl<Human> humanLinkedList) throws FileNotFoundException {
-        PrintWriter pw = new PrintWriter(new File("C:\\Users\\Тимур\\Desktop\\11-502_Mardanov_homeworks\\HumanSort\\src\\ru\\itis\\inform\\output"+fileName+".txt"));
+        PrintWriter pw = new PrintWriter(new File("C:\\Users\\Тимур\\Desktop\\11-502_Mardanov_homeworks\\HumanSort\\src\\ru\\itis\\inform\\output\\"+fileName+".txt"));
 
-        Iterator<Human> iterator = humanLinkedList.iterator();
+        /*Iterator<Human> iterator = humanLinkedList.iterator();
 
         while (iterator.hasNext()) {
-            pw.print(iterator.next().toString()+"\n");
+            pw.print(iterator.peekNext().toString()+" ");
             iterator.next();
         }
+*/
+        pw.print(humanLinkedList.getFirst().getValue().toString());
 
         pw.close();
 

@@ -3,13 +3,14 @@ package ru.itis.inform;
 import ru.itis.inform.Human.Human;
 import ru.itis.inform.Human.HumansReaderWriter;
 import ru.itis.inform.Human.HumansSorter;
+import sun.plugin2.liveconnect.JSExceptions;
 
 import java.io.FileNotFoundException;
 
 
-public class Main {
+public class Main  {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, Exception {
         HumansReaderWriter humansReaderWriter = new HumansReaderWriter();
 
         LinkedListImpl<Human> c = humansReaderWriter.readHumans();
