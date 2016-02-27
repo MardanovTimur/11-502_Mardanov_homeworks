@@ -13,10 +13,12 @@
 #Ignore Packages#
 
 .out/
+.data/
 .classes/
 .generated-sources/
 .generated-test-sources/
 .maven-archiver/
 .maven-status/
-.surefile-reports/
+.surefire
+.surefire-reports/
 .test-classes/

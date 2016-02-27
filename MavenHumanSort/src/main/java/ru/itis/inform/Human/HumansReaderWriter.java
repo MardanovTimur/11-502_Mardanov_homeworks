@@ -16,7 +16,7 @@ public class HumansReaderWriter {
     public LinkedListImpl<Human> readHumans()
                                                 throws FileNotFoundException {
 
-        Scanner sc = new Scanner(new File("C:\\Users\\Тимур\\Desktop\\11-502_Mardanov_homeworks\\HumanSort\\src\\ru\\itis\\inform\\input\\Humans.txt"));
+        Scanner sc = new Scanner(new File("C:\\Users\\Тимур\\Desktop\\11-502_Mardanov_homeworks\\MavenHumanSort\\src\\main\\java\\ru\\itis\\inform\\input\\Humans.txt"));
 
         LinkedListImpl<Human> humanLinkedList = new LinkedListImpl<>();
 
@@ -36,7 +36,7 @@ public class HumansReaderWriter {
     }
 
     public void writeHumans(String fileName, LinkedListImpl<Human> humanLinkedList) throws FileNotFoundException {
-        PrintWriter pw = new PrintWriter(new File("C:\\Users\\Тимур\\Desktop\\11-502_Mardanov_homeworks\\HumanSort\\src\\ru\\itis\\inform\\output\\"+fileName+".txt"));
+        PrintWriter pw = new PrintWriter(new File("C:\\Users\\Тимур\\Desktop\\11-502_Mardanov_homeworks\\MavenHumanSort\\src\\main\\java\\ru\\itis\\inform\\output\\"+fileName+".txt"));
 
         Iterator<Human> iterator = humanLinkedList.iterator();
 
