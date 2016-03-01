@@ -1,4 +1,4 @@
-99 Hammer
+96 Hammer
 12 Black
 32 White
 21 Yellow
@@ -6,4 +6,6 @@
 32 Green
 34 Check
 38 DRose
+1 Done
 38 REDDDTUBE
+0 Baby

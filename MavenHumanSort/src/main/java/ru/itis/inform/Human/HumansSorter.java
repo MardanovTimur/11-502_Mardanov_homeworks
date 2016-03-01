@@ -2,7 +2,7 @@ package ru.itis.inform.human;
 
 import ru.itis.inform.Iterator;
 import ru.itis.inform.LinkedList;
-import ru.itis.inform.array.ArrayList;
+import ru.itis.inform.ArrayList;
 import ru.itis.inform.LinkedListImpl;
 import ru.itis.inform.Node;
 
@@ -33,11 +33,14 @@ public class HumansSorter {
 
 
         LinkedListImpl<Human> newHumanLinkedList = new LinkedListImpl<Human>();
+
         for (int i = 99; i >= 1; i--) {
-            arrayList.get(i - 1).append(arrayList.get(i));
+            if (arrayList.get(i).getFirst() != null) {
+                arrayList.get(i - 1).append(arrayList.get(i));
+                arrayList.set(i, new LinkedListImpl<Human>());
+            }
         }
 
-
-        return arrayList.get(1);
+        return arrayList.get(0);
     }
 }

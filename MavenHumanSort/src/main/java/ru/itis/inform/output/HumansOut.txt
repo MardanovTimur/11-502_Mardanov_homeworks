@@ -1,3 +1,5 @@
+Age: 0 name:  Baby  
+Age: 1 name:  Done  
 Age: 12 name:  Black  
 Age: 21 name:  Yellow  
 Age: 21 name:  Timur  
@@ -6,4 +8,4 @@ Age: 32 name:  Green
 Age: 34 name:  Check  
 Age: 38 name:  DRose  
 Age: 38 name:  REDDDTUBE  
-Age: 99 name:  Hammer  
+Age: 96 name:  Hammer  
