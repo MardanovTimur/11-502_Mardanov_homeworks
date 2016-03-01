@@ -1,9 +1,7 @@
-package ru.itis.inform.Human;
+package ru.itis.inform.human;
 
-import ru.itis.inform.Human.Human;
 import ru.itis.inform.Iterator;
 import ru.itis.inform.LinkedListImpl;
-import ru.itis.inform.Node;
 
 
 import java.io.File;

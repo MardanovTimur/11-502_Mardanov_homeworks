@@ -1,7 +1,8 @@
-package ru.itis.inform.Human;
+package ru.itis.inform.human;
 
-import ru.itis.inform.Array.ArrayList;
+import ru.itis.inform.Iterator;
 import ru.itis.inform.LinkedList;
+import ru.itis.inform.array.ArrayList;
 import ru.itis.inform.LinkedListImpl;
 import ru.itis.inform.Node;
 
@@ -10,23 +11,33 @@ import ru.itis.inform.Node;
  */
 public class HumansSorter {
 
-    public LinkedListImpl<Human> sort(LinkedListImpl<Human> humanLinkedList) {
+    public LinkedListImpl<Human> sort (LinkedListImpl<Human> humanLinkedList) {
 
         ArrayList<LinkedListImpl<Human>> arrayList = new ArrayList<>();
 
-        Node<Human> r = humanLinkedList.getFirst();
+        Iterator<Human> humanIterator = humanLinkedList.iterator();
 
-        while (r != null) {
-            int currentAge = r.getValue().getAge();
-
-            arrayList.getIndex(currentAge).push(r.getValue());
-
-            r = r.getNext();
+        for (int i = 0; i < arrayList.getSize(); i++) {
+            LinkedListImpl<Human> current = arrayList.get(i);
+            if (current==null)
+                arrayList.set(i,new LinkedListImpl());
         }
+
+        while (humanIterator.hasNext()) {
+
+            int currentAge = humanIterator.peekNext().getAge();
+
+            arrayList.get(currentAge).push(humanIterator.peekNext());
+            humanIterator.next();
+        }
+
+
         LinkedListImpl<Human> newHumanLinkedList = new LinkedListImpl<Human>();
+        for (int i = 99; i >= 1; i--) {
+            arrayList.get(i - 1).append(arrayList.get(i));
+        }
 
-        newHumanLinkedList = arrayList.append(newHumanLinkedList);
 
-        return newHumanLinkedList;
+        return arrayList.get(1);
     }
 }

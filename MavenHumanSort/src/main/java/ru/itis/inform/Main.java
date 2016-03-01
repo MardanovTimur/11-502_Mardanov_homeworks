@@ -1,7 +1,8 @@
 package ru.itis.inform;
 
-import ru.itis.inform.Human.*;
-import ru.itis.inform.Array.*;
+
+import ru.itis.inform.human.*;
+
 import java.io.FileNotFoundException;
 
 
@@ -15,6 +16,7 @@ public class Main  {
         HumansSorter humansSorter = new HumansSorter();
 
         c = humansSorter.sort(c);
+
 
         humansReaderWriter.writeHumans("HumansOut",c);
 

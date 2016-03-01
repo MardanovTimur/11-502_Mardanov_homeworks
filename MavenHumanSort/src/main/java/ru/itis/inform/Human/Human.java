@@ -1,4 +1,4 @@
-package ru.itis.inform.Human;
+package ru.itis.inform.human;
 
 
 /**

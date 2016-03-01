@@ -1,5 +1,0 @@
-Age: 12 name:  Black  
-Age: 21 name:  Yellow  
-Age: 21 name:  Timur  
-Age: 32 name:  White  
-Age: 99 name:  Hammer  
