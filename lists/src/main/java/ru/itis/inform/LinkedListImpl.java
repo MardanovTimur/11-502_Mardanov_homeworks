@@ -28,6 +28,10 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         this.count++;
     }
 
+    public int getCount() {
+        return this.count;
+    }
+
     public void push(T element) {
         Node<T> newNode = new Node<>(element);
 

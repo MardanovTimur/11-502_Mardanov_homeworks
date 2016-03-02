@@ -23,7 +23,6 @@ public class TextLexSorter {
             for (int j = 90; j >= 65; j--) {
                 Iterator<String> iterator = linkedList.iterator();
                 while (iterator.hasNext()) {
-
                     if (iterator.peekNext().charAt(i) == (char) j) {
                         arrayList.get(j - 65).push(iterator.peekNext());
                         iterator.next();
