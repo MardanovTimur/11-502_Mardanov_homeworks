@@ -12,7 +12,7 @@ public class Main  {
     public static void main(String[] args) throws FileNotFoundException {
         TextReaderWriter textReaderWriter = new TextReaderWriter();
         LinkedListImpl<String> linkedList =  new LinkedListImpl<>();
-        linkedList = textReaderWriter.readHumans();
+        linkedList = textReaderWriter.readHumans("List");
 
         TextLexSorter sorter = new TextLexSorter();
         linkedList = sorter.sort(linkedList);

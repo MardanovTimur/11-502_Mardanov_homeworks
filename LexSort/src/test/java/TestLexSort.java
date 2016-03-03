@@ -1,22 +1,27 @@
 /**
  * Created by Тимур on 02.03.2016.
  */
+import org.junit.Assert;
 import ru.itis.inform.Iterator;
 import ru.itis.inform.LinkedListImpl;
 import ru.itis.inform.text.TextLexSorter;
+import ru.itis.inform.text.TextReaderWriter;
+
+import java.io.FileNotFoundException;
 
 import static org.junit.Assert.*;
 
 
 public class TestLexSort {
     TextLexSorter textLexSorter;
-
+    TextReaderWriter textReaderWriter;
     @org.junit.Before
     public void setUp() {
         this.textLexSorter = new TextLexSorter();
+        this.textReaderWriter = new TextReaderWriter();
     }
     @org.junit.Test
-    public void test1() {
+    public void testSortInLexSorter() {
         LinkedListImpl<String> actual = new LinkedListImpl<>();
         LinkedListImpl<String> expected = new LinkedListImpl<>();
 
@@ -33,15 +38,28 @@ public class TestLexSort {
         expected.push("REAT");
 
         actual =  textLexSorter.sort(actual);
+        actual.setCount(5);
 
         boolean f = true;
-        assertEquals("Error",f, equalsLinkedLists(actual,expected));
+        assertEquals("Error lexSort",f, equalsLinkedLists(actual,expected));
+
+    }
+    @org.junit.Test
+    public void testReaderWriter() throws FileNotFoundException {
+        LinkedListImpl<String> actual =  new LinkedListImpl<>();
+        actual = textReaderWriter.readHumans("TestInput");
+
+        LinkedListImpl<String> expected = new LinkedListImpl<String>();
+        expected.push("FAST");
+        expected.push("FEAR");
+
+        assertEquals("Error on writable file",true, equalsLinkedLists(expected,actual));
 
     }
 
     public boolean equalsLinkedLists(LinkedListImpl<String> actual, LinkedListImpl<String> expected) {
         int increment = 0;
-        if (5 == expected.getCount()) {
+        if (actual.getCount() == expected.getCount()) {
             Iterator<String> actualIt = actual.iterator();
             Iterator<String> expectedIt = expected.iterator();
             while (expectedIt.hasNext()) {

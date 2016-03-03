@@ -32,6 +32,10 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         return this.count;
     }
 
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     public void push(T element) {
         Node<T> newNode = new Node<>(element);
 

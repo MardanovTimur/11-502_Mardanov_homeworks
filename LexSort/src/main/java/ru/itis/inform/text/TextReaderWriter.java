@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 public class TextReaderWriter {
 
-    public LinkedListImpl<String> readHumans() throws FileNotFoundException {
+    public LinkedListImpl<String> readHumans(String fileName) throws FileNotFoundException {
 
-        Scanner sc = new Scanner(new File("C:\\Users\\Тимур\\Desktop\\11-502_Mardanov_homeworks\\LexSort\\src\\main\\java\\ru\\itis\\inform\\input\\List.txt"));
+        Scanner sc = new Scanner(new File("C:\\Users\\Тимур\\Desktop\\11-502_Mardanov_homeworks\\LexSort\\src\\main\\java\\ru\\itis\\inform\\input\\"+fileName+".txt"));
 
         LinkedListImpl<String> linkedText = new LinkedListImpl<>();
 
