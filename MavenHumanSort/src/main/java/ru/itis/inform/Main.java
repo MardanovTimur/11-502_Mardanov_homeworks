@@ -11,7 +11,7 @@ public class Main  {
     public static void main(String[] args ) throws FileNotFoundException  {
         HumansReaderWriter humansReaderWriter = new HumansReaderWriter();
 
-        LinkedListImpl<Human> c = humansReaderWriter.readHumans();
+        LinkedListImpl<Human> c = humansReaderWriter.readHumans("Humans");
 
         HumansSorter humansSorter = new HumansSorter();
 
