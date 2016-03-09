@@ -11,6 +11,8 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         this.count = 0;
     }
 
+
+
     public void add(T element) {
 
         Node<T> newNode = new Node<T>(element);
@@ -86,6 +88,42 @@ public class LinkedListImpl<T> implements LinkedList<T> {
             throw new NullPointerException();
         }
     }
+    @SuppressWarnings("unchecked")
+    public <T extends Comparable<T>> LinkedListImpl<T> merge(LinkedListImpl<T> a, LinkedListImpl<T> b) {
+        Iterator<T> iteratorA = a.iterator();
+        Iterator<T> iteratorB = b.iterator();
+
+        LinkedListImpl<T> result = new LinkedListImpl<>();
+
+        while (iteratorA.hasNext() && iteratorB.hasNext()) {
+            int compare =  iteratorA.peekNext().compareTo(iteratorB.peekNext());
+
+            switch (compare) {
+                case  1: {
+                    result.push(iteratorA.peekNext());
+                    iteratorA.next();
+                    break;
+                }
+
+                case -1: {
+                    result.push(iteratorB.peekNext());
+                    iteratorB.next();
+                    break;
+                }
+
+                case 0: {
+                    result.push(iteratorA.peekNext());
+                    result.push(iteratorB.peekNext());
+                    iteratorA.next();
+                    iteratorB.next();
+                    break;
+                }
+            }
+
+            while (iteratorA.hasNext())
+        }
+        return result;
+    }
 
     @SuppressWarnings("unchecked")
     public void append(LinkedListImpl<T> secondList) {
@@ -125,6 +163,14 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         return first;
     }
 
+
+
+
+
+
+
+
+
     public IteratorImpl<T> iterator() {
         return new IteratorImpl<T>(this.first);
     }
@@ -136,6 +182,10 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
         public IteratorImpl(Node<T> first) {
             this.current = first;
+        }
+
+        public Node<T> getCurrentNode() {
+            return current;
         }
 
         @Override
