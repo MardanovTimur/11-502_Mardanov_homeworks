@@ -89,7 +89,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         }
     }
     @SuppressWarnings("unchecked")
-    public <T extends Comparable<T>> LinkedListImpl<T> merge(LinkedListImpl<T> a, LinkedListImpl<T> b) {
+    public static<T extends Comparable<T>> LinkedListImpl<T> merge(LinkedListImpl<T> a, LinkedListImpl<T> b) {
         Iterator<T> iteratorA = a.iterator();
         Iterator<T> iteratorB = b.iterator();
 
@@ -120,7 +120,13 @@ public class LinkedListImpl<T> implements LinkedList<T> {
                 }
             }
 
-            while (iteratorA.hasNext())
+            while (iteratorA.hasNext()) {
+                result.push(iteratorA.peekNext());
+            }
+
+            while (iteratorB.hasNext()) {
+                result.push(iteratorB.peekNext());
+            }
         }
         return result;
     }

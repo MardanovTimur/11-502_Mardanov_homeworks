@@ -19,8 +19,7 @@ public class Main  {
         d = humansSorter.sort(d);
 
         LinkedListImpl<Human> result = new LinkedListImpl<>();
-
-
+        result = LinkedListImpl.merge(c,d);
         humansReaderWriter.writeHumans("HumansOut",c);
 
     }

@@ -21,6 +21,11 @@
       <artifactId>lists</artifactId>
       <version>1.1(comparable)</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-site-plugin</artifactId>
+      <version>3.3</version>
+    </dependency>
 
   </dependencies>
 
