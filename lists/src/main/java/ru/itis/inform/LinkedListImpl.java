@@ -12,7 +12,6 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     }
 
 
-
     public void add(T element) {
 
         Node<T> newNode = new Node<T>(element);
@@ -88,26 +87,27 @@ public class LinkedListImpl<T> implements LinkedList<T> {
             throw new NullPointerException();
         }
     }
+
     @SuppressWarnings("unchecked")
-    public static<T extends Comparable<T>> LinkedListImpl<T> merge(LinkedListImpl<T> a, LinkedListImpl<T> b) {
+    public static <T extends Comparable> LinkedListImpl<T> merge(LinkedListImpl<T> a, LinkedListImpl<T> b) {
         Iterator<T> iteratorA = a.iterator();
         Iterator<T> iteratorB = b.iterator();
 
         LinkedListImpl<T> result = new LinkedListImpl<>();
 
         while (iteratorA.hasNext() && iteratorB.hasNext()) {
-            int compare =  iteratorA.peekNext().compareTo(iteratorB.peekNext());
+            int compare = iteratorA.peekNext().compareTo(iteratorB.peekNext());
 
             switch (compare) {
-                case  1: {
-                    result.push(iteratorA.peekNext());
-                    iteratorA.next();
+                case 1: {
+                    result.push(iteratorB.peekNext());
+                    iteratorB.next();
                     break;
                 }
 
                 case -1: {
-                    result.push(iteratorB.peekNext());
-                    iteratorB.next();
+                    result.push(iteratorA.peekNext());
+                    iteratorA.next();
                     break;
                 }
 
@@ -119,15 +119,16 @@ public class LinkedListImpl<T> implements LinkedList<T> {
                     break;
                 }
             }
-
-            while (iteratorA.hasNext()) {
-                result.push(iteratorA.peekNext());
-            }
-
-            while (iteratorB.hasNext()) {
-                result.push(iteratorB.peekNext());
-            }
         }
+
+        while (iteratorA.hasNext()) {
+            result.push(iteratorA.next());
+        }
+
+        while (iteratorB.hasNext()) {
+            result.push(iteratorB.next());
+        }
+
         return result;
     }
 
@@ -149,14 +150,14 @@ public class LinkedListImpl<T> implements LinkedList<T> {
             }
 
         } else {
-            Node<T> r  = this.first;
+            Node<T> r = this.first;
 
             while (r.getNext() != null)
                 r = r.getNext();
 
             Node<T> t = secondList.getFirst();
 
-            while (t!=null) {
+            while (t != null) {
                 r.setNext(t);
                 t.setPrevious(r);
                 r = r.getNext();
@@ -168,13 +169,6 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     public Node<T> getFirst() {
         return first;
     }
-
-
-
-
-
-
-
 
 
     public IteratorImpl<T> iterator() {

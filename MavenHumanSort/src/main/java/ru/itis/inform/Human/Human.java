@@ -1,10 +1,12 @@
 package ru.itis.inform.human;
 
 
+import org.apache.commons.collections.comparators.ComparableComparator;
+
 /**
  * Created by Тимур on 24.02.2016.
  */
-public class Human {
+public class Human implements Comparable<Human> {
     private int age;
     private String name;
 
@@ -22,22 +24,25 @@ public class Human {
     }
 
 
-    public int  compareTo(Human second)   {
+
+    @Override
+    public String toString() {
+        return "Age: "+this.age+" name: "+this.name+" ";
+    }
+
+    @Override
+    public int compareTo(Human second) {
+
         int value = this.age - second.getAge();
 
         if (value>0) {
             return 1;
         }
-         else if (value<0) {
+        else if (value<0) {
             return -1;
         } else {
             return 0;
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Age: "+this.age+" name: "+this.name+" ";
     }
 
 }
