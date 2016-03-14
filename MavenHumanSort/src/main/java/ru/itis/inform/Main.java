@@ -15,6 +15,13 @@ public class Main  {
         LinkedListImpl<Human> d = humansReaderWriter.readHumans("Humans2");
         HumansSorter humansSorter = new HumansSorter();
 
+        c.append(d);
+        c.setCount(c.getCount() + d.getCount());
+
+        c = LinkedListImpl.toMerge(c);
+
+        c.printList();
+
         c = humansSorter.sort(c);
         d = humansSorter.sort(d);
 

@@ -24,10 +24,9 @@ public class Human implements Comparable<Human> {
     }
 
 
-
     @Override
     public String toString() {
-        return "Age: "+this.age+" name: "+this.name+" ";
+        return "Age: " + getAge() + " name: " + getName() + " ";
     }
 
     @Override
@@ -35,10 +34,9 @@ public class Human implements Comparable<Human> {
 
         int value = this.age - second.getAge();
 
-        if (value>0) {
+        if (value > 0) {
             return 1;
-        }
-        else if (value<0) {
+        } else if (value < 0) {
             return -1;
         } else {
             return 0;

@@ -13,6 +13,10 @@ public class Node<T> {
         this.next = null;
     }
 
+    public void setValue(T value) {
+        this.value = value;
+    }
+
     public T getValue() {
         return value;
     }

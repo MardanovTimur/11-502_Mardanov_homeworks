@@ -1,2 +1,0 @@
-Age: 18 name:  Vanya  
-Age: 35 name:  Ilya  

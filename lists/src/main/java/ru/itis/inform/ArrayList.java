@@ -44,4 +44,5 @@ public class ArrayList<T> {
     public int getSize() {
         return size;
     }
+
 }
