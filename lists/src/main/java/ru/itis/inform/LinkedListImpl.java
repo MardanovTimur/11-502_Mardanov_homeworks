@@ -36,6 +36,27 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         return this.count;
     }
 
+    public static <T> boolean equalsLists(LinkedListImpl<T> firstList, LinkedListImpl<T> secondList) {
+        Iterator<T> a = firstList.iterator();
+        Iterator<T> b = secondList.iterator();
+
+        while (a.hasNext() && b.hasNext()) {
+            if (!a.next().equals(b.next())) {
+                return false;
+            }
+        }
+
+        if (a.hasNext()) {
+            return false;
+        }
+
+        if (b.hasNext()) {
+            return false;
+        }
+
+        return true;
+    }
+
     public void setCount(int count) {
         this.count = count;
     }
@@ -159,7 +180,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
             for (int j = linkedList.getCount() - 1; j > 0; j--) {
                 if (arrayList.get(j).getCount() == arrayList.get(j - 1).getCount() && arrayList.get(j - 1).getCount() != 0) {
                     LinkedListImpl<T> tLinkedList = new LinkedListImpl<>();
-                    tLinkedList.mergeTwoArrayLists(arrayList,j);
+                    tLinkedList.mergeTwoArrayLists(arrayList, j);
                     i--;
 
                 }
@@ -169,7 +190,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         for (int j = linkedList.getCount() - 1; j > 0; j--) {
             if (arrayList.get(j - 1).getCount() != 0) {
                 LinkedListImpl<T> tLinkedList = new LinkedListImpl<>();
-                tLinkedList.mergeTwoArrayLists(arrayList,j);
+                tLinkedList.mergeTwoArrayLists(arrayList, j);
                 i--;
             }
         }
@@ -177,7 +198,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         return arrayList.get(0);
     }
 
-    public <T extends Comparable>void mergeTwoArrayLists(ArrayList<LinkedListImpl<T>> arrayList, int j) {
+    public <T extends Comparable> void mergeTwoArrayLists(ArrayList<LinkedListImpl<T>> arrayList, int j) {
         LinkedListImpl<T> newLinkedList = new LinkedListImpl<>();
         newLinkedList = LinkedListImpl.merge(arrayList.get(j), arrayList.get(j - 1));
         newLinkedList.setCount(arrayList.get(j).getCount() + arrayList.get(j - 1).getCount());
@@ -198,22 +219,18 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
             switch (compare) {
                 case 1: {
-                    result.push(iteratorB.peekNext());
-                    iteratorB.next();
+                    result.push(iteratorB.next());
                     break;
                 }
 
                 case -1: {
-                    result.push(iteratorA.peekNext());
-                    iteratorA.next();
+                    result.push(iteratorA.next());
                     break;
                 }
 
                 case 0: {
-                    result.push(iteratorA.peekNext());
-                    result.push(iteratorB.peekNext());
-                    iteratorA.next();
-                    iteratorB.next();
+                    result.push(iteratorA.next());
+                    result.push(iteratorB.next());
                     break;
                 }
             }
