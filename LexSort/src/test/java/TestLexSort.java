@@ -41,7 +41,7 @@ public class TestLexSort {
         actual.setCount(5);
 
         boolean f = true;
-        assertEquals("Error lexSort",f, equalsLinkedLists(actual,expected));
+        assertEquals("Error lexSort",f, LinkedListImpl.equalsLists(actual,expected));
 
     }
     @org.junit.Test

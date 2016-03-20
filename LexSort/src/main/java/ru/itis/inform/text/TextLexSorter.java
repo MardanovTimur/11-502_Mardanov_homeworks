@@ -18,6 +18,7 @@ public class TextLexSorter {
                 arrayList.set(i, new LinkedListImpl<String>());
             }
         }
+        LinkedListImpl<String> appendCell = new LinkedListImpl<>();
         //
         for (int i = linkedList.getFirst().getValue().length() - 1; i >= 0; i--) {
             for (int j = 90; j >= 65; j--) {
@@ -32,16 +33,16 @@ public class TextLexSorter {
                 }
             }
             Boolean f = false;
-            for (int ap = 25; ap >= 1; ap--) {
-                if (arrayList.get(ap).getFirst() != null) {
-                    f = true;
-                    arrayList.get(ap - 1).append(arrayList.get(ap));
-                    arrayList.set(ap, new LinkedListImpl<String>());
-                }
+                for (int ap = 0; ap <= 25; ap++) {
+                    if (arrayList.get(ap).getFirst() != null) {
+                        f = true;
+                        appendCell.append(arrayList.get(ap));
+                        arrayList.set(ap, new LinkedListImpl<String>());
+                    }
             }
             if (f) {
-                linkedList = arrayList.get(0);
-                arrayList.set(0, new LinkedListImpl<String>());
+                linkedList = appendCell;
+                appendCell = new LinkedListImpl<String>();
             }
         }
         return linkedList;
