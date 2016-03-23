@@ -1,6 +1,7 @@
 import ru.itis.inform.LinkedListImpl;
 import ru.itis.inform.Node;
 
+import java.awt.*;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -22,9 +23,8 @@ public class Main {
 
         points = cover.search();
 
-        for (int i = 0; i < points.size(); i++) {
-            System.out.println((i+1)+": " + points.get(i).getXY());
-        }
+        System.out.println(points.toString());
+
 
     }
 }

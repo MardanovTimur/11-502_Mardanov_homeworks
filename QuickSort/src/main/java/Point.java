@@ -10,12 +10,6 @@ public class Point {
         this.y = y;
     }
 
-    public String getXY() {
-        String s;
-        s = String.valueOf(this.x) + " " + String.valueOf(this.y);
-        return s;
-    }
-
     public double getX() {
         return x;
     }
