@@ -40,13 +40,13 @@ public class Root<T> implements Comparable<T> {
     }
 
     public int compareTo(T b) {
-        int comparableEqNumber = (Integer) b-(Integer)this.value;
+        int comparableEqNumber = (Integer) b - (Integer) this.value;
         switch (comparableEqNumber) {
             case 0: {
                 return 0;
             }
         }
-        if (comparableEqNumber<0)
+        if (comparableEqNumber < 0)
             return -1;
         else
             return 1;

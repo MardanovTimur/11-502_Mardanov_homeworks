@@ -10,7 +10,7 @@ public class BinaryTreeImpl<T extends Comparable> implements BinaryTree<T> {
 
     private Root<T> root;
 
-    private ArrayList<Root> arrayList = new ArrayList<Root>();
+    private boolean flag = true;
 
     public BinaryTreeImpl() {
     }
@@ -76,12 +76,19 @@ public class BinaryTreeImpl<T extends Comparable> implements BinaryTree<T> {
         return root;
     }
 
+
     public Queue<T> getLevelRoots(int level) {
+
         Root<T> root = this.root;
 
         Root<T> x = new Root<T>();
 
         Queue<T> q = new Queue<T>();
+
+        if (level == 1) {
+            q.enqueue(root);
+            return q;
+        }
 
         q.enqueue(root);
 
@@ -104,6 +111,34 @@ public class BinaryTreeImpl<T extends Comparable> implements BinaryTree<T> {
             }
         }
         return null;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
+    public boolean treeIsBinary() {
+        rootSearch(root);
+        return flag;
+
+    }
+
+    private void rootSearch(Root<T> root) {
+        if (root.getRight() != null && root.getLeft() != null)
+            if (root.getRight().compareTo(root.getValue()) == -1 && root.getLeft().compareTo(root.getValue()) == 1) {
+                rootSearch(root.getRight());
+                rootSearch(root.getLeft());
+                this.flag = true;
+            } else
+                this.flag = false;
+        else {
+            if (root.getRight() != null) {
+                rootSearch(root.getRight());
+            } else if (root.getLeft() != null) {
+                rootSearch(root.getLeft());
+            } else
+                this.flag = false;
+        }
     }
 }
 

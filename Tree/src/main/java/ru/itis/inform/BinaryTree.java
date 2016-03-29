@@ -9,5 +9,6 @@ public interface BinaryTree<T> {
     void showInOrder();
     Queue<T> getLevelRoots(int level);
     Root<T> getRoot();
-
+    boolean treeIsBinary();
+    void setFlag(boolean f);
 }

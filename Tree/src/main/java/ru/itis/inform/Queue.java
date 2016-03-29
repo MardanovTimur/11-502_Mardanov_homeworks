@@ -17,13 +17,12 @@ public class Queue<T> {
         this.queue.clear();
         this.queue.addLast(queue);
         this.iLength++;
-
     }
 
     public int summQueue() {
         int summVariable = 0;
         for (int i = 0; i < queue.size(); i++) {
-            summVariable+=(Integer)queue.get(i).getValue();
+            summVariable += (Integer) queue.get(i).getValue();
         }
         return summVariable;
     }
@@ -61,10 +60,10 @@ public class Queue<T> {
     @Override
     public String toString() {
         String s = "";
-        for (int i = queue.size()-1; i >= 0 ; i--) {
+        for (int i = queue.size() - 1; i >= 0; i--) {
             s = s + queue.get(i).getValue();
-            if (i!=0) {
-                s+=", ";
+            if (i != 0) {
+                s += ", ";
             }
         }
         return s;
