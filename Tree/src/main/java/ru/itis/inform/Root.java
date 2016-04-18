@@ -7,8 +7,23 @@ public class Root<T> implements Comparable<T> {
     private Root left;
     private Root right;
     private T value;
+    private boolean color = false;
+    private int height;
+
+    public boolean isColor() {
+        return color;
+    }
+
+    //Red - is true, black - is false
+    public void setColor(boolean color) {
+        this.color = color;
+    }
 
     public Root() {
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     public Root(T value) {

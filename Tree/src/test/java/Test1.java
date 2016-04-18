@@ -62,6 +62,4 @@ public class Test1 {
 
         assertEquals("It's not true!",true,flag);
     }
-
-
 }
