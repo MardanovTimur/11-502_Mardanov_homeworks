@@ -3,9 +3,7 @@ package ru.itis.inform;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-/**
- * Created by Тимур on 24.03.2016.
- */
+
 public class BinaryTreeImpl<T extends Comparable> implements BinaryTree<T> {
 
     private Root<T> root;
@@ -19,7 +17,7 @@ public class BinaryTreeImpl<T extends Comparable> implements BinaryTree<T> {
         if (root == null) {
             root = new Root<T>(value);
         } else {
-            int compare = root.compareTo(value);
+            int compare = root.compareTo((Integer) value);
             switch (compare) {
                 case 1: {
                     root.setRight(addRoot(root.getRight(), value));
@@ -125,7 +123,7 @@ public class BinaryTreeImpl<T extends Comparable> implements BinaryTree<T> {
 
     private void rootSearch(Root<T> root) {
         if (root.getRight() != null && root.getLeft() != null)
-            if (root.getRight().compareTo(root.getValue()) == -1 && root.getLeft().compareTo(root.getValue()) == 1) {
+            if (root.getRight().compareTo((Integer) root.getValue()) == -1 && root.getLeft().compareTo((Integer) root.getValue()) == 1) {
                 rootSearch(root.getRight());
                 rootSearch(root.getLeft());
                 this.flag = true;

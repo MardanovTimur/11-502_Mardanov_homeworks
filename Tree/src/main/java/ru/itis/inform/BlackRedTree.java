@@ -1,8 +1,8 @@
 package ru.itis.inform;
 
-/**
- * Created by Тимур on 13.04.2016.
- */
-public interface BlackRedTree<T> {
 
+public interface BlackRedTree<T extends Comparable<T>>  {
+    void addVertex(int key, T value);
+    Root<T> getRoot();
+    void show();
 }

@@ -39,6 +39,7 @@ public class Queue<T> {
         this.queue = new LinkedList<Root<T>>();
     }
 
+
     public void enqueue(Root<T> root) {
         this.queue.addFirst(root);
         this.iLength++;

@@ -1,8 +1,5 @@
 package ru.itis.inform;
 
-/**
- * Created by Тимур on 27.03.2016.
- */
 public interface BinaryTree<T> {
     void show();
     void insert(T value);
