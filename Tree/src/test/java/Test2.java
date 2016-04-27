@@ -1,6 +1,3 @@
-/**
- * Created by Тимур on 20.04.2016.
- */
 import ru.itis.inform.BinaryTree;
 import ru.itis.inform.BinaryTreeImpl;
 import ru.itis.inform.BlackRedTree;
@@ -28,5 +25,15 @@ public class Test2 {
         tree.addVertex(20,"Vovan");
         tree.addVertex(22,"KazahMicka");
         tree.show();
+
+        btree.insert(13);
+        btree.insert(11);
+        btree.insert(8);
+        btree.insert(9);btree.insert(18);
+        btree.insert(17);
+        btree.insert(20);
+        btree.insert(22);
+        btree.show();
+        System.out.println();
     }
 }

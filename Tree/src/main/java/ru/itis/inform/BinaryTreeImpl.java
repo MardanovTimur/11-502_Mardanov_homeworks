@@ -15,9 +15,9 @@ public class BinaryTreeImpl<T extends Comparable> implements BinaryTree<T> {
 
     private <T extends Comparable> Root<T> addRoot(Root<T> root, T value) {
         if (root == null) {
-            root = new Root<T>(value);
+            root = new Root<T>((Integer)value);
         } else {
-            int compare = root.compareTo((Integer) value);
+            int compare = root.compareTo((Integer)value);
             switch (compare) {
                 case 1: {
                     root.setRight(addRoot(root.getRight(), value));
@@ -42,7 +42,7 @@ public class BinaryTreeImpl<T extends Comparable> implements BinaryTree<T> {
             for (int i = 0; i < level; i++) {
                 System.out.print("  ");
             }
-            System.out.println(root.getValue());
+            System.out.println(root.getKey());
             showTree(root.getLeft(), level + 1);
 
         }

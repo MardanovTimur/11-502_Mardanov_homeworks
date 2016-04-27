@@ -60,8 +60,8 @@ public class Root<T> implements Comparable<Integer> {
         this.value = value;
     }
 
-    public Root(T value) {
-        this.value = value;
+    public Root(Integer value) {
+        this.key = value;
     }
 
     public void setRight(Root right) {
@@ -82,7 +82,7 @@ public class Root<T> implements Comparable<Integer> {
     }
 
     public int compareTo(Integer b) {
-        int comparableEqNumber = (Integer) b - (Integer) this.key;
+        int comparableEqNumber = (Integer)b - (Integer)this.key;
         switch (comparableEqNumber) {
             case 0: {
                 return 0;

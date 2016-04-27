@@ -300,7 +300,7 @@ public class BlackRedTreeImpl<T extends Comparable<T>> implements BlackRedTree<T
             for (int i = 0; i < level; i++) {
                 System.out.print("  ");
             }
-            System.out.println(root.getValue());
+            System.out.println(root.getKey());
             showTree(root.getLeft(), level + 1);
 
         }
