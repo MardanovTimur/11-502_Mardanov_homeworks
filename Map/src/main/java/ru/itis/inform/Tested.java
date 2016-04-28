@@ -11,6 +11,8 @@ public class Tested {
         map.put("kez","3");
         map.put("keu","5");
         map.put("zar","r");
+        Object c = map.get("keu");
+        Object d = map.get("kez");
 
     }
 }
