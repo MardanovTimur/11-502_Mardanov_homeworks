@@ -5,9 +5,12 @@ package ru.itis.inform;
  */
 public class Tested {
     public static void main(String[] argc) {
-        Map<String,String> map = new HashMap<String, String>();
-        map.put("key","1");
+        Map<String,String> map = new HashMap<String, String>(4);
         map.put("value","2");
         map.put("key","2");
+        map.put("kez","3");
+        map.put("keu","5");
+        map.put("zar","r");
+
     }
 }
