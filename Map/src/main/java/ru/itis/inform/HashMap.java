@@ -80,8 +80,6 @@ public class HashMap<K, V> implements Map<K, V> {
     private void insert(Node<K, V>[] node, K key, V value) {
         capacity_elements++;
 
-
-
         Node<K, V> newNode = new Node<K, V>(Node.hashCode((String) key), key, value, null);
         for (int i = 0; i < CAPACITY; i++) {
             int hash = newNode.hash();
