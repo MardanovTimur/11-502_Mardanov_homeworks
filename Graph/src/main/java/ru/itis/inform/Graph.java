@@ -9,6 +9,10 @@ public interface Graph {
 
     void showGraph();
     void showGraph(int[][] matrix);
+    int getMaxSize();
+    int getVerticeCount();
+
+    int getDegreeVertex(int numberVertex);
 
     int[][] runFloyd();
 }

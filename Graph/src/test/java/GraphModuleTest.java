@@ -1,8 +1,8 @@
-package ru.itis.inform;
-
 /**
  * Created by Тимур on 20.02.2016.
  */
+
+import ru.itis.inform.GraphMatrixImpl;
 
 import java.util.Arrays;
 

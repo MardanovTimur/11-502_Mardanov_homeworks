@@ -10,6 +10,15 @@ public class GraphMatrixImpl implements DirectedGraph,Graph {
 
     private int verticeCount=0;
 
+    public int getMaxSize() {
+        return maxSize;
+    }
+
+    public int getVerticeCount() {
+        return verticeCount;
+    }
+
+
     public GraphMatrixImpl() {
         initGraph(Default_Size);
     }
@@ -24,21 +33,29 @@ public class GraphMatrixImpl implements DirectedGraph,Graph {
         this.matrix = new int[maxSize+1][maxSize+1];
     }
 
-    @Override
+    public int getDegreeVertex(int numberVertex) {
+        int degree = 0;
+        for (int i = 0; i<matrix[numberVertex-1].length; i++) {
+            if (matrix[numberVertex-1][i]!=0) {
+                degree++;
+            }
+        }
+        return degree;
+    }
+
     public void addVertex() {
         if (this.verticeCount < this.maxSize) {
             this.verticeCount++;
         } else throw new IllegalArgumentException();
     }
 
-    @Override
-    public void addEdgeNonDirection(int vertexA, int vertexB, int weightAB) {
+     public void addEdgeNonDirection(int vertexA, int vertexB, int weightAB) {
         if (vertexA<=this.verticeCount && vertexB<=this.verticeCount) {
             this.matrix[vertexA-1][vertexB-1] = weightAB;
             this.matrix[vertexB-1][vertexA-1] = weightAB;
         } else throw new IllegalArgumentException();
     }
-    @Override
+
     public void addEdgeDirection(int vertexA, int vertexB, int weightAB) {
         if (vertexA<=this.verticeCount && vertexB<=this.verticeCount) {
             this.matrix[vertexA-1][vertexB-1] = weightAB;
@@ -52,7 +69,7 @@ public class GraphMatrixImpl implements DirectedGraph,Graph {
         } else throw new IllegalArgumentException();
     }
 
-    @Override
+
     public void showGraph() {
         for (int i = 0; i < this.verticeCount; i++) {
             for (int j = 0; j<this.verticeCount; j++) {

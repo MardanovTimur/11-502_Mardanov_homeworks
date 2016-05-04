@@ -6,6 +6,7 @@ public interface DirectedGraph {
 
     void addEdgeDirection(int vertexA, int vertexB, int weightAB);
 
+    int getDegreeVertex(int numberVertex);
     void showGraph();
     void showGraph(int[][] matrix);
 
