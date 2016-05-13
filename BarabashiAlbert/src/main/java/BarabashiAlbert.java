@@ -39,9 +39,7 @@ public class BarabashiAlbert {
             int random = (int)(Math.random()*101);
             chance = (int)(chance*100);
             if (random<=chance) {
-                graph.addEdgeNonDirection(graph.getVerticeCount(),i,1);
-            } else {
-
+                graph.addEdgeNonDirection(graph.getVerticeCount(), i, 1);
             }
 
         }
