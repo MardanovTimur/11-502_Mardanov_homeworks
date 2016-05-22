@@ -1,6 +1,3 @@
-/**
- * Created by Тимур on 13.05.2016.
- */
 public class SetsArrayWithLinksImpl implements Set {
 
     private int[] array;
@@ -35,11 +32,11 @@ public class SetsArrayWithLinksImpl implements Set {
         }
     }
 
-    public void find(int value) {
+    public int find(int value) {
         int a = value;
         while (a!=array[a]) {
             a = array[a];
         }
-        System.out.println(a);
+        return a;
     }
 }

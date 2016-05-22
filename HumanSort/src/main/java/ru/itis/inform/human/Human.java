@@ -1,8 +1,6 @@
 package ru.itis.inform.human;
 
 
-import org.apache.commons.collections.comparators.ComparableComparator;
-
 /**
  * Created by Тимур on 24.02.2016.
  */

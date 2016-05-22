@@ -1,6 +1,3 @@
-/**
- * Created by Тимур on 11.05.2016.
- */
 public class SetsArrayImpl implements Set {
     private Array[] array;
     private static final int DEFAULT_SIZE = 50;
@@ -69,8 +66,8 @@ public class SetsArrayImpl implements Set {
         return way;
     }
 
-    public void find(int value) {
-        System.out.println(array[value].getValue());
+    public int find(int value) {
+        return array[value].getValue();
         /* int[] arr = new int[array.length];
         int a = array[value].getValue();
         int j = 0;

@@ -1,0 +1,11 @@
+96 Hammer
+12 Black
+32 White
+21 Yellow
+21 Timur
+32 Green
+34 Check
+38 DRose
+1 Done
+38 RED
+0 Baby
