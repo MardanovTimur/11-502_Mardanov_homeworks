@@ -23,6 +23,13 @@ public class Sort {
         threadB.start();
         threadC.start();
         threadD.start();
+        if (threadA.isAlive() || threadB.isAlive() || threadC.isAlive() || threadD.isAlive())
+            try {
+                threadA.join();
+                threadB.join();
+                threadC.join();
+                threadD.join();
+            } catch (InterruptedException e) {}
 
 
         sortAllFiles();
@@ -40,14 +47,14 @@ public class Sort {
             linkedList = humansReaderWriter.readHumans("input" + i);
             arrayList.set(i, linkedList);
         }
-        for (int i = 4; i>=1; i--) {
-            if (arrayList.get(i-1)!=null)
-                arrayList.get(i-1).append(arrayList.get(i));
+        for (int i = 4; i >= 1; i--) {
+            if (arrayList.get(i - 1) != null)
+                arrayList.get(i - 1).append(arrayList.get(i));
         }
 
-        arrayList.set(1,humansSorter.sort(arrayList.get(1)));
+        arrayList.set(1, humansSorter.sort(arrayList.get(1)));
 
-        humansReaderWriter.writeHumans("outputAll",arrayList.get(1));
+        humansReaderWriter.writeHumans("outputAll", arrayList.get(1));
 
     }
 }
