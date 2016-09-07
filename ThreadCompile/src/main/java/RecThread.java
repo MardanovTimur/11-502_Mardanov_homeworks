@@ -1,3 +1,5 @@
+import java.util.EmptyStackException;
+
 public class RecThread extends Thread {
 
     private Character s;
@@ -23,14 +25,20 @@ public class RecThread extends Thread {
         while (StackClass.getIndex() < size && s != ' ') {
             if (Main.stack.isEmpty()) {
                 Main.stack.push(s);
-             //   System.out.println("This -> " + this.getName() + " added :" + s);
+                System.out.println("This -> " + this.getName() + " added :" + s);
             } else if (((int) Main.stack.peek() == (int) s - 2) ||
                     (Main.stack.peek() == '(' && (int) Main.stack.peek() == (int) s - 1)) {
                 Main.stack.pop();
-            //    System.out.println("This -> " + this.getName() + " deleted :" + Main.stack.peek() + ", " + s);
+                try {
+                    System.out.println("This -> " + this.getName() + " deleted :" + Main.stack.peek() + ", " + s);
+                } catch (EmptyStackException e) {}
             } else {
                 Main.stack.push(s);
-           //     System.out.println("This -> " + this.getName() + " added :" + s);
+                try {
+                    System.out.println("This -> " + this.getName() + " added :" + s);
+                } catch (EmptyStackException e) {
+
+                }
             }
             if (StackClass.getIndex() < size)
                 s = characters[StackClass.getIndex()];

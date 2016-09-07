@@ -3,6 +3,8 @@ package ru.itis.inform;
 import ru.itis.inform.Array.*;
 import ru.itis.inform.LinkedList.*;
 
+import java.util.LinkedList;
+
 public class Main {
 
     public static void main(String[] args) {

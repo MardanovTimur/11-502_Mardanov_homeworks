@@ -9,14 +9,15 @@ public class Main {
 
         repartStringToChar();
 
-
-
         RecThread threadA = new RecThread(symbols, stack.getIndex());
         threadA.start();
+
         RecThread threadB = new RecThread(symbols, stack.getIndex());
         threadB.start();
+
         RecThread threadC = new RecThread(symbols, stack.getIndex());
         threadC.start();
+
         RecThread threadD = new RecThread(symbols, stack.getIndex());
         threadD.start();
 
@@ -28,7 +29,6 @@ public class Main {
         }
 
         System.out.println(stack.isEmpty());
-
     }
 
     public static void repartStringToChar() {
@@ -39,6 +39,5 @@ public class Main {
             symbols[i] = s.charAt(i);
         }
     }
-
 }
 

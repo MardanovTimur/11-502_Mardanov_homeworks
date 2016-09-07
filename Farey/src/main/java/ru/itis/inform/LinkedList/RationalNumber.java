@@ -1,8 +1,6 @@
 package ru.itis.inform.LinkedList;
 
-/**
- * Created by Тимур on 17.02.2016.
- */
+
 public class RationalNumber {
 
     private int a;
