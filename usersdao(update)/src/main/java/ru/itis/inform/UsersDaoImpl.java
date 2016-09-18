@@ -9,19 +9,23 @@ import java.util.Scanner;
 
 
 public class UsersDaoImpl implements UsersDao {
-    File file = new File("C:\\Users\\Тимур\\Desktop\\11-502_Mardanov_homeworks\\UsersDao\\src\\main\\java\\ru\\itis\\inform\\list.txt");
-    Scanner sc = new Scanner(file);
-    PrintWriter pw = new PrintWriter(file);
+    private File file = new File("C:\\Android\\list.txt");
+    private Scanner sc = new Scanner(new File(file.getPath()));
+
 
     public UsersDaoImpl() throws FileNotFoundException {
     }
 
     public List<User> findAll() throws FileNotFoundException {
         List<User> userList = new LinkedList<User>();
-        String users = sc.nextLine();
+        String users;
+
+        if (sc.hasNextLine()) {
+            users = sc.nextLine();
+        } else
+            return null;
         String user[] = users.split(" ");
         User newUser = new User();
-        // guava splitter
         for (int i = 0; i < user.length / 3; i++) {
             newUser.setName(user[i * 3]);
             newUser.setId(user[i * 3 + 1]);
@@ -33,6 +37,7 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     public void save(User user) throws FileNotFoundException {
+        PrintWriter pw = new PrintWriter(new File(file.getPath()));
         int hashCode = user.hashCode();
         String information = user.getName() + " " + hashCode + " " + user.getPassword() + " ";
         pw.print(information);
@@ -47,7 +52,7 @@ public class UsersDaoImpl implements UsersDao {
         User newUser = null;
         for (int i = 0; i < user.length / 3; i++) {
             if (id_s.equals(user[i * 3 + definition])) {
-                newUser = new User(user[i*3],user[i*3+1],user[i*3+2]);
+                newUser = new User(user[i * 3], user[i * 3 + 1], user[i * 3 + 2]);
             }
         }
         if (newUser != null) {
@@ -57,7 +62,8 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     public void closePW() {
-        this.pw.close();
+        PrintWriter pw = null;
+        pw.close();
     }
 
     public void closeSC() {

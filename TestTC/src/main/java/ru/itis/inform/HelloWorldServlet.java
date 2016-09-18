@@ -1,5 +1,6 @@
 package ru.itis.inform;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,7 @@ public class HelloWorldServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
 
-        PrintWriter pw = resp.getWriter();
-        pw.println("<H1>Hello, world!</H1>");
+        RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/students.jsp");
+        requestDispatcher.forward(req,resp);
     }
 }

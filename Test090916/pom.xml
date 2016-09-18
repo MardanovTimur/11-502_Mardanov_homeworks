@@ -5,20 +5,33 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.itis.inform</groupId>
-    <artifactId>TestTC</artifactId>
-    <version>1.0</version>
+    <artifactId>Test_09_09_16</artifactId>
+    <version>0.1</version>
+    <packaging>war</packaging>
+
     <dependencies>
-        <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
+
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webXml>web\WEB-INF\web.xml</webXml>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <finalName>servlet</finalName>
+    </build>
 
 </project>
