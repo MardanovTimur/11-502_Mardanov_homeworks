@@ -1,15 +1,14 @@
 package ru.itis.inform;
 
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by Тимур on 06.09.2016.
- */
-public interface UsersDao  {
-    List<User> findAll() throws FileNotFoundException;
-    void save(User user) throws FileNotFoundException;
-    User find(String string, int definition) throws FileNotFoundException;
+
+public interface UsersDao {
+    List findAll() throws FileNotFoundException, SQLException;
+    void save(User user) throws FileNotFoundException, SQLException;
+    User find(String string, int definition) throws FileNotFoundException, SQLException;
     void closePW();
     void closeSC();
 }

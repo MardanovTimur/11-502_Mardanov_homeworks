@@ -6,12 +6,22 @@
          version="3.0">
     <servlet>
         <servlet-name>students</servlet-name>
-        <servlet-class>ru.itis.inform.StudentServlet</servlet-class>
+        <servlet-class>ru.itis.inform.servlets.StudentServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>students</servlet-name>
         <url-pattern>/students</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>auto</servlet-name>
+        <servlet-class>ru.itis.inform.servlets.AutoServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>auto</servlet-name>
+        <url-pattern>/auto</url-pattern>
     </servlet-mapping>
 
 </web-app>

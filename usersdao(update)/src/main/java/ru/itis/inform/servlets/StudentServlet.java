@@ -1,4 +1,8 @@
-package ru.itis.inform;
+package ru.itis.inform.servlets;
+
+import ru.itis.inform.JDBCUsersImpl;
+import ru.itis.inform.UsersDao;
+import ru.itis.inform.UsersService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -7,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class StudentServlet extends HttpServlet {
@@ -15,16 +20,20 @@ public class StudentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
 
+        //UsersService usersService = new UsersService();
         UsersService usersService = new UsersService();
-        List<User> userList = usersService.findAll();
 
-        //req.getSession().setAttribute("User",userList.get(0).getName());
+        List userList = null;
+        try {
+            userList = usersService.findAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         req.setAttribute("users", userList);
-        //System.out.print(userList.get(0).getName());
-        //usersService.close();
+
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/students.jsp");
-        dispatcher.forward(req,resp);
+        dispatcher.forward(req, resp);
     }
 
     @Override
