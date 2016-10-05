@@ -3,7 +3,11 @@
 <head>
     <title>students form</title>
     <meta charset="utf-8">
-    <script>
+    <script type="text/javascript">
+        function systemout() {
+            alert("!");
+        }
+
         function createRequest() {
             var Request = new XMLHttpRequest();
             if (!Request) {
@@ -11,9 +15,7 @@
             }
             return Request;
         }
-
         function loginRequest() {
-            <%System.out.println("AAA");%>
             var Request = createRequest();
             Request.onreadystatechange = function () {
                 if (Request.readyState == 4) {
@@ -36,17 +38,14 @@
             Request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             Request.send(body);
         }
-
         function responseHandler(Request) {
             document.getElementById("formDiv").innerText = Request.responseText;
         }
     </script>
-
-
 </head>
 <body>
 
-<form method="post">
+<form action="">
     <h3>Name: </h3><input type="text" name="name" id="s_name"><br>
     <h4>Password: </h4><input type="password" name="password" id="password_id"><br>
     <h4>Password again: </h4><input type="password" name="passwordAgain" id="password_id"><br>
@@ -73,10 +72,11 @@
             }
         }
     %>
-    <input type="button" value="Send" onclick="loginRequest()"/>
+    <input type="button" value="Send" id="buttons" onclick="loginRequest()"/>
+    <input type="button" value="Show" onclick="systemout()"/>
     <div id="formDiv"></div>
+
 </form>
-<input type="button" value="Send" id="1" name="2" onclick="loginRequest()"/>
 
 
 </body>
