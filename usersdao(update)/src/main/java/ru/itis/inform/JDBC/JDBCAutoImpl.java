@@ -1,4 +1,7 @@
-package ru.itis.inform;
+package ru.itis.inform.JDBC;
+
+import ru.itis.inform.Auto;
+import ru.itis.inform.AutoDao;
 
 import java.io.FileNotFoundException;
 import java.sql.*;

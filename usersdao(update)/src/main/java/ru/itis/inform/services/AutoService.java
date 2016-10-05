@@ -1,8 +1,11 @@
-package ru.itis.inform;
+package ru.itis.inform.services;
+
+import ru.itis.inform.Auto;
+import ru.itis.inform.AutoDao;
+import ru.itis.inform.AutoDaoImpl;
+import ru.itis.inform.JDBC.JDBCAutoImpl;
 
 import java.io.FileNotFoundException;
-import java.sql.SQLException;
-import java.util.List;
 
 
 public class AutoService extends JDBCAutoImpl {

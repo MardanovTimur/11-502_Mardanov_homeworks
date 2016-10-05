@@ -1,4 +1,7 @@
-package ru.itis.inform;
+package ru.itis.inform.JDBC;
+
+import ru.itis.inform.User;
+import ru.itis.inform.UsersDao;
 
 import java.io.FileNotFoundException;
 import java.sql.*;
@@ -28,7 +31,7 @@ public class JDBCUsersImpl implements UsersDao {
             Logger.getLogger(JDBCUsersImpl.class.getName()).log(Level.SEVERE, null, e);
         } finally {
             if (connection != null) {
-                System.out.print("Not null connection!");
+                System.out.println("Not null connection!");
                 try {
                     connection.close();
                 } catch (SQLException ex) {
@@ -57,9 +60,9 @@ public class JDBCUsersImpl implements UsersDao {
         this.connection = DriverManager.getConnection(url,name, password);
         statement = connection.createStatement();
         String request;
-        String pole = "INSERT INTO students (name, id, password, year, city) VALUES ";
-        request = "( '" + user.getName() + "', '" + user.getId() + "', '" + user.getPassword() + "', " + user.getYear() + ", '" + user.getCity() + "');";
-        pole += request;
+        String pole = "INSERT INTO students (name,id, password, year, city) VALUES ";
+        request = " ('" + user.getName() + "', '" + user.getId() + "', '" + user.getPassword() + "', " + user.getYear() + ", '" + user.getCity() + "');";
+        pole = pole + request;
         request = pole;
         statement.executeUpdate(request);
     }
