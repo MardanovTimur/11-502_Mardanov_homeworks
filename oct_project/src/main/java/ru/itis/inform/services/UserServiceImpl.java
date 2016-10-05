@@ -2,6 +2,7 @@ package ru.itis.inform.services;
 
 import ru.itis.inform.dao.UserDao;
 import ru.itis.inform.dao.UserDaoImpl;
+import ru.itis.inform.errors.Error;
 import ru.itis.inform.models.User;
 
 import java.sql.SQLException;
@@ -11,7 +12,7 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao = null;
     //Подумать над еррорами.
     // FIXME: 06.10.2016
-    
+
     public UserServiceImpl() {
         this.userDao = new UserDaoImpl();
     }
@@ -53,6 +54,10 @@ public class UserServiceImpl implements UserService {
 
     public void changeRule(String id) {
 
+    }
+
+    private Error getErrors(String name, String message) {
+        return new Error(name,message);
     }
 
     private boolean defaultSize(String value) {
