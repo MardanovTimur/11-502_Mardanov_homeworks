@@ -8,9 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by Тимур on 05.10.2016.
- */
 public class UserDaoImpl implements UserDao {
     private Connection connection;
     private PreparedStatement statement;
@@ -51,11 +48,11 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
-    public void deleteUser(User user) {
+    public void deleteUser(String id) {
 
     }
 
-    public void changeRulesInUser(User user) {
+    public void changeRulesInUser(String id) {
 
     }
 }

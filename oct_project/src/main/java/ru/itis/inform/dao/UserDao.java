@@ -10,6 +10,6 @@ public interface UserDao {
     User findUser(String id);
   //User findUser(String login);
     List<User> findUsers(String id);
-    void deleteUser(User user);
-    void changeRulesInUser(User user);
+    void deleteUser(String id);
+    void changeRulesInUser(String id);
 }
