@@ -14,14 +14,12 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao = null;
     private Error error = null;
     private Message message = null;
-    //Подумать над еррорами.
-    // FIXME: 06.10.2016
 
     public UserServiceImpl() {
         this.userDao = new UserDaoImpl();
     }
 
-    public void add(String name, String login, String password,String passwordAgain, boolean is_admin) {
+    public void add(String name, String login, String password, String passwordAgain, boolean is_admin) {
         error = null;
         message = null;
         //Check to size (2<x<30)
@@ -30,20 +28,18 @@ public class UserServiceImpl implements UserService {
                 User newUser = null;
                 try {
                     newUser = new User(name, login, password, is_admin);
-                    if (UserVerify.checkUserInBD(userDao,login)!=null) {
+                    if (UserVerify.checkUserInBD(userDao, login) != null) {
                         userDao.addUser(newUser);
-                        message = new Message("user_registration"," is registered.");
+                        message = new Message("user_registration", " is registered.");
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             } else {
-                //Send error about wrong passwords
-                // FIXME: 06.10.2016
+                error = new Error("wrong_password", "Passwords isnt equals!");
             }
         } else {
-            //Send error about wrong size words
-            // FIXME: 06.10.2016
+            error = new Error("wrong_size","Wrong word size.");
         }
     }
 
@@ -64,7 +60,7 @@ public class UserServiceImpl implements UserService {
     }
 
     private Error getErrors(String name, String message) {
-        return new Error(name,message);
+        return new Error(name, message);
     }
 
     private boolean defaultSize(String value) {
