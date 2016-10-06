@@ -6,13 +6,12 @@
          version="3.0">
 
     <servlet>
-        <servlet-name>Authorization</servlet-name>
+        <servlet-name>auth</servlet-name>
         <servlet-class>ru.itis.inform.servlets.Authorization</servlet-class>
     </servlet>
+
     <servlet-mapping>
-        <servlet-name>Authorization</servlet-name>
+        <servlet-name>auth</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
-
 </web-app>
