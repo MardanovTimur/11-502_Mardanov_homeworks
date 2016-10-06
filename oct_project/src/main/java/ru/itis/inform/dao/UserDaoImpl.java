@@ -2,10 +2,7 @@ package ru.itis.inform.dao;
 
 import ru.itis.inform.models.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public class UserDaoImpl implements UserDao {
@@ -32,15 +29,30 @@ public class UserDaoImpl implements UserDao {
         }
     }
 
-    public void addUser(User user) throws SQLException {
-        if (connection!=null && user != null) {
+    public void addUser(User user) {
+        if (connection != null && user != null) {
             String request = "INSERT INTO users (id,name,login,password,is_admin) VALUES ";
             String parameters = "(" + user.getId() + ",'" + user.getName() + "','" + user.getLogin() + "','" + user.getPassword() + "'," + user.getIs_admin() + ");";
-            statement.executeUpdate(request);
+            try {
+                statement.executeUpdate(request);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public User findUser(String id) {
+    public User findUser(String login) {
+        if (connection != null && !login.equals("")) {
+            String reguest = "SELECT * FROM users WHERE login='" + login + "';";
+            try {
+                ResultSet resultSet = statement.executeQuery(reguest);
+                while (resultSet.next()) {
+                    return new User(resultSet.getString("name"), resultSet.getString("login"), resultSet.getString("password"), resultSet.getBoolean("is_admin"));
+                }
+            } catch (SQLException sql) {
+                sql.printStackTrace();
+            }
+        }
         return null;
     }
 

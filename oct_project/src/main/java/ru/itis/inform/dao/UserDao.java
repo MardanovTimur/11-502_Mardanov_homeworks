@@ -10,9 +10,9 @@ import java.util.List;
 
 public interface UserDao {
     void addUser(User user) throws SQLException;
-    User findUser(String id);
+    User findUser(String login);
   //User findUser(String login);
-    List<User> findUsers(String id);
+    List<User> findUsers(String login);
     void deleteUser(String id);
     void changeRulesInUser(String id);
     Connection getConnection();
