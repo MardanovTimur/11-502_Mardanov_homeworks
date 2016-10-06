@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
     public User find(String login) {
         error = null;
         message = null;
-        if (userDao.findUser(login)==null) {
+        if (UserVerify.checkUserInBD(userDao,login)!=null) {
             error = new Error("user_not_found", "User not found");
             return null;
         } else {
