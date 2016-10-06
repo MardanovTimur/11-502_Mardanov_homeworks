@@ -51,16 +51,28 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    public void find(String id) {
-
+    public User find(String login) {
+        error = null;
+        message = null;
+        if (userDao.findUser(login)==null) {
+            error = new Error("user_not_found", "User not found");
+            return null;
+        } else {
+            message = new Message("user", "User is found");
+            return userDao.findUser(login);
+        }
     }
 
     public void changeRule(String id) {
 
     }
 
-    private Error getErrors(String name, String message) {
-        return new Error(name, message);
+    public Error getErrors() {
+        return error;
+    }
+
+    public Message getMessage() {
+        return message;
     }
 
     private boolean defaultSize(String value) {
