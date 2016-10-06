@@ -33,9 +33,9 @@ public class UserDaoImpl implements UserDao {
     }
 
     public void addUser(User user) throws SQLException {
-        if (user != null) {
+        if (connection!=null && user != null) {
             String request = "INSERT INTO users (id,name,login,password,is_admin) VALUES ";
-            String parameters = "(" + user.getId() + ",'" + user.getName() + "','" + user.getLogin() + "','" + user.getPassword() + "','" + user.getIs_admin() + "');";
+            String parameters = "(" + user.getId() + ",'" + user.getName() + "','" + user.getLogin() + "','" + user.getPassword() + "'," + user.getIs_admin() + ");";
             statement.executeUpdate(request);
         }
     }
@@ -54,5 +54,13 @@ public class UserDaoImpl implements UserDao {
 
     public void changeRulesInUser(String id) {
 
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public PreparedStatement getStatement() {
+        return statement;
     }
 }
