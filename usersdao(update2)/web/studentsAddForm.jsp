@@ -3,11 +3,7 @@
 <head>
     <title>students form</title>
     <meta charset="utf-8">
-    <script type="text/javascript">
-        function systemout() {
-            alert("!");
-        }
-
+    <script>
         function createRequest() {
             var Request = new XMLHttpRequest();
             if (!Request) {
@@ -31,11 +27,11 @@
             };
             body = 'name=' + encodeURIComponent(document.getElementById("s_name").value) +
                     '&password=' + encodeURIComponent(document.getElementById("password_id").value) +
-                    '&passwordAgain=' + encodeURIComponent(document.getElementById("passwordAgain_id").value) +
+                    '&passwordAgain=' + encodeURIComponent(document.getElementById("password_id2").value) +
                     '&city=' + encodeURIComponent(document.getElementById("city_id").value) +
                     '&year=' + encodeURIComponent(document.getElementById("year_id").value);
 
-            Request.open("POST", "/studentsAddForm", true);
+            Request.open('POST', '/studentsAddForm', true);
             Request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             Request.send(body);
         }
@@ -46,38 +42,38 @@
 </head>
 <body>
 
-<form action="">
-    <h3>Name: </h3><input type="text" name="name" id="s_name"><br>
-    <h4>Password: </h4><input type="password" name="password" id="password_id"><br>
-    <h4>Password again: </h4><input type="password" name="passwordAgain" id="password_id"><br>
-    <h4>City: </h4><input type="text" name="city" id="city_id"><br>
-    <h4>Year: </h4><input type="text" name="year" id="year_id"><br>
-    <%! String error = "";%>
-    <%! String error_f_u = "";%>
-    <% if (request.getAttribute("error") != null) {
-        error = (String) request.getAttribute("error");
-    }
-    %>
-    <% if (request.getAttribute("error_fail_user") != null) {
-        error_f_u = (String) request.getAttribute("error_fail_user");
-    }%>
-    <% if (error.length() != 0 && error_f_u.length() != 0) { %>
-    <%=error%>, <%=error_f_u%>
-    <%} else {%>
-    <% if (error.length() == 0) { %>
-    <%=error_f_u%>
-    <%} else %>
-    <% if (error_f_u.length() == 0) { %>
-    <%=error%>
-    <%
-            }
-        }
-    %>
-    <input type="button" value="Send" id="buttons" onclick="loginRequest()"/>
-    <input type="button" value="Show" onclick="systemout()"/>
-    <div id="formDiv"></div>
+<form>
 
+    <label for="s_name">Name</label> <input type="text" name="name" id="s_name"><br>
+    <label for="password_id">Password</label> <input type="password" name="password" id="password_id"><br>
+    <label for="password_id2">Password Again</label> <input type="password" name="passwordAgain" id="password_id2"><br>
+    <label for="city_id">City</label> <input type="text" name="city" id="city_id"><br>
+    <label for="year_id">Year</label> <input type="text" name="year" id="year_id"><br>
 </form>
+<%! String error = "";%>
+<%! String error_f_u = "";%>
+<% if (request.getAttribute("error") != null) {
+    error = (String) request.getAttribute("error");
+}
+%>
+<% if (request.getAttribute("error_fail_user") != null) {
+    error_f_u = (String) request.getAttribute("error_fail_user");
+}%>
+<% if (error.length() != 0 && error_f_u.length() != 0) { %>
+<%=error%>, <%=error_f_u%>
+<%} else {%>
+<% if (error.length() == 0) { %>
+<%=error_f_u%>
+<%} else %>
+<% if (error_f_u.length() == 0) { %>
+<%=error%>
+<%
+        }
+    }
+%>
+
+<input type="button" value="Send" id="buttons" onclick="loginRequest()">
+<div id="formDiv"></div>
 
 
 </body>

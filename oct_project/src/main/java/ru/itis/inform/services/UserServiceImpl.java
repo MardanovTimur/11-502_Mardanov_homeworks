@@ -5,6 +5,7 @@ import ru.itis.inform.dao.UserDaoImpl;
 import ru.itis.inform.errors.Error;
 import ru.itis.inform.messages.Message;
 import ru.itis.inform.models.User;
+import ru.itis.inform.utils.Hash;
 import ru.itis.inform.verifiers.UserVerify;
 
 import java.sql.SQLException;
@@ -27,6 +28,7 @@ public class UserServiceImpl implements UserService {
             if (password.equals(passwordAgain)) {
                 User newUser = null;
                 try {
+                    password = Hash.getMd5Apache(password);
                     newUser = new User(name, login, password, is_admin);
                     if (UserVerify.checkUserInBD(userDao, login) != null) {
                         userDao.addUser(newUser);

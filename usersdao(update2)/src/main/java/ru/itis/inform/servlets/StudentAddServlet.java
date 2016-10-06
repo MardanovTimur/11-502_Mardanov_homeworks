@@ -37,7 +37,7 @@ public class StudentAddServlet extends HttpServlet {
                     user = new User(name, password, Integer.parseInt(year), city);
                     String id = String.valueOf(user.hashCode());
                     user.setId(id);
-                    req.setAttribute("user_id", user.getId());
+                    //req.setAttribute("user_id", user.getId());
                 } catch (Exception e) {
                     req.setAttribute("error_fail_user", "Type the correct your form!");
                     RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/studentsAddForm.jsp");
