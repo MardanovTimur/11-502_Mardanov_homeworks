@@ -69,14 +69,6 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    public Error getErrors() {
-        return error;
-    }
-
-    public Message getMessage() {
-        return message;
-    }
-
     private boolean defaultSize(String value) {
         return value.length() >= 2 && value.length() <= 30;
     }

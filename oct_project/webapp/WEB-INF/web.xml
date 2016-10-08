@@ -12,8 +12,19 @@
 
     <servlet-mapping>
         <servlet-name>auth</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>index</servlet-name>
+        <servlet-class>ru.itis.inform.servlets.Index</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>index</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 
 
 </web-app>
