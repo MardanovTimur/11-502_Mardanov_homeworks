@@ -44,4 +44,8 @@ public class User {
     public void setIs_admin(boolean is_admin) {
         this.is_admin = is_admin;
     }
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

@@ -8,13 +8,19 @@
 </head>
 <body id="body">
 
-<form action="/" method="POST" id="auth_form">
+<form action="/login" method="POST" id="auth_form">
     <label for="auth_login">Login:</label>
     <input type="text" id="auth_login" name="login"><br>
     <label for="auth_password">Password:</label>
     <input type="password" id="auth_password" name="password"><br>
     <input type="submit" value="Log In">
 </form>
-
+<br>
+<% if (request.getAttribute("user_not_find") != null) {%>
+<%=request.getAttribute("user_not_find")%>
+<%}%>
+<% if (request.getAttribute("incorrect_password") != null) {%>
+<%=request.getAttribute("incorrect_password")%>
+<%}%>
 </body>
 </html>

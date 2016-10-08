@@ -1,28 +1,25 @@
 package ru.itis.inform.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class JDBConnection {
 
     private static JDBConnection instance = new JDBConnection();
 
     private Connection connection;
-    private PreparedStatement statement;
-    private String url = "jdbc:postgresql://localhost:5432/videosystem";
+    private Statement statement;
+    private String url = "jdbc:postgresql://localhost:5432/videodata";
     private String name = "postgres";
     private String password = "alisa654789";
 
-    public JDBConnection() {
+    private JDBConnection() {
         connection = null;
         try {
             Class.forName("org.postgresql.Driver");
             System.out.print("Driver is ready");
             this.connection = DriverManager.getConnection(url, name, password);
             System.out.println("Connection installed");
-            this.statement = (PreparedStatement) connection.createStatement();
+            this.statement =  connection.createStatement();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException sql) {
@@ -38,7 +35,7 @@ public class JDBConnection {
         return instance;
     }
 
-    public PreparedStatement getStatement() {
+    public Statement getStatement() {
         return statement;
     }
 

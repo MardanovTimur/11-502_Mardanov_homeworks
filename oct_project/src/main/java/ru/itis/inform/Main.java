@@ -1,5 +1,6 @@
 package ru.itis.inform;
 
+import ru.itis.inform.dao.JDBConnection;
 import ru.itis.inform.utils.Hash;
 
 /**
@@ -9,5 +10,8 @@ public class Main {
     public static void main(String[] args) {
         String password = "admin";
         System.out.println(Hash.getMd5Apache(password));
+
+        JDBConnection.getInstance().getConnection();
+
     }
 }

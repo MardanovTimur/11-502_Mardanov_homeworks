@@ -26,9 +26,9 @@ public class Authorization extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=UTF-8");
         session = req.getSession();
-        User current_user = (User) session.getAttribute("user");
-        if (current_user != null) {
-            resp.sendRedirect("/");
+        String current_user = (String) session.getAttribute("user");
+        if (current_user!=null && !current_user.equals("")) {
+            resp.sendRedirect("/home");
         } else {
             requestDispatcher = getServletContext().getRequestDispatcher("/authorization.jsp");
             requestDispatcher.forward(req, resp);
@@ -49,15 +49,15 @@ public class Authorization extends HttpServlet {
         if (current_user != null) {
             if (Hash.getMd5Apache(password).equals(current_user.getPassword())) {
                 HttpSession session = req.getSession();
-                session.setAttribute("user", current_user);
-                resp.sendRedirect("/");
+                session.setAttribute("user", current_user.getName());
+                resp.sendRedirect("/home");
             } else {
                 req.setAttribute("incorrect_password", "Incorrect password or login!");
                 requestDispatcher = getServletContext().getRequestDispatcher("/authorization.jsp");
                 requestDispatcher.forward(req, resp);
             }
         } else {
-            req.setAttribute(Error.getName(), Error.getMessage());
+            req.setAttribute("user_not_find", Error.getMessage());
             requestDispatcher = getServletContext().getRequestDispatcher("/authorization.jsp");
             requestDispatcher.forward(req, resp);
         }

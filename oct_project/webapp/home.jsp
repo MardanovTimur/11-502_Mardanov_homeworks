@@ -11,6 +11,6 @@
     <title>Index</title>
 </head>
 <body>
-<p>Hello, </p><%System.out.println(session.getAttribute("user").getClass().getName());%>
+<p>Hello, <%=session.getAttribute("user")%></p>
 </body>
 </html>
