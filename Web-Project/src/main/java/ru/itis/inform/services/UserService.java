@@ -12,5 +12,6 @@ public interface UserService {
     List<User> findAll();
     void delete(String id);
     User find(String login);
+    User findId(String id);
     void changeRule(String id);
 }

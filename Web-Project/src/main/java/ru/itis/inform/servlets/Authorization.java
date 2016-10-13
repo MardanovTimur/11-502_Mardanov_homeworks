@@ -3,9 +3,12 @@ package ru.itis.inform.servlets;
 import ru.itis.inform.errors.Error;
 import ru.itis.inform.messages.Message;
 import ru.itis.inform.models.User;
+import ru.itis.inform.services.TokenService;
+import ru.itis.inform.services.TokenServiceImpl;
 import ru.itis.inform.services.UserService;
 import ru.itis.inform.services.UserServiceImpl;
 import ru.itis.inform.utils.Hash;
+import ru.itis.inform.utils.Token;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +23,7 @@ public class Authorization extends HttpServlet {
     RequestDispatcher requestDispatcher;
     Cookie cookie;
     UserService userService;
+    TokenService tokenService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -44,16 +48,15 @@ public class Authorization extends HttpServlet {
                 HttpSession session = req.getSession();
 
                 //Session
-                session.setAttribute("current_user", currentUser.getLogin());
-                session.setAttribute("current_user_name",currentUser.getName());
+                session.setAttribute("current_user", currentUser);
 
                 //Cookie
-                Cookie cookie = new Cookie("current_user", currentUser.getLogin());
-                Cookie cookie_name = new Cookie("current_user_name",currentUser.getName().split(" ")[0]);
-                cookie.setMaxAge(24*60*60);
-                cookie_name.setMaxAge(24*60*60);
+                String token = Token.getToken();
+                Cookie cookie = new Cookie("current_user",token);
+                cookie.setMaxAge(30*24*60*60);
                 resp.addCookie(cookie);
-                resp.addCookie(cookie_name);
+                tokenService = new TokenServiceImpl();
+                tokenService.addToken(""+currentUser.getId(), token);
 
                 resp.sendRedirect("/home");
             } else {

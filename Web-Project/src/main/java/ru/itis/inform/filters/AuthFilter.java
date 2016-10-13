@@ -1,6 +1,12 @@
 package ru.itis.inform.filters;
 
 
+import ru.itis.inform.models.User;
+import ru.itis.inform.services.TokenService;
+import ru.itis.inform.services.TokenServiceImpl;
+import ru.itis.inform.services.UserService;
+import ru.itis.inform.services.UserServiceImpl;
+
 import javax.servlet.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -17,16 +23,17 @@ public class AuthFilter implements Filter {
         Cookie[] cookies = ((HttpServletRequest) servletRequest).getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("current_user_name")) {
-                    ((HttpServletRequest) servletRequest).getSession().setAttribute("current_user_name", cookie.getValue());
-                }
-            }
-        }
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("current_user")) {
-                    ((HttpServletRequest) servletRequest).getSession().setAttribute("current_user", cookie.getValue());
-                    ((HttpServletResponse) servletResponse).sendRedirect("/home");
+                    TokenService tokenService = new TokenServiceImpl();
+                    String student_id = tokenService.findToken(cookie.getValue());
+                    System.out.println(cookie.getValue());
+                    UserService userService = new UserServiceImpl();
+                    User user = userService.findId(student_id);
+                    if (user!=null) {
+                        System.out.println(user.getName());
+                        ((HttpServletRequest) servletRequest).getSession().setAttribute("current_user", user);
+                        ((HttpServletResponse) servletResponse).sendRedirect("/home");
+                    }
                 }
             }
         }

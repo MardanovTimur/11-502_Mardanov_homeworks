@@ -18,7 +18,7 @@
     <meta name="author" content="">
     <link rel="icon" href="bootstrap-3.3.7/docs/favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Home</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +32,7 @@
 </head>
 
 <body id="body">
-
+<%User current_user = (User)session.getAttribute("current_user");%>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -42,13 +42,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/home"><%=session.getAttribute("current_user_name")%></a>
+            <a class="navbar-brand" href="/home"><%=current_user.getName()%></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="/logout">Logout(<%=session.getAttribute("current_user")%>)</a></li>
+                <li><a href="/logout">Logout(<%=current_user.getLogin()%>)</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

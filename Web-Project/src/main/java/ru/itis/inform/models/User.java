@@ -12,6 +12,14 @@ public class User {
     private String password;
     private boolean is_admin;
 
+    public User(String id, String name, String login, String password, boolean is_admin) {
+        this.name = name;
+        this.login = login;
+        this.password = password;
+        this.is_admin = is_admin;
+        this.id = Integer.parseInt(id);
+    }
+
     public User(String name, String login, String password, boolean is_admin) {
         this.name = name;
         this.login = login;

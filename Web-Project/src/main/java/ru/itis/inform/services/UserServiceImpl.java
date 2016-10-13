@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
                 try {
                     password = Hash.getMd5Apache(password);
                     newUser = new User(name, login, password, is_admin);
-                    if (UserVerify.checkUserInBD(userDao, login) != null) {
+                    if (UserVerify.checkUserInBD(userDao, login) == null) {
                         userDao.addUser(newUser);
                         message = new Message("user_registration", " is registered.");
                     }
@@ -56,12 +56,24 @@ public class UserServiceImpl implements UserService {
     public User find(String login) {
         error = null;
         message = null;
-        if (UserVerify.checkUserInBD(userDao,login)==null) {
+        if (userDao.findUser(login)==null) {
             error = new Error("user_not_found", "User not found");
             return null;
         } else {
             message = new Message("user", "User is found");
             return userDao.findUser(login);
+        }
+    }
+
+    public User findId(String id) {
+        error = null;
+        message = null;
+        if (userDao.findUserId(id)==null) {
+            error = new Error("user_not_found", "User not found!");
+            return null;
+        } else {
+            message = new Message("user", "User is found!");
+            return userDao.findUserId(id);
         }
     }
 
