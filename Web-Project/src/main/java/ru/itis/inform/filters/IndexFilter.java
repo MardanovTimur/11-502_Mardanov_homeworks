@@ -21,27 +21,46 @@ public class IndexFilter implements Filter {
     }
 
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        Object sessionAtribute = ((HttpServletRequest) servletRequest).getSession().getAttribute("current_user");
+        Object session = ((HttpServletRequest) servletRequest).getSession().getAttribute("current_user");
         Cookie[] cookies = ((HttpServletRequest) servletRequest).getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("current_user")) {
+
                     TokenService tokenService = new TokenServiceImpl();
-                    String student_id = tokenService.findToken(cookie.getValue());
                     UserService userService = new UserServiceImpl();
-                    User user = userService.findId(student_id);
+
+                    //find user_id -> token  == in cooks table
+                    String user_id = tokenService.findToken(cookie.getValue());
+                    if (user_id == null) {
+                        ((HttpServletResponse) servletResponse).sendError(403, "This cookie was changed or db havent your cooks!");
+                        return;
+                    }
+
+                    try {
+                        userService.findId(user_id);
+                    } catch (Exception e) {
+                        ((HttpServletResponse) servletResponse).sendError(403, "This user not found!");
+                        return;
+                    }
+                    User user = userService.findId(user_id);
 
                     if (user != null) {
-                        System.out.println(user.getName());
-                        ((HttpServletRequest) servletRequest).getSession().setAttribute("current_user", user);
+                        if (session == null)
+                            ((HttpServletRequest) servletRequest).getSession().setAttribute("current_user", user);
                         filterChain.doFilter(servletRequest, servletResponse);
+                        return;
+                    } else {
+                        ((HttpServletResponse) servletResponse).sendError(403, "User not found!");
+                        return;
                     }
                 }
             }
         }
-
-        if (sessionAtribute == null) {
+        if (session == null) {
             ((HttpServletResponse) servletResponse).sendRedirect("/login");
+        } else {
+            filterChain.doFilter(servletRequest, servletResponse);
         }
     }
 

@@ -30,7 +30,7 @@
     <form class="form-signin" action="/login" method="POST">
         <h2 class="form-signin-heading">Sign in</h2>
         <label for="inputEmail" class="sr-only">Login</label>
-        <input name="login" type="text" id="inputEmail" class="form-control" placeholder="Login" required autofocus>
+        <input name="login" type="text" id="inputEmail" class="form-control" placeholder="Login" value="<% if (request.getAttribute("incorrect_password") != null) {%><%=request.getAttribute("login")%><%}%>" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
         <div class="checkbox">

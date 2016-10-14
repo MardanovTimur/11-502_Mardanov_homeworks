@@ -14,6 +14,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * Created by Тимур on 06.10.2016.
@@ -60,7 +61,8 @@ public class Authorization extends HttpServlet {
 
                 resp.sendRedirect("/home");
             } else {
-                req.setAttribute("incorrect_password", "Incorrect password or login!");
+                req.setAttribute("incorrect_password", "Incorrect password!");
+                req.setAttribute("login",login);
                 requestDispatcher = getServletContext().getRequestDispatcher("/authorization.jsp");
                 requestDispatcher.forward(req, resp);
             }

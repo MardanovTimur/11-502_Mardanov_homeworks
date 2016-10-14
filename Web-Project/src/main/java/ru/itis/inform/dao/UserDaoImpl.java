@@ -9,10 +9,15 @@ public class UserDaoImpl implements UserDao {
 
     public void addUser(User user) {
         if (JDBConnection.getInstance().getConnection() != null && user != null) {
-            String request = "INSERT INTO users (id,user_name,login,user_password,is_admin) VALUES ";
-            String parameters = "('" + user.getId() + "','" + user.getName() + "','" + user.getLogin() + "','" + user.getPassword() + "'," + user.getIs_admin() + ");";
+            String request = "INSERT INTO users (id,user_name,login,user_password,is_admin) VALUES (?,?,?,?,?) ";
             try {
-               JDBConnection.getInstance().getStatement().executeUpdate(request+parameters);
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setString(1,""+user.getId());
+                JDBConnection.statement.setString(2,user.getName());
+                JDBConnection.statement.setString(3,user.getLogin());
+                JDBConnection.statement.setString(4,user.getPassword());
+                JDBConnection.statement.setBoolean(5,user.getIs_admin());
+                JDBConnection.getInstance().getStatement().executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -21,22 +26,24 @@ public class UserDaoImpl implements UserDao {
 
     public User findUser(String login) {
         if (JDBConnection.getInstance().getConnection()!= null && !login.equals("")) {
-            String reguest = "SELECT * FROM users WHERE login='" + login + "';";
-            return selectRequest(reguest);
+            String reguest = "SELECT * FROM users WHERE login= ? ";
+            return selectRequest(reguest, login);
         }
         return null;
     }
     public User findUserId(String id) {
         if (JDBConnection.getInstance().getConnection()!= null && !id.equals("")) {
-            String reguest = "SELECT * FROM users WHERE id='" + id + "';";
-            return selectRequest(reguest);
+            String reguest = "SELECT * FROM users WHERE id= ? ";
+            return selectRequest(reguest,id);
         }
         return null;
     }
 
-    public User selectRequest(String request) {
+    public User selectRequest(String request, String param) {
         try {
-            ResultSet resultSet = JDBConnection.getInstance().getStatement().executeQuery(request);
+            JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+            JDBConnection.statement.setString(1,param);
+            ResultSet resultSet = JDBConnection.statement.executeQuery();
             while (resultSet.next()) {
                 return new User(resultSet.getString("id"),resultSet.getString("user_name"), resultSet.getString("login"), resultSet.getString("user_password"), resultSet.getBoolean("is_admin"));
             }

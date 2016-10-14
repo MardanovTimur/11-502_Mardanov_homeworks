@@ -26,18 +26,19 @@ public class AuthFilter implements Filter {
                 if (cookie.getName().equals("current_user")) {
                     TokenService tokenService = new TokenServiceImpl();
                     String student_id = tokenService.findToken(cookie.getValue());
-                    System.out.println(cookie.getValue());
                     UserService userService = new UserServiceImpl();
                     User user = userService.findId(student_id);
                     if (user!=null) {
-                        System.out.println(user.getName());
                         ((HttpServletRequest) servletRequest).getSession().setAttribute("current_user", user);
                         ((HttpServletResponse) servletResponse).sendRedirect("/home");
+                        return ;
                     }
                 }
             }
         }
-        if (((HttpServletRequest) servletRequest).getSession().getAttribute("current_user") == null) {
+        if (((HttpServletRequest) servletRequest).getSession().getAttribute("current_user") != null) {
+            ((HttpServletResponse)servletResponse).sendRedirect("/home");
+        } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }
     }

@@ -7,7 +7,7 @@ public class JDBConnection {
     private static JDBConnection instance = new JDBConnection();
 
     private Connection connection;
-    private Statement statement;
+    public static PreparedStatement statement;
     private String url = "jdbc:postgresql://localhost:5432/videodata";
     private String name = "postgres";
     private String password = "alisa654789";
@@ -19,7 +19,7 @@ public class JDBConnection {
             System.out.print("Driver is ready");
             this.connection = DriverManager.getConnection(url, name, password);
             System.out.println("Connection installed");
-            this.statement =  connection.createStatement();
+            //this.statement = connection.
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException sql) {
@@ -27,15 +27,15 @@ public class JDBConnection {
         }
     }
 
-    public JDBConnection getConnection() {
-        return instance;
+    public Connection getConnection() {
+        return connection;
     }
 
     public static JDBConnection getInstance() {
         return instance;
     }
 
-    public Statement getStatement() {
+    public PreparedStatement  getStatement() {
         return statement;
     }
 

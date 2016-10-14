@@ -9,9 +9,12 @@ import java.sql.SQLException;
 public class TokenDaoImpl implements TokenDao {
     public void addToken(String id, String token) {
         if (JDBConnection.getInstance().getConnection() != null && !id.equals("") && !token.equals("")) {
-            String request = "INSERT INTO cookies (id,token) VALUES (" + "'" + id + "'," + "'" + token + "');";
+            String request = "INSERT INTO cookies (id,token) VALUES ( ? , ? )";
             try {
-                JDBConnection.getInstance().getStatement().executeUpdate(request);
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setString(1,id);
+                JDBConnection.statement.setString(2,token);
+                JDBConnection.getInstance().getStatement().executeUpdate();
             } catch (SQLException sql) {
                 sql.printStackTrace();
             }
@@ -20,10 +23,13 @@ public class TokenDaoImpl implements TokenDao {
 
     public void updateToken(String id, String token) {
         if (JDBConnection.getInstance().getConnection() != null && !id.equals("") && !token.equals("")) {
-            String request = "UPDATE cookies SET (token) = (" + "'" + token + "') " +
-                    "WHERE id = '" + id + "';";
+            String request = "UPDATE cookies SET (token) = ( ? ) "+
+                    "WHERE id = ? ";
             try {
-                JDBConnection.getInstance().getStatement().executeUpdate(request);
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setString(1,token);
+                JDBConnection.statement.setString(2,id);
+                JDBConnection.getInstance().getStatement().executeUpdate();
             } catch (SQLException sql) {
                 sql.printStackTrace();
             }
@@ -33,9 +39,11 @@ public class TokenDaoImpl implements TokenDao {
     public void deleteToken(String token) {
         if (JDBConnection.getInstance().getConnection() != null && !token.equals("")) {
             String request = "DELETE FROM cookies " +
-                    "WHERE token = '" + token + "';";
+                    "WHERE token = ? ";
             try {
-                JDBConnection.getInstance().getStatement().executeUpdate(request);
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setString(1,token);
+                JDBConnection.getInstance().getStatement().executeUpdate();
             } catch (SQLException sql) {
                 sql.printStackTrace();
             }
@@ -45,11 +53,12 @@ public class TokenDaoImpl implements TokenDao {
     public String findToken(String token) {
         if (JDBConnection.getInstance().getConnection() != null && !token.equals("")) {
             String request = "SELECT * FROM cookies " +
-                    "WHERE token='" + token + "';";
+                    "WHERE token= ? ";
             try {
-                ResultSet resultSet = JDBConnection.getInstance().getStatement().executeQuery(request);
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setString(1,token);
+                ResultSet resultSet = JDBConnection.getInstance().getStatement().executeQuery();
                 while (resultSet.next()) {
-                    System.out.println(resultSet.getString("id"));
                     return resultSet.getString("id");
                 }
             } catch (SQLException sql) {
