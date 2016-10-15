@@ -37,19 +37,32 @@ public class IndexFilter implements Filter {
                         return;
                     }
 
+                    User user = null;
                     try {
                         userService.findId(user_id);
+                        user = userService.findId(user_id);
                     } catch (Exception e) {
                         ((HttpServletResponse) servletResponse).sendError(403, "This user not found!");
                         return;
                     }
-                    User user = userService.findId(user_id);
 
                     if (user != null) {
                         if (session == null)
                             ((HttpServletRequest) servletRequest).getSession().setAttribute("current_user", user);
-                        filterChain.doFilter(servletRequest, servletResponse);
-                        return;
+                            //Check на подмену куки с другого логина
+                        else {
+                            User cur_sesion = (User) session;
+                            if (!("" + cur_sesion.getId()).equals(user_id)) {
+                                cookie.setMaxAge(0);
+                                cookie.setValue("");
+                                ((HttpServletResponse) servletResponse).addCookie(cookie);
+                                ((HttpServletResponse) servletResponse).sendError(403, "You are thief!");
+                                return;
+                            } else {
+                                filterChain.doFilter(servletRequest, servletResponse);
+                                return;
+                            }
+                        }
                     } else {
                         ((HttpServletResponse) servletResponse).sendError(403, "User not found!");
                         return;
