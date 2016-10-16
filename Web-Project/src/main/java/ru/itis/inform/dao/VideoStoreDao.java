@@ -7,5 +7,6 @@ import ru.itis.inform.models.Film;
  */
 public interface VideoStoreDao {
     void add(Film film);
+    int getId(String name);
     void delete(String id);
 }

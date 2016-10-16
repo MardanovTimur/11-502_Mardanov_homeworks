@@ -8,4 +8,5 @@ import ru.itis.inform.models.Film;
 public interface VideoService {
     void addFilm(Film film);
     void deleteFilm(String id);
+    int getId(String name);
 }

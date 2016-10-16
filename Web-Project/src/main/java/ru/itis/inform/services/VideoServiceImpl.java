@@ -22,4 +22,8 @@ public class VideoServiceImpl implements VideoService {
     public void deleteFilm(String id) {
         videoStore.delete(id);
     }
+
+    public int getId(String name) {
+        return videoStore.getId(name);
+    }
 }
