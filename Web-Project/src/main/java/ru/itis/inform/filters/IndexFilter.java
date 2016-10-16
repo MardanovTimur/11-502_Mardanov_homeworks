@@ -49,13 +49,14 @@ public class IndexFilter implements Filter {
                     if (user != null) {
                         if (session == null)
                             ((HttpServletRequest) servletRequest).getSession().setAttribute("current_user", user);
-                            //Check на подмену куки с другого логина
                         else {
+                            //Check на подмену куки с другого логина
                             User cur_sesion = (User) session;
                             if (!("" + cur_sesion.getId()).equals(user_id)) {
                                 cookie.setMaxAge(0);
                                 cookie.setValue("");
                                 ((HttpServletResponse) servletResponse).addCookie(cookie);
+                                ((HttpServletRequest)servletRequest).getSession().invalidate();
                                 ((HttpServletResponse) servletResponse).sendError(403, "You are thief!");
                                 return;
                             } else {
@@ -80,4 +81,5 @@ public class IndexFilter implements Filter {
     public void destroy() {
 
     }
+
 }

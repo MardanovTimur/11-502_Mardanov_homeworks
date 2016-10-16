@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<%@ page import="ru.itis.inform.models.User" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Тимур
-  Date: 09.10.2016
-  Time: 0:17
+  Date: 16.10.2016
+  Time: 5:38
   To change this template use File | Settings | File Templates.
-
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="en">
+<html>
 <head>
+    <title>HomePage</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="bootstrap-3.3.7/docs/favicon.ico">
-
+    <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet">
     <title>Home</title>
 
     <!-- Bootstrap core CSS -->
@@ -30,45 +29,37 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
-<body id="body">
-<%User current_user = (User)session.getAttribute("current_user");%>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/home"><%=current_user.getName()%></a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="/logout">Logout(<%=current_user.getLogin()%>)</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
-<br>
-<br>
-<br>
-<div class="container">
-
-    <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-    </div>
-
-</div><!-- /.container -->
+<body>
+<% String template;%>
+<% if (request.getAttribute("template")!=null) {
+    template = (String) request.getAttribute("template");
+} else {
+    template = "";
+}%>
+<table>
+    <tr>
+        <td>
+            <%@include file="header.jsp" %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <%switch (template) {
+                case "addfilm":%>
+                    <%@include file='addfilmform.jsp' %>
+            <%      break;
+                }
+            %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            (c) Timur Mardanov
+        </td>
+    </tr>
+</table>
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <script src="bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>

@@ -59,10 +59,6 @@ public class Authorization extends HttpServlet {
                 tokenService = new TokenServiceImpl();
                 tokenService.addToken(""+currentUser.getId(), token);
 
-                if (currentUser.getIs_admin()) {
-                    req.setAttribute("admin",currentUser.getIs_admin());
-
-                }
                 resp.sendRedirect("/home");
             } else {
                 req.setAttribute("incorrect_password", "Incorrect password!");

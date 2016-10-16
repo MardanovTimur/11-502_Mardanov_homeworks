@@ -38,8 +38,10 @@ public class AuthFilter implements Filter {
         }
         if (((HttpServletRequest) servletRequest).getSession().getAttribute("current_user") != null) {
             ((HttpServletResponse)servletResponse).sendRedirect("/home");
+            return;
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
+            return;
         }
     }
 

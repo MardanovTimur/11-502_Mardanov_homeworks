@@ -13,11 +13,18 @@ import java.io.IOException;
  */
 public class Index extends HttpServlet {
     RequestDispatcher requestDispatcher;
-    HttpSession session = null;
+    HttpSession session;
     Cookie cookie;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
+
+        //Working on user admin - not admin
+        session = req.getSession();
+        req.setAttribute("current_user", session.getAttribute("current_user"));
+
+
         requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
         requestDispatcher.forward(req, resp);
     }
