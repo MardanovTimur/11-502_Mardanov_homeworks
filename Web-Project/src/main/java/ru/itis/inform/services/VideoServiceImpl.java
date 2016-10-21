@@ -5,6 +5,8 @@ import ru.itis.inform.dao.VideoStoreDaoImpl;
 import ru.itis.inform.models.Film;
 import ru.itis.inform.models.VideoStore;
 
+import java.util.LinkedList;
+
 /**
  * Created by Тимур on 16.10.2016.
  */
@@ -25,5 +27,13 @@ public class VideoServiceImpl implements VideoService {
 
     public int getId(String name) {
         return videoStore.getId(name);
+    }
+
+    public LinkedList<Film> getAllFilms() {
+        //// STOPSHIP: 21.10.2016 dodelat srochno
+        if (videoStore.getAllFilms()!=null)
+            return videoStore.getAllFilms();
+        else
+            return null;
     }
 }

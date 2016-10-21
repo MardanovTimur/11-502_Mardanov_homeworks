@@ -47,14 +47,17 @@
             <%switch (template) {
                 case "addfilm":%>
                     <%@include file='addfilmform.jsp' %>
-            <%      break;
-                }
-            %>
+                    <%break;
+                case "films":%>
+                    <%@include file="films.jsp"%>
+                    <%break;%>
         </td>
     </tr>
     <tr>
         <td>
-            (c) Timur Mardanov
+            <div class="copyright">
+            <strong>(c)Timur Mardanov 11-502</strong>
+            </div>
         </td>
     </tr>
 </table>

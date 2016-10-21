@@ -71,7 +71,8 @@
 
     <filter-mapping>
         <filter-name>adminFilter</filter-name>
-        <url-pattern>/addfilm</url-pattern>
+        <servlet-name>addfilm</servlet-name>
+        <!--<url-pattern>/addfilm</url-pattern>-->
     </filter-mapping>
 
 </web-app>

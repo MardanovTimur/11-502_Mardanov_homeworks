@@ -7,6 +7,25 @@
     background-image: url(/image/background1.jpg);
 }
 
+.addfilmform{
+    padding: 50px;
+    background: rgba(185, 185, 185, 0);
+    position: fixed; top: 35%; left: 30%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#addfilmfields{
+    width: 250px;
+}
+
+.copyright{
+    position: fixed;
+    top: 95%;
+    left: 40%;
+}
+
 .form-signin {
     max-width: 300px;
     padding: 19px 29px 29px;

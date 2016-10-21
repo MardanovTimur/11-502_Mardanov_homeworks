@@ -39,7 +39,7 @@ public class Authorization extends HttpServlet {
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-
+        String checkCookie = req.getParameter("cookie");
         userService = new UserServiceImpl();
 
         User currentUser = userService.find(login);
@@ -50,19 +50,19 @@ public class Authorization extends HttpServlet {
 
                 //Session
                 session.setAttribute("current_user", currentUser);
-
-                //Cookie
-                String token = Token.getToken();
-                Cookie cookie = new Cookie("current_user",token);
-                cookie.setMaxAge(30*24*60*60);
-                resp.addCookie(cookie);
-                tokenService = new TokenServiceImpl();
-                tokenService.addToken(""+currentUser.getId(), token);
-
+                if (checkCookie != null && checkCookie.equals("true")) {
+                    //Cookie
+                    String token = Token.getToken();
+                    Cookie cookie = new Cookie("current_user", token);
+                    cookie.setMaxAge(30 * 24 * 60 * 60);
+                    resp.addCookie(cookie);
+                    tokenService = new TokenServiceImpl();
+                    tokenService.addToken("" + currentUser.getId(), token);
+                }
                 resp.sendRedirect("/home");
             } else {
                 req.setAttribute("incorrect_password", "Incorrect password!");
-                req.setAttribute("login",login);
+                req.setAttribute("login", login);
                 requestDispatcher = getServletContext().getRequestDispatcher("/authorization.jsp");
                 requestDispatcher.forward(req, resp);
             }
