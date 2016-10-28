@@ -8,6 +8,7 @@ import java.util.List;
  * Created by Тимур on 16.10.2016.
  */
 public interface RoleServices {
+    boolean addRole(Role role);
     Role getRole(String name);
     List<Role> getAllRoles();
 }

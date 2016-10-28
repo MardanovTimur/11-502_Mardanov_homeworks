@@ -7,7 +7,7 @@ public class Message {
     private static String message;
     private static String name;
 
-    public Message(String message, String name) {
+    public Message(String name, String message) {
         this.message = message;
         this.name = name;
     }

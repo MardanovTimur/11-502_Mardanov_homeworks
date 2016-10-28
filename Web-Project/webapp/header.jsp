@@ -8,7 +8,6 @@
 
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="en">
 
 <body id="body">
 <%User current_user = (User) session.getAttribute("current_user");%>
@@ -24,6 +23,21 @@
                 <%if (current_user.getIs_admin()) {%>
                 <span class="icon-bar"></span>
                 <%}%>
+                <%if (current_user.getIs_admin()) {%>
+                <span class="icon-bar"></span>
+                <%}%>
+                <%if (current_user.getIs_admin()) {%>
+                <span class="icon-bar"></span>
+                <%}%>
+                <%if (current_user.getIs_admin()) {%>
+                <span class="icon-bar"></span>
+                <%}%>
+                <%if (current_user.getIs_admin()) {%>
+                <span class="icon-bar"></span>
+                <%}%>
+                <%if (current_user.getIs_admin()) {%>
+                <span class="icon-bar"></span>
+                <%}%>
             </button>
             <a class="navbar-brand"
                href="/home"><%=current_user.getName()%><%=current_user.getIs_admin() ? "(admin)" : ""%>
@@ -35,6 +49,21 @@
                 <li><a href="/about">About</a></li>
                 <%if (current_user.getIs_admin()) {%>
                 <li><a href="/addfilm">Add film</a></li>
+                <%}%>
+                <%if (current_user.getIs_admin()) {%>
+                <li><a href="/addgenre">Add genre</a></li>
+                <%}%>
+                <%if (current_user.getIs_admin()) {%>
+                <li><a href="/addproducer">Add producer</a></li>
+                <%}%>
+                <%if (current_user.getIs_admin()) {%>
+                <li><a href="/addrole">Add role</a></li>
+                <%}%>
+                <%if (current_user.getIs_admin()) {%>
+                <li><a href="/addstudio">Add studio</a></li>
+                <%}%>
+                <%if (current_user.getIs_admin()) {%>
+                <li><a href="/adduser">Add user</a></li>
                 <%}%>
                 <li><a href="/logout">Logout(<%=current_user.getLogin()%>)</a></li>
             </ul>
@@ -52,4 +81,3 @@
 <!-- Placed at the end of the document so the pages load faster -->
 
 </body>
-</html>

@@ -4,12 +4,14 @@
 }
 
 #body {
-    background-image: url(/image/background1.jpg);
+    background-color: lightgoldenrodyellow;
+    /*background-image: url(/image/homescreen.jpg);*/
 }
 
 .addfilmform{
     padding: 50px;
-    background: rgba(185, 185, 185, 0);
+    border: 1px solid rgba(77, 77, 77, 0.51);
+    background-color: rgba(255, 255, 255, 0.24);
     position: fixed; top: 35%; left: 30%;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -20,18 +22,39 @@
     width: 250px;
 }
 
+.knopochki{
+    left:40%;
+}
+
 .copyright{
     position: fixed;
     top: 95%;
     left: 40%;
 }
 
+.film{
+    max-width: 90%;
+    link: black;
+    margin-right: 15%;
+    margin-left: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+    height: 40%;
+    top:5%;
+    left: 10%;
+    width: 80%;
+    border: 1px solid rgba(77, 77, 77, 0.51);
+    background-color: rgba(255, 255, 255, 0.24);
+}
+
+
+
 .form-signin {
     max-width: 300px;
     padding: 19px 29px 29px;
     margin: 0 auto 20px;
-    background-color: #fff;
-    border: 1px solid #e5e5e5;
+    border: 1px solid rgba(77, 77, 77, 0.51);
+    background-color: rgba(255, 255, 255, 0.24);
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -51,4 +74,29 @@
     height: auto;
     margin-bottom: 15px;
     padding: 7px 9px;
+}
+#wrap {
+    border: 1px solid rgba(77, 77, 77, 0.51);
+    background-color: rgba(255, 255, 255, 0.24);
+    position: fixed;
+    left: 10%;
+    max-width: 100%;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -60px;
+}
+
+/* Set the fixed height of the footer here */
+#push {
+    height: 60px;
+}
+#container {
+    link: black;
+    width: 90%;
+    max-width: 640px;
+}
+.container .credit {
+    margin: 20px 0;
 }

@@ -29,7 +29,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body link="black" vlink="black" alink="#a52a2a">
 <% String template;%>
 <% if (request.getAttribute("template")!=null) {
     template = (String) request.getAttribute("template");
@@ -45,12 +45,18 @@
     <tr>
         <td>
             <%switch (template) {
-                case "addfilm":%>
-                    <%@include file='addfilmform.jsp' %>
+                case "addfilm" : %>
+                    <%@include file='addfilmform.jsp'%>
                     <%break;
-                case "films":%>
-                    <%@include file="films.jsp"%>
-                    <%break;%>
+                case "films" :%>
+                    <%@include file='films.jsp'%>
+                    <%break;
+                case "addrole" :%>
+                    <%@include file='addroleform.jsp'%>
+                    <%break;
+                case "film" :%>
+                     <%@include file='filmid.jsp'%>
+                     <%break;}%>
         </td>
     </tr>
     <tr>

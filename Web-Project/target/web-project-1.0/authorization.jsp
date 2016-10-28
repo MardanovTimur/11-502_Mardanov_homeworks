@@ -39,6 +39,7 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block"><a href="/registration" link="white">Sign Up</a></button>
         <% if (request.getAttribute("user_not_find") != null) {%>
         <%=request.getAttribute("user_not_find")%>
         <%}%>

@@ -63,7 +63,6 @@ public class AdminFilter implements Filter {
                                 if (user.getIs_admin()) {
                                     filterChain.doFilter(servletRequest, servletResponse);
                                 } else {
-                                    System.out.println("Not admin!!!");
                                     ((HttpServletResponse) servletResponse).sendRedirect("/home");
                                     return;
                                 }

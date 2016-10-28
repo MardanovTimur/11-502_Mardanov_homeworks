@@ -20,8 +20,7 @@ public class UserServiceImpl implements UserService {
         this.userDao = new UserDaoImpl();
     }
 
-    public void add(String name, String login, String password, String passwordAgain, boolean is_admin) {
-        error = null;
+    public Message add(String name, String login, String password, String passwordAgain, boolean is_admin) {
         message = null;
         //Check to size (2<x<30)
         if (defaultSize(name) && defaultSize(login) && defaultSize(password) && defaultSize(passwordAgain)) {
@@ -33,16 +32,20 @@ public class UserServiceImpl implements UserService {
                     if (UserVerify.checkUserInBD(userDao, login) == null) {
                         userDao.addUser(newUser);
                         message = new Message("user_registration", " is registered.");
+                        return message;
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             } else {
-                error = new Error("wrong_password", "Passwords isnt equals!");
+                message = new Message("wrong_password", "Passwords isn't equals!");
+                return message;
             }
         } else {
-            error = new Error("wrong_size","Wrong word size.");
+            message = new Message("wrong_size","Wrong word size.");
+            return message;
         }
+        return null;
     }
 
     public List<User> findAll() {
@@ -82,6 +85,6 @@ public class UserServiceImpl implements UserService {
     }
 
     private boolean defaultSize(String value) {
-        return value.length() >= 2 && value.length() <= 30;
+        return (value.length() >= 2 && value.length() <= 30);
     }
 }

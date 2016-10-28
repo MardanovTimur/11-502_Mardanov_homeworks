@@ -1,6 +1,8 @@
 package ru.itis.inform.servlets;
 
 import ru.itis.inform.models.Film;
+import ru.itis.inform.models.Producer;
+import ru.itis.inform.models.Studio;
 import ru.itis.inform.services.*;
 
 import javax.servlet.RequestDispatcher;
@@ -13,22 +15,28 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 
 
 /**
  * Created by Тимур on 16.10.2016.
  */
 public class AddFilm extends HttpServlet {
-    VideoService videoService = new VideoServiceImpl();
-    Film film = null;
-    RoleServices roleServices = null;
+    private VideoService videoService = new VideoServiceImpl();
+    private GenreService genreService;
+    private GenresFilmService genresFilmService;
+    private Film film = null;
+    private RoleServices roleServices = null;
+    private ProducerService producerService;
+    private StudioService studioService;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=UTF-8");
-        req.setAttribute("template","addfilm");
+        req.setAttribute("template", "addfilm");
         //req.setAttribute("current_user",req.getSession().getAttribute("current_user"));
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
-        requestDispatcher.forward(req,resp);
+        requestDispatcher.forward(req, resp);
     }
 
     @Override
@@ -36,67 +44,142 @@ public class AddFilm extends HttpServlet {
         RolesFilmService rolesFilmService = new RolesFilmServiceImpl();
 
         String name = req.getParameter("name");
-        String producers = req.getParameter("producer");
-        String studios = req.getParameter("studio");
+        String producer = req.getParameter("producer");
+        String studio = req.getParameter("studio");
         String genres = req.getParameter("genres");
         String roles = req.getParameter("roles");
         String description = req.getParameter("description");
         int remark = Integer.parseInt(req.getParameter("remark"));
         String dateS = req.getParameter("date");
-        System.out.println(dateS);
+
+
         //date parse
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         long time = 0;
+
+        //date exception
         try {
             Date date = dateFormat.parse(dateS);
             time = date.getTime();
         } catch (ParseException e) {
-            req.setAttribute("template","addfilm");
+            req.setAttribute("template", "addfilm");
             req.setAttribute("genresError", "Write right date(Example: 01.01.1991)!");
             RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
-            requestDispatcher.forward(req,resp);
+            requestDispatcher.forward(req, resp);
             return;
         }
+
+        String producerId = "";
         try {
-            film = new Film(name,Integer.parseInt(producers),Integer.parseInt(studios),description,remark);
+            LinkedList<Producer> producerLinkedList = producerService.getAllProducers();
+            for (Producer prod : producerLinkedList) {
+                if (prod.getName().equals(producer)) {
+                    producerId = "" + prod.getId();
+                    break;
+                }
+            }
+            if (producerId.equals("")) {
+                req.setAttribute("template", "addfilm");
+                req.setAttribute("genresError", "Producer is not found!");
+                RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+                requestDispatcher.forward(req, resp);
+                return;
+            }
+        } catch (Exception e) {
+            req.setAttribute("template", "addfilm");
+            req.setAttribute("genresError", "Producers is not available!");
+            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+            requestDispatcher.forward(req, resp);
+            return;
+        }
+
+        String studioId = "";
+        try {
+            LinkedList<Studio> studioLinkedList = studioService.getAllStudio();
+            for (Studio stud : studioLinkedList) {
+                if (stud.getName().equals(studio)) {
+                    studioId = "" + stud.getId();
+                    break;
+                }
+            }
+            if (studioId.equals("")) {
+                req.setAttribute("template", "addfilm");
+                req.setAttribute("genresError", "Studio is not found!");
+                RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+                requestDispatcher.forward(req, resp);
+                return;
+            }
+        } catch (Exception e) {
+            req.setAttribute("template", "addfilm");
+            req.setAttribute("genresError", "Studios is not available!");
+            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+            requestDispatcher.forward(req, resp);
+            return;
+        }
+
+        //genre exception
+        try {
+            film = new Film(name, Integer.parseInt(producerId), Integer.parseInt(studioId), description, remark);
             film.setDate(time);
         } catch (Exception e) {
-            req.setAttribute("template","addfilm");
+            req.setAttribute("template", "addfilm");
             req.setAttribute("genresError", "Incorrect form!");
             RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
-            requestDispatcher.forward(req,resp);
+            requestDispatcher.forward(req, resp);
             return;
         }
         try {
             videoService.addFilm(film);
             int filmId = videoService.getId(name);
-            boolean f = rolesFilmService.addRolesOnFilm(roles,filmId);
-            if (!f) {
-                videoService.deleteFilm(""+filmId);
-                req.setAttribute("template","addfilm");
-                req.setAttribute("genresError", "Can't add film with this roles!");
+            boolean rolesOnFilm = rolesFilmService.addRolesOnFilm(roles, filmId);
+            boolean genresOnFilm = genresFilmService.addGenresOnFilm(genres, filmId);
+            if (!rolesOnFilm) {
+                videoService.deleteFilm("" + filmId);
+                req.setAttribute("template", "addfilm");
+                req.setAttribute("genresError", "Can't add video with this roles!");
                 RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
-                requestDispatcher.forward(req,resp);
+                requestDispatcher.forward(req, resp);
+                return;
+            } else if (!genresOnFilm) {
+                videoService.deleteFilm("" + filmId);
+                req.setAttribute("template", "addfilm");
+                req.setAttribute("genresError", "Can't add video with this genres!");
+                RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+                requestDispatcher.forward(req, resp);
                 return;
             } else {
-                req.setAttribute("template","addfilm");
-                req.setAttribute("filmIsAdded","This film is successfully added!");
+                req.setAttribute("template", "addfilm");
+                req.setAttribute("filmIsAdded", "This video is successfully added!");
                 RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
-                requestDispatcher.forward(req,resp);
+                requestDispatcher.forward(req, resp);
                 return;
             }
-        } catch (Exception s) {
+
+        } catch (
+                Exception s
+                )
+
+        {
             s.printStackTrace();
-            req.setAttribute("template","addfilm");
-            req.setAttribute("genresError", "Can't to add film!");
+            req.setAttribute("template", "addfilm");
+            req.setAttribute("genresError", "Can't to add video!");
             RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
-            requestDispatcher.forward(req,resp);
+            requestDispatcher.forward(req, resp);
             return;
         }
+
     }
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         super.doPut(req, resp);
+    }
+
+    @Override
+    public void init() throws ServletException {
+        genreService = new GenreServiceImpl();
+        genresFilmService = new GenresFilmServiceImpl();
+        producerService = new ProducerServiceImpl();
+        studioService = new StudioServiceImpl();
     }
 }

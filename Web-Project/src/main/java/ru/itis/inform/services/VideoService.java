@@ -11,5 +11,6 @@ public interface VideoService {
     void addFilm(Film film);
     void deleteFilm(String id);
     int getId(String name);
+    Film getFilm(int id);
     LinkedList<Film> getAllFilms();
 }

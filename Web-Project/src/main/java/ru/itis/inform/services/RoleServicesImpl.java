@@ -16,6 +16,10 @@ public class RoleServicesImpl implements RoleServices {
         roleDao = new RoleDaoImpl();
     }
 
+    public boolean addRole(Role role) {
+        return roleDao.addRole(role);
+    }
+
     public Role getRole(String name) {
        return roleDao.getRole(name);
     }

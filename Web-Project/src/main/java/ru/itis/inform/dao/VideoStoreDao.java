@@ -12,4 +12,5 @@ public interface VideoStoreDao {
     int getId(String name);
     void delete(String id);
     LinkedList<Film> getAllFilms();
+    Film getFilm(int id);
 }

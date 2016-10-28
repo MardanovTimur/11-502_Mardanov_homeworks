@@ -36,4 +36,8 @@ public class VideoServiceImpl implements VideoService {
         else
             return null;
     }
+
+    public Film getFilm(int id) {
+        return videoStore.getFilm(id);
+    }
 }

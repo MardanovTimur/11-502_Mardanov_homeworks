@@ -83,4 +83,28 @@ public class VideoStoreDaoImpl implements VideoStoreDao {
         }
         return null;
     }
+
+    public Film getFilm(int id) {
+        if (JDBConnection.getInstance().getConnection() != null) {
+            String request = "SELECT * FROM films WHERE id = ? ";
+            try {
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setInt(1,id);
+                ResultSet rs = JDBConnection.getInstance().getStatement().executeQuery();
+                Film film = null;
+                while (rs.next()) {
+                    try {
+                        film = new Film(rs.getInt("id"),rs.getString("film_name"),rs.getInt("film_producer"),rs.getInt("film_studio"),rs.getString("description"),rs.getInt("remark"),rs.getDate("film_year"));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                    return film;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
 }
