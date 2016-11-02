@@ -1,18 +1,18 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: Тимур
-  Date: 16.10.2016
-  Time: 5:50
-  To change this template use File | Settings | File Templates.
+Created by IntelliJ IDEA.
+User: Тимур
+Date: 16.10.2016
+Time: 5:50
+To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
 <% if (request.getAttribute("filmIsAdded") == null) {%>
-<form class="addfilmform" action="/addfilm" method="post">
-    <p>
-    <h2 class="form-signin-heading">Add film</h2>
-    <p>
+<div class="addfilmform">
+    <form action="/addfilm" method="post">
+    <h2>Add film</h2>
+    <div id="datafilmforms">
         <input type="text" name="name" class="input-block-level" id="addfilmfields" placeholder="Name">
         <br>
         <input type="text" name="producer" class="input-block-level" id="addfilmfields" placeholder="Producer">
@@ -28,13 +28,14 @@
         <br>
         <input type="text" name="description" class="input-block-level" id="addfilmfields" placeholder="Description">
         <br>
-        <input type="text" name="remark" class="input-block-level" placeholder="Remark">
+        <input type="text" name="remark" class="input-block-level" id="addfilmfields" placeholder="Remark">
         <br>
         <button class="btn btn-large btn-primary" type="submit">Add</button>
-            <% if (request.getAttribute("genresError")!=null) {%>
-    <p><%=request.getAttribute("genresError")%>
-    </p>
-    <%}%>
+        <% if (request.getAttribute("genresError") != null) {%>
+        <p><%=request.getAttribute("genresError")%>
+        </p>
+        <%}%>
+    </div>
 </form>
 <%} else {%>
 <br>

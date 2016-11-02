@@ -26,9 +26,9 @@
 
 <body id="body">
 
-<div class="container">
+<div class="container" style="margin-top: 11%">
     <form class="form-signin" action="/login" method="POST">
-        <h2 class="form-signin-heading">Sign in</h2>
+        <h1 align="center" class="form-signin-heading" style="font-family: 'sans-serif', cursive;">Sign in</h1>
         <label for="inputEmail" class="sr-only">Login</label>
         <input name="login" type="text" id="inputEmail" class="form-control" placeholder="Login" value="<% if (request.getAttribute("incorrect_password") != null) {%><%=request.getAttribute("login")%><%}%>" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
@@ -39,7 +39,7 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <button class="btn btn-lg btn-primary btn-block"><a href="/registration" link="white">Sign Up</a></button>
+        <a class="btn btn-lg btn-primary btn-block" href="/registration" role="button">Sign up</a>
         <% if (request.getAttribute("user_not_find") != null) {%>
         <%=request.getAttribute("user_not_find")%>
         <%}%>

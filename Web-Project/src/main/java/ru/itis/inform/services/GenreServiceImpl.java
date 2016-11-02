@@ -26,4 +26,8 @@ public class GenreServiceImpl implements GenreService {
     public LinkedList<Genre> getGenres() {
         return genreDao.getGenres();
     }
+
+    public Genre getGenreById(int id) {
+       return genreDao.getGenreById(id);
+    }
 }

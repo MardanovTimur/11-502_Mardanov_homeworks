@@ -43,6 +43,23 @@ public class GenreDaoImpl implements GenreDao {
         return null;
     }
 
+    public Genre getGenreById(int id) {
+        if (JDBConnection.getInstance().getConnection() != null) {
+            String request = "SELECT * FROM genres WHERE id = ? ";
+            try {
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setInt(1, id);
+                ResultSet rs = JDBConnection.getInstance().getStatement().executeQuery();
+                while (rs.next()) {
+                    return new Genre(rs.getInt("id"), rs.getString("genre_name"));
+                }
+            } catch (SQLException sql) {
+                sql.printStackTrace();
+            }
+        }
+        return null;
+    }
+
     public LinkedList<Genre> getGenres() {
         LinkedList<Genre> genreLinkedList = new LinkedList<Genre>();
         if (JDBConnection.getInstance().getConnection() != null) {

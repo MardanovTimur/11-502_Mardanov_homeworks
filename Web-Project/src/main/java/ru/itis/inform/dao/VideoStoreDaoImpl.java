@@ -13,7 +13,7 @@ import java.util.LinkedList;
 public class VideoStoreDaoImpl implements VideoStoreDao {
     public void add(Film film) {
         if (JDBConnection.getInstance().getConnection() != null && film != null) {
-            String request = "INSERT INTO films (film_name, film_producer, film_studio,film_year,description,remark) VALUES (?,?,?,?,?,?)";
+            String request = "INSERT INTO films (film_name, film_producer, film_studio,film_year,description,remark,img_url) VALUES (?,?,?,?,?,?,?)";
             try {
                 JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
                 JDBConnection.statement.setString(1, film.getName());
@@ -22,6 +22,7 @@ public class VideoStoreDaoImpl implements VideoStoreDao {
                 JDBConnection.statement.setDate(4, film.getDate());
                 JDBConnection.statement.setString(5, film.getDescription());
                 JDBConnection.statement.setInt(6, film.getRemark());
+                JDBConnection.statement.setString(7,film.getImageURL());
                 JDBConnection.getInstance().getStatement().execute();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -69,7 +70,7 @@ public class VideoStoreDaoImpl implements VideoStoreDao {
                 Film film = null;
                 while (rs.next()) {
                     try {
-                        film = new Film(rs.getInt("id"),rs.getString("film_name"),rs.getInt("film_producer"),rs.getInt("film_studio"),rs.getString("description"),rs.getInt("remark"),rs.getDate("film_year"));
+                        film = new Film(rs.getInt("id"),rs.getString("film_name"),rs.getInt("film_producer"),rs.getInt("film_studio"),rs.getString("description"),rs.getInt("remark"),rs.getDate("film_year"),rs.getString("img_url"));
                     } catch (Exception e) {
                         film = null;
                         e.printStackTrace();
@@ -94,7 +95,7 @@ public class VideoStoreDaoImpl implements VideoStoreDao {
                 Film film = null;
                 while (rs.next()) {
                     try {
-                        film = new Film(rs.getInt("id"),rs.getString("film_name"),rs.getInt("film_producer"),rs.getInt("film_studio"),rs.getString("description"),rs.getInt("remark"),rs.getDate("film_year"));
+                        film = new Film(rs.getInt("id"),rs.getString("film_name"),rs.getInt("film_producer"),rs.getInt("film_studio"),rs.getString("description"),rs.getInt("remark"),rs.getDate("film_year"),rs.getString("img_url"));
                     } catch (Exception e) {
                         e.printStackTrace();
                         return null;

@@ -11,4 +11,5 @@ public interface GenreDao {
     boolean addGenre(Genre genre);
     Genre getGenre(String name);
     LinkedList<Genre> getGenres();
+    Genre getGenreById(int id);
 }

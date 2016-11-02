@@ -11,6 +11,7 @@
 
 <body id="body">
 <%User current_user = (User) session.getAttribute("current_user");%>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -20,52 +21,62 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-                <%if (current_user.getIs_admin()) {%>
+                <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <span class="icon-bar"></span>
                 <%}%>
-                <%if (current_user.getIs_admin()) {%>
+                <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <span class="icon-bar"></span>
                 <%}%>
-                <%if (current_user.getIs_admin()) {%>
+                <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <span class="icon-bar"></span>
                 <%}%>
-                <%if (current_user.getIs_admin()) {%>
+                <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <span class="icon-bar"></span>
                 <%}%>
-                <%if (current_user.getIs_admin()) {%>
+                <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <span class="icon-bar"></span>
                 <%}%>
-                <%if (current_user.getIs_admin()) {%>
+                <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <span class="icon-bar"></span>
                 <%}%>
             </button>
+            <% if (current_user!=null) {%>
             <a class="navbar-brand"
                href="/home"><%=current_user.getName()%><%=current_user.getIs_admin() ? "(admin)" : ""%>
             </a>
+            <%} else {%>
+            <a class="navbar-brand"
+               href="/home"><%="Guest"%>
+            </a>
+            <%}%>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/home">Home</a></li>
                 <li><a href="/about">About</a></li>
-                <%if (current_user.getIs_admin()) {%>
+                <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <li><a href="/addfilm">Add film</a></li>
                 <%}%>
-                <%if (current_user.getIs_admin()) {%>
+                <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <li><a href="/addgenre">Add genre</a></li>
                 <%}%>
-                <%if (current_user.getIs_admin()) {%>
+                <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <li><a href="/addproducer">Add producer</a></li>
                 <%}%>
-                <%if (current_user.getIs_admin()) {%>
+                <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <li><a href="/addrole">Add role</a></li>
                 <%}%>
-                <%if (current_user.getIs_admin()) {%>
+                <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <li><a href="/addstudio">Add studio</a></li>
                 <%}%>
-                <%if (current_user.getIs_admin()) {%>
+                <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <li><a href="/adduser">Add user</a></li>
                 <%}%>
+                <%if (current_user!=null) {%>
                 <li><a href="/logout">Logout(<%=current_user.getLogin()%>)</a></li>
+                <%} else {%>
+                <li><a href="/login">Login</a></li>
+                <%}%>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

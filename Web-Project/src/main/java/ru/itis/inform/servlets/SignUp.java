@@ -1,5 +1,6 @@
 package ru.itis.inform.servlets;
 
+import ru.itis.inform.factories.ServiceFactory;
 import ru.itis.inform.messages.Message;
 import ru.itis.inform.services.UserService;
 import ru.itis.inform.services.UserServiceImpl;
@@ -16,7 +17,7 @@ import java.io.IOException;
  */
 public class SignUp extends HttpServlet{
     RequestDispatcher requestDispatcher;
-    UserService userService;
+    ServiceFactory serviceFactory;
     Message message;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,7 +33,7 @@ public class SignUp extends HttpServlet{
         String login = req.getParameter("username");
         String password = req.getParameter("password");
         String checkPassword = req.getParameter("confirm");
-        message = userService.add(username,login,password,checkPassword, false);
+        message = ServiceFactory.getInstance().getUserService().add(username,login,password,checkPassword, false);
         req.setAttribute("username",username);
 
         req.setAttribute(message.getName(),message.getMessage());
@@ -43,6 +44,5 @@ public class SignUp extends HttpServlet{
     @Override
     public void init() throws ServletException {
         requestDispatcher = getServletContext().getRequestDispatcher("/signup.jsp");
-        userService = new UserServiceImpl();
     }
 }

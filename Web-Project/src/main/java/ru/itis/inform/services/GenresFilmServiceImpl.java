@@ -11,6 +11,7 @@ import java.util.LinkedList;
  * Created by Тимур on 26.10.2016.
  */
 public class GenresFilmServiceImpl implements GenresFilmService {
+    GenreFilmDao genreFilmDao = new GenreFilmDaoImpl();
     public boolean addGenresOnFilm(String roles, int filmId) {
         GenreService genreServices = new GenreServiceImpl();
         LinkedList<GenreFilm> genreFilms = new LinkedList<GenreFilm>();
@@ -32,6 +33,10 @@ public class GenresFilmServiceImpl implements GenresFilmService {
             }
         }
         return true;
+    }
+
+    public LinkedList getGenreIdByFilmId(int filmId) {
+        return genreFilmDao.getGenreIdByFilmId(filmId);
     }
 }
 

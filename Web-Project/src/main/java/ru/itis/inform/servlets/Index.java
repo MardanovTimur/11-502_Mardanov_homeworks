@@ -10,6 +10,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -32,21 +33,52 @@ public class Index extends HttpServlet {
 
             //View films
             films = videoService.getAllFilms();
-            req.setAttribute("films", films);
+            req.setAttribute("filmsAll",films);
+            ArrayList<Film> sendArrayList = new ArrayList<Film>();
 
             //Film columns
             String current_number = req.getParameter("current_number");
             if (current_number != null) {
                 if (current_number.equals("1")) {
-                    req.setAttribute("current_number","" + default_number);
+                    req.setAttribute("current_number", "" + default_number);
+                    for (int i = 0; i < 9; i++) {
+                        try {
+                            sendArrayList.add(i, films.get(i));
+                        } catch (IndexOutOfBoundsException e) {
+
+                        }
+                    }
                 } else if (current_number.equals("fin")) {
-                    req.setAttribute("current_number",""+ ((films.size() / 10) + 1));
+                    req.setAttribute("current_number", "" + ((films.size() / 9) + 1));
+                    for (int i = 0; i < 9; i++) {
+                        try {
+                            current_number = ""+(films.size()/9+1);
+                            sendArrayList.add(i, films.get((films.size() / 9) * 9 + i));
+                        } catch (IndexOutOfBoundsException e) {
+
+                        }
+                    }
                 } else
-                    req.setAttribute("current_number", ""+current_number);
+                    for (int i = 0; i < 9; i++) {
+                        try {
+                            sendArrayList.add(i, films.get((Integer.parseInt(current_number) - 1) * 9 + i));
+                        } catch (IndexOutOfBoundsException e) {
+                        }
+                    }
+                req.setAttribute("current_number", "" + current_number);
+                req.setAttribute("films", sendArrayList);
                 requestDispatcher.forward(req, resp);
                 return;
             } else {
-                req.setAttribute("current_number", ""+default_number);
+                req.setAttribute("current_number", "" + default_number);
+                for (int i = 0; i < 9; i++) {
+                    try {
+                        sendArrayList.add(i, films.get(i));
+                    } catch (IndexOutOfBoundsException e) {
+
+                    }
+                }
+                req.setAttribute("films",sendArrayList);
                 requestDispatcher.forward(req, resp);
                 return;
             }
@@ -55,6 +87,7 @@ public class Index extends HttpServlet {
         }
 
         requestDispatcher.forward(req, resp);
+        return;
     }
 
     @Override

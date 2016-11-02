@@ -20,8 +20,8 @@ public class ProducerServiceImpl implements ProducerService {
         return false;
     }
 
-    public Producer getProducer(String name) {
-        return null;
+    public Producer getProducer(int id) {
+        return producerDao.getProducer(id);
     }
 
     public LinkedList<Producer> getAllProducers() {

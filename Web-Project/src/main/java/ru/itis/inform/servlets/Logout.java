@@ -31,7 +31,7 @@ public class Logout extends HttpServlet {
             }
         }
         req.getSession().invalidate();
-        resp.sendRedirect("/login");
+        resp.sendRedirect("/home");
     }
 
     @Override

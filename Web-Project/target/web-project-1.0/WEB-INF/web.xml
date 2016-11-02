@@ -4,7 +4,11 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
-    
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+    </welcome-file-list>
+
+
     <servlet>
         <servlet-name>signup</servlet-name>
         <servlet-class>ru.itis.inform.servlets.SignUp</servlet-class>
@@ -90,6 +94,7 @@
 
     <filter-mapping>
         <filter-name>indexFilter</filter-name>
+        <url-pattern>/</url-pattern>
         <url-pattern>/home</url-pattern>
         <url-pattern>/logout</url-pattern>
         <url-pattern>/film</url-pattern>

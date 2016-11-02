@@ -72,7 +72,8 @@ public class IndexFilter implements Filter {
             }
         }
         if (session == null) {
-            ((HttpServletResponse) servletResponse).sendRedirect("/login");
+            //((HttpServletResponse) servletResponse).sendRedirect("/login");
+            filterChain.doFilter(servletRequest, servletResponse);
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }

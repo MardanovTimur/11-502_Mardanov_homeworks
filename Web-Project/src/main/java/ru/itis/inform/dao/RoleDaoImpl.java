@@ -60,4 +60,21 @@ public class RoleDaoImpl implements RoleDao {
         }
         return roleList;
     }
+
+    public Role getRoleById(int id) {
+        if (JDBConnection.getInstance().getConnection() != null) {
+            String request = "SELECT * FROM roles WHERE id = ? ";
+            try {
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setInt(1, id);
+                ResultSet rs = JDBConnection.getInstance().getStatement().executeQuery();
+                while (rs.next()) {
+                    return new Role(rs.getInt("id"), rs.getString("role_name"));
+                }
+            } catch (SQLException sql) {
+                sql.printStackTrace();
+            }
+        }
+        return null;
+    }
 }

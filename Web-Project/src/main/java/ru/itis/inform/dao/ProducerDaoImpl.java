@@ -16,7 +16,22 @@ public class ProducerDaoImpl implements ProducerDao {
         return false;
     }
 
-    public Producer getProducer(String name) {
+    public Producer getProducer(int id) {
+        if (JDBConnection.getInstance().getConnection() != null) {
+            String request = "SELECT producer_name, id FROM producers WHERE id = ?";
+            try {
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setInt(1,id);
+                ResultSet rs = JDBConnection.getInstance().getStatement().executeQuery();
+                while (rs.next()) {
+                    return new Producer(rs.getString("producer_name"), rs.getInt("id"));
+                }
+            } catch (SQLException s) {
+                s.printStackTrace();
+            } catch (NullPointerException n) {
+                return null;
+            }
+        }
         return null;
     }
 

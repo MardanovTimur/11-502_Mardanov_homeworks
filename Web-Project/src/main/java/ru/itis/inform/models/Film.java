@@ -15,6 +15,7 @@ public class Film {
     private Date date;
     private String description;
     private int remark;
+    private String imageURL = "";
 
     public Film(int id, String name, int producer, int studio,  String description, int remark, Date date) {
         this.name = name;
@@ -25,6 +26,18 @@ public class Film {
         this.remark = remark;
         this.date = date;
     }
+
+    public Film(int id, String name, int producer, int studio,  String description, int remark, Date date, String imageURL) {
+        this.name = name;
+        this.producer = producer;
+        this.studio = studio;
+        this.id = id;
+        this.description = description;
+        this.remark = remark;
+        this.date = date;
+        this.imageURL = imageURL;
+    }
+
     public Film(String name, int producer, int studio,  String description, int remark) {
         this.name = name;
         this.producer = producer;
@@ -32,6 +45,25 @@ public class Film {
         this.description = description;
         this.remark = remark;
         this.date = date;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getImageURL() {
+
+        return imageURL;
+    }
+
+    public Film(String name, int producer, int studio, String description, int remark, String imageURL) {
+        this.name = name;
+        this.producer = producer;
+        this.studio = studio;
+        this.description = description;
+        this.remark = remark;
+        this.imageURL = imageURL;
+
     }
 
     public void setDate(Date date) {

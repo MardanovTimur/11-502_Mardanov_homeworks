@@ -27,4 +27,8 @@ public class RoleServicesImpl implements RoleServices {
     public List<Role> getAllRoles(){
         return null;
     }
+
+    public Role getRoleById(int roleId) {
+        return roleDao.getRoleById(roleId);
+    }
 }

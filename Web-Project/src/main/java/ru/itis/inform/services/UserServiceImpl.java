@@ -12,13 +12,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private UserDao userDao = null;
+    private UserDao userDao = new UserDaoImpl();
     private Error error = null;
     private Message message = null;
 
-    public UserServiceImpl() {
-        this.userDao = new UserDaoImpl();
-    }
 
     public Message add(String name, String login, String password, String passwordAgain, boolean is_admin) {
         message = null;

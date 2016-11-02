@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Тимур
+  User:
   Date: 16.10.2016
   Time: 5:38
   To change this template use File | Settings | File Templates.
@@ -8,7 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>HomePage</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,8 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="bootstrap-3.3.7/docs/favicon.ico">
-    <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet">
-    <title>Home</title>
+    <link href="css/styles.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -56,14 +54,10 @@
                     <%break;
                 case "film" :%>
                      <%@include file='filmid.jsp'%>
-                     <%break;}%>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div class="copyright">
-            <strong>(c)Timur Mardanov 11-502</strong>
-            </div>
+                     <%break;
+                     default:%>
+                    <%response.sendRedirect("/home");%>
+            <%}%>
         </td>
     </tr>
 </table>

@@ -11,6 +11,7 @@ import java.util.LinkedList;
  * Created by Тимур on 19.10.2016.
  */
 public class RolesFilmServiceImpl implements RolesFilmService {
+    RoleFilmDao roleFilmDao = new RoleFilmDaoImpl();
     public boolean addRolesOnFilm(String roles, int filmId) {
         RoleServices roleServices = new RoleServicesImpl();
         LinkedList<RoleFilm> rolesfilms = new LinkedList<RoleFilm>();
@@ -30,5 +31,9 @@ public class RolesFilmServiceImpl implements RolesFilmService {
             if (!f) {return false;}
         }
         return true;
+    }
+
+    public LinkedList getRoleIdByFilmId(int id) {
+        return roleFilmDao.getRoleIdByFilmId(id);
     }
 }

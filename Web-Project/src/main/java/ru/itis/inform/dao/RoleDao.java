@@ -11,4 +11,5 @@ public interface RoleDao {
     boolean addRole(Role role);
     Role getRole(String name);
     List<Role> getGenres();
+    Role getRoleById(int id);
 }

@@ -1,4 +1,7 @@
-<%@ page import="ru.itis.inform.models.Film" %><%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="ru.itis.inform.models.Film" %>
+<%@ page import="ru.itis.inform.models.Genre" %>
+<%@ page import="ru.itis.inform.models.Role" %><%--
   Created by IntelliJ IDEA.
   User: Тимур
   Date: 23.10.2016
@@ -7,27 +10,46 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<head>
-    <%
-        if (request.getAttribute("film") != null)%>
-    <%Film film = (Film) request.getAttribute("film");%>
+<%
+    if (request.getAttribute("film") != null)%>
+<%Film film = (Film) request.getAttribute("film");%>
 
-    <title><%=film.getName()%>
-    </title>
-</head>
+<title><%=film.getName()%>
+</title>
 
-<body>
+<c:set scope="request" var="producer" value="${producer}"/>
+<c:set scope="request" var="genres" value="${genres}"/>
 <div id="wrap">
-    <div class="container">
-        <div class="page-header">
-            <h1><%=film.getName()%></h1>
-        </div>
-        <p>Producer: </p>
-        <p>Genre: </p>
-        <p>Roles: </p>
-        <p>Published date: <%=film.getDate().toString()%></p>
-        <p class="lead"><%=film.getDescription()%></p>
-        <p>Remark: <%=film.getRemark()%></p>
-    </div>
+    <h1><%=film.getName()%></h1>
+
+        <p>Producer: <c:out value="${producer}"/></p>
+        <p>Genre: <%
+            for (int i = 0; i < ((LinkedList<Genre>) request.getAttribute("genres")).size(); i++) {%>
+            <a href="/genre?id=<%=((LinkedList<Genre>)request.getAttribute("genres")).get(i).getId()%>"><%=((LinkedList<Genre>) request.getAttribute("genres")).get(i).getName()%>
+            </a>
+            <%if (i != ((LinkedList<Genre>) request.getAttribute("genres")).size() - 1) {%>
+            <%=", "%>
+            <%
+                    }
+                }
+            %>.</p>
+        <p>Roles:<%
+            for (int i = 0; i < ((LinkedList<Role>) request.getAttribute("roles")).size(); i++) {%>
+            <a href="/role?id=<%=((LinkedList<Role>)request.getAttribute("roles")).get(i).getId()%>"><%=((LinkedList<Role>) request.getAttribute("roles")).get(i).getName()%>
+            </a>
+            <%if (i != ((LinkedList<Role>) request.getAttribute("roles")).size() - 1) {%>
+            <%=", "%>
+            <%
+                    }
+                }
+            %>. </p>
+        <p>Published date: <%=film.getDate().toString()%>
+        </p>
+        <p class="lead"><%=film.getDescription()%>
+        </p>
+        <p>
+        <p>Remark: <%=film.getRemark()%>
+        </p>
 </div>
-</body>
+
+

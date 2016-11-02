@@ -9,6 +9,6 @@ import java.util.LinkedList;
  */
 public interface ProducerDao {
     boolean addProducer(Producer role);
-    Producer getProducer(String name);
+    Producer getProducer(int id);
     LinkedList<Producer> getProducers();
 }

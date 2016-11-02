@@ -11,7 +11,9 @@
 <% if (request.getAttribute("ok") == null) {%>
 <form class="addfilmform" action="/addrole" method="post">
     <p>
-    <h2 class="form-signin-heading">Add role</h2>
+    <div id = "same">
+    <h2>Add role</h2>
+    </div>
     <p>
         <input type="text" name="name" class="input-block-level" id="addfilmfields" placeholder="Name">
         <br>

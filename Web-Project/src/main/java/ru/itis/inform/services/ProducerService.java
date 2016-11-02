@@ -9,6 +9,6 @@ import java.util.LinkedList;
  */
 public interface ProducerService{
     boolean addProducer(Producer producer);
-    Producer getProducer(String name);
+    Producer getProducer(int id);
     LinkedList<Producer> getAllProducers();
 }
