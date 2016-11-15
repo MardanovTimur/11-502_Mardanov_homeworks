@@ -29,7 +29,7 @@
 </head>
 <body link="black" vlink="black" alink="#a52a2a">
 <% String template;%>
-<% if (request.getAttribute("template")!=null) {
+<% if (request.getAttribute("template") != null) {
     template = (String) request.getAttribute("template");
 } else {
     template = "";
@@ -42,21 +42,51 @@
     </tr>
     <tr>
         <td>
-            <%switch (template) {
-                case "addfilm" : %>
-                    <%@include file='addfilmform.jsp'%>
-                    <%break;
-                case "films" :%>
-                    <%@include file='films.jsp'%>
-                    <%break;
-                case "addrole" :%>
-                    <%@include file='addroleform.jsp'%>
-                    <%break;
-                case "film" :%>
-                     <%@include file='filmid.jsp'%>
-                     <%break;
-                     default:%>
-                    <%response.sendRedirect("/home");%>
+            <%
+                switch (template) {
+                    case "addfilm":
+            %>
+            <%@include file='addfilmform.jsp' %>
+            <%
+                    break;
+                case "filmIsNotAvailable":
+            %>
+            <%@include file='film404.jsp' %>
+            <%
+                    break;
+                case "buy":
+            %>
+            <%@include file='buy.jsp' %>
+            <%
+                    break;
+                case "films":
+            %>
+            <%@include file='films.jsp' %>
+            <%
+                    break;
+                case "addproducer":
+            %>
+            <%@include file='addproducer.jsp' %>
+            <%
+                    break;
+                case "addrole":
+            %>
+            <%@include file='addroleform.jsp' %>
+            <%
+                    break;
+                case "film":
+            %>
+            <%@include file='filmid.jsp' %>
+            <%
+                    break;
+                case "profile":
+            %>
+            <%@include file="profile.jsp" %>
+            <%
+                    break;
+                default:
+            %>
+            <%response.sendRedirect("/home");%>
             <%}%>
         </td>
     </tr>

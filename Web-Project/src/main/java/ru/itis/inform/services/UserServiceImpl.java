@@ -81,6 +81,10 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    public void addImage(byte[] image, String id) {
+        userDao.addImage(image,id);
+    }
+
     private boolean defaultSize(String value) {
         return (value.length() >= 2 && value.length() <= 30);
     }

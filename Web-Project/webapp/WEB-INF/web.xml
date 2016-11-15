@@ -8,6 +8,34 @@
         <welcome-file>home</welcome-file>
     </welcome-file-list>
 
+    <servlet>
+        <servlet-name>buy</servlet-name>
+        <servlet-class>ru.itis.inform.servlets.Buy</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>buy</servlet-name>
+        <url-pattern>/buy</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>producer</servlet-name>
+        <servlet-class>ru.itis.inform.servlets.AddProducer</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>producer</servlet-name>
+        <url-pattern>/addproducer</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>profile</servlet-name>
+        <servlet-class>ru.itis.inform.servlets.Profile</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>profile</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>signup</servlet-name>
@@ -85,6 +113,16 @@
         <filter-name>authFilter</filter-name>
         <servlet-name>auth</servlet-name>
         <servlet-name>signup</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>loginrequire</filter-name>
+        <filter-class>ru.itis.inform.filters.LoginRequiredFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>loginrequire</filter-name>
+        <url-pattern>/buy</url-pattern>
     </filter-mapping>
 
     <filter>

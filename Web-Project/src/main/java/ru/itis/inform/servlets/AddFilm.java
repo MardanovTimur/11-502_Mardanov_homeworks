@@ -1,5 +1,6 @@
 package ru.itis.inform.servlets;
 
+import ru.itis.inform.factories.DaoFactory;
 import ru.itis.inform.models.Film;
 import ru.itis.inform.models.Producer;
 import ru.itis.inform.models.Studio;
@@ -50,7 +51,10 @@ public class AddFilm extends HttpServlet {
         String roles = req.getParameter("roles");
         String description = req.getParameter("description");
         int remark = Integer.parseInt(req.getParameter("remark"));
+        String url = req.getParameter("url");
         String dateS = req.getParameter("date");
+        String quantity = req.getParameter("quantity");
+        String price = req.getParameter("price");
 
 
         //date parse
@@ -119,7 +123,7 @@ public class AddFilm extends HttpServlet {
 
         //genre exception
         try {
-            film = new Film(name, Integer.parseInt(producerId), Integer.parseInt(studioId), description, remark);
+            film = new Film(name, Integer.parseInt(producerId), Integer.parseInt(studioId), description, remark, url);
             film.setDate(time);
         } catch (Exception e) {
             req.setAttribute("template", "addfilm");
@@ -130,7 +134,15 @@ public class AddFilm extends HttpServlet {
         }
         try {
             videoService.addFilm(film);
+
             int filmId = videoService.getId(name);
+
+            if (!quantity.equals("") && !price.equals("")) {
+                int quant = Integer.parseInt(quantity);
+                double pric = Double.parseDouble(price);
+                DaoFactory.getInstance().getFilmExistanceDao().addExistance(filmId, quant, pric);
+            }
+
             boolean rolesOnFilm = rolesFilmService.addRolesOnFilm(roles, filmId);
             boolean genresOnFilm = genresFilmService.addGenresOnFilm(genres, filmId);
             if (!rolesOnFilm) {

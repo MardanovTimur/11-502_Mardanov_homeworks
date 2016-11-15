@@ -1,8 +1,8 @@
 package ru.itis.inform.servlets;
 
-import ru.itis.inform.models.Film;
-import ru.itis.inform.models.Genre;
-import ru.itis.inform.models.Role;
+import ru.itis.inform.factories.DaoFactory;
+import ru.itis.inform.factories.ServiceFactory;
+import ru.itis.inform.models.*;
 import ru.itis.inform.services.*;
 
 import javax.servlet.RequestDispatcher;
@@ -10,7 +10,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 
 /**
@@ -24,6 +29,8 @@ public class Video extends HttpServlet {
     RolesFilmService rolesFilmService;
     RoleServices roleServices;
     Film film;
+    HttpSession session;
+    RequestDispatcher requestDispatcher;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -57,7 +64,8 @@ public class Video extends HttpServlet {
 
             req.setAttribute("film",film);
             req.setAttribute("template","film");
-            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+            req.setAttribute("comments",DaoFactory.getInstance().getCommentsDao().getComments(Integer.parseInt(id)));
+            requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
             requestDispatcher.forward(req,resp);
             return;
         } else {
@@ -68,7 +76,35 @@ public class Video extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        String message = req.getParameter("textMessage");
+
+        String filmId = req.getParameter("id");
+
+        session = req.getSession();
+
+        if (session.getAttribute("current_user")==null) {
+            req.setAttribute("guest","Please SignIn before leave a comment!");
+            resp.sendRedirect("/login");
+        } else {
+            String userId = "" + ((User) session.getAttribute("current_user")).getId();
+            String login = ""+((User)session.getAttribute("current_user")).getLogin();
+
+            //Date
+            try {
+                Comment comment = new Comment(Integer.parseInt(filmId), userId, message,login);
+                long time = System.currentTimeMillis();
+                comment.setDate(time);
+
+                DaoFactory.getInstance().getCommentsDao().addComment(comment);
+
+                req.setAttribute("film", film);
+                req.setAttribute("template", "film");
+                resp.sendRedirect("/film?id=" + filmId);
+                return;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

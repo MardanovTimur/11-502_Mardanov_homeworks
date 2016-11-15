@@ -64,4 +64,18 @@ public class UserDaoImpl implements UserDao {
     public void changeRulesInUser(String id) {
 
     }
+
+    public void addImage(byte[] image, String id) {
+        if (JDBConnection.getInstance().getConnection() != null) {
+            String request = "INSERT INTO users image VALUES ? WHERE id = ?";
+            try {
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setBytes(1,image);
+                JDBConnection.statement.setString(2,id);
+                JDBConnection.getInstance().getStatement().executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

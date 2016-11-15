@@ -46,6 +46,8 @@
         <% if (request.getAttribute("incorrect_password") != null) {%>
         <%=request.getAttribute("incorrect_password")%>
         <%}%>
+        <c:set var="guest1" value="${guest}" scope="request"/>
+        <c:out value="${guest1}"/>
     </form>
 
 </div> <!-- /container -->

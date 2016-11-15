@@ -9,15 +9,16 @@
     /*background-image: url(/image/homescreen.jpg);*/
 }
 
-.signupRel{
+.signupRel {
     link: white;
 }
 
 .addfilmform {
-    position: relative; left: 10%;
+    position: relative;
+    left: 10%;
     border: 1px solid rgba(77, 77, 77, 0.51);
     background-color: rgba(255, 255, 255, 0.24);
-    }
+}
 
 #addfilmfields {
     width: 250px;
@@ -79,6 +80,11 @@
     padding: 7px 9px;
 }
 
+.box div {
+    width: 90px;
+    display: inline-block;
+}
+
 #wrap {
     border: 1px solid rgba(77, 77, 77, 0.51);
     background-color: rgba(255, 255, 255, 0.24);
@@ -107,7 +113,7 @@
     margin: 20px 0;
 }
 
-#wrap1{
+#wrap1 {
     border: 1px solid lightgray;
     alignment-adjust: central;
     width: 1000px;
@@ -117,14 +123,16 @@
     padding-bottom: 50px;
 
 }
-h1{
+
+h1 {
     text-align: center;
 }
-#same{
+
+#same {
     width: 50%;
 }
 
-h3.heading{
+h3.heading {
     margin-left: 20px;
     background-color: #fafafa;
     font-size: 25px;
@@ -136,40 +144,46 @@ h3.heading{
     padding-top: 5px;
 
 }
-#upper_blank{
+
+#upper_blank {
     border-bottom: 7px solid steelblue;
     margin-top: 40px;
     margin-right: 485px;
     width: 570px;
     padding-right: 480px;
 }
-.p{
+
+.p {
     margin-left: 5px;
     padding: 8px;
     padding-left: 20px;
 }
-#name{
+
+#name {
     margin-left: 20px;
     box-shadow: 0 2px 0 #e6e6e6;
     height: 40px;
     padding-left: 10px;
     width: 500px;
 }
-#email{
+
+#email {
     margin-left: 20px;
     box-shadow: 0 2px 0 #e6e6e6;
     height: 40px;
     padding-left: 10px;
     width: 500px;
 }
-#url{
+
+#url {
     margin-left: 20px;
     box-shadow: 0 2px 0 #e6e6e6;
     height: 40px;
     padding-left: 10px;
     width: 500px;
 }
-#comment{
+
+#comment {
     margin-left: 20px;
     box-shadow: 0 2px 0 #e6e6e6;
     height: 40px;
@@ -177,7 +191,8 @@ h3.heading{
     width: 650px;
     height: 200px;
 }
-#commentSubmit{
+
+#commentSubmit {
     margin-left: 20px;
     width: 250px;
     height: 55px;
@@ -189,23 +204,25 @@ h3.heading{
     padding-left: 20px;
     border-radius: 5px;
 }
+
 #commentSubmit:hover {
     background-color: #09466f;
 
 }
 
-.p{
+.p {
     font-size: 18px;
     color: gray;
     padding-bottom: 15px;
     padding-top: 15px;
 }
-.p1{
+
+.p1 {
     font-size: 18px;
     padding-top: 20px;
 }
 
-h3.second_heading{
+h3.second_heading {
     margin-left: 0;
     margin-top: 30px;
     font-size: 20px;
@@ -215,7 +232,8 @@ h3.second_heading{
     padding-left: 55px;
 
 }
-#middle{
+
+#middle {
     border: 1px solid lightgray;
     width: 1000px;
     height: 200px;
@@ -225,7 +243,8 @@ h3.second_heading{
     margin-top: 10px;
     box-shadow: 0 2px 0 lightgray;
 }
-.blank{
+
+.blank {
     border-bottom: 7px solid steelblue;
     margin-top: 50px;
     margin-left: 50px;
@@ -233,7 +252,7 @@ h3.second_heading{
     width: 800px;
 }
 
-#inner_reply{
+#inner_reply {
 
     margin-left: 800px;
     margin-top: 160px;

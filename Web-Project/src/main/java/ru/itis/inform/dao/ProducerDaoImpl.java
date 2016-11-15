@@ -12,8 +12,19 @@ import java.util.List;
  * Created by Тимур on 27.10.2016.
  */
 public class ProducerDaoImpl implements ProducerDao {
-    public boolean addProducer(Producer role) {
-        return false;
+    public boolean addProducer(Producer producer) {
+        if (JDBConnection.getInstance().getConnection()!=null && producer!=null) {
+            String request = "INSERT INTO producers (producer_name) VALUES ( ? )";
+            try {
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setString(1,producer.getName());
+                JDBConnection.getInstance().getStatement().executeUpdate();
+            } catch (SQLException s) {
+                s.printStackTrace();
+                return false;
+            }
+        }
+        return true;
     }
 
     public Producer getProducer(int id) {

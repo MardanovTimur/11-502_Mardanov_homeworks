@@ -14,4 +14,5 @@ public interface UserDao {
     List<User> findUsers(String login);
     void deleteUser(String id);
     void changeRulesInUser(String id);
+    void addImage(byte[] image, String id);
 }

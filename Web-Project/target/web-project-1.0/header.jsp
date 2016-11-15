@@ -42,7 +42,7 @@
             </button>
             <% if (current_user!=null) {%>
             <a class="navbar-brand"
-               href="/home"><%=current_user.getName()%><%=current_user.getIs_admin() ? "(admin)" : ""%>
+               href="/profile?id=<%=current_user.getId()%>"><%=current_user.getName()%><%=current_user.getIs_admin() ? "(admin)" : ""%>
             </a>
             <%} else {%>
             <a class="navbar-brand"
@@ -52,8 +52,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/home">Home</a></li>
-                <li><a href="/about">About</a></li>
+                <li class="active"><a href="/home">Films</a></li>
+                <li><a href="/messages">Messages</a></li>
                 <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <li><a href="/addfilm">Add film</a></li>
                 <%}%>

@@ -15,4 +15,5 @@ public interface UserService {
     User find(String login);
     User findId(String id);
     void changeRule(String id);
+    void addImage(byte[] image, String id);
 }

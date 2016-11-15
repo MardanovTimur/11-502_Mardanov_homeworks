@@ -34,7 +34,7 @@
         %>
         <div class="col-md-4 portfolio-item">
             <a href="/film?id=<%=films.get((i-1)*3).getId()%>">
-                <img class="img-responsive" src="<%=films.get((i-1)*3).getImageURL()%>" alt="">
+                <img class="img-responsive" src="<%=films.get((i-1)*3).getImageURL()%>" width="700" height="400" style="max-height: 198px" alt="">
             </a>
             <h3>
                 <a href="/film?id=<%=films.get((i-1)*3).getId()%>"><%=films.get((i - 1) * 3).getName()%>
@@ -53,7 +53,7 @@
         %>
         <div class="col-md-4 portfolio-item">
             <a href="/film?id=<%=films.get((i-1)*3+1).getId()%>">
-                <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                <img class="img-responsive" src="<%=films.get((i-1)*3+1).getImageURL()%>" width="700" height="400" style="max-height: 198px" alt="">
             </a>
             <h3>
                 <a href="/film?id=<%=films.get((i-1)*3+1).getId()%>"><%=films.get((i - 1) * 3 + 1).getName()%>
@@ -72,7 +72,7 @@
         %>
         <div class="col-md-4 portfolio-item">
             <a href="/film?id=<%=films.get((i-1)*3+2).getId()%>">
-                <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                <img class="img-responsive" src="<%=films.get((i-1)*3+2).getImageURL()%>" width="700" height="400" style="max-height: 198px" alt="">
             </a>
             <h3>
                 <a href="/film?id=<%=films.get((i-1)*3+2).getId()%>"><%=films.get((i - 1) * 3 + 2).getName()%>

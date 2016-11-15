@@ -17,7 +17,7 @@ public class ProducerServiceImpl implements ProducerService {
     }
 
     public boolean addProducer(Producer producer) {
-        return false;
+        return producerDao.addProducer(producer);
     }
 
     public Producer getProducer(int id) {
