@@ -3,6 +3,7 @@ package ru.itis.inform.models;
 /**
  * Created by Тимур on 27.10.2016.
  */
+//Модель жанр-фильм
 public class GenreFilm {
     private int filmId;
     private int genreId;

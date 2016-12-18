@@ -5,6 +5,7 @@ import ru.itis.inform.models.Film;
 import ru.itis.inform.models.Producer;
 import ru.itis.inform.models.Studio;
 import ru.itis.inform.services.*;
+import ru.itis.inform.verifiers.Regulars;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,6 +23,7 @@ import java.util.LinkedList;
 /**
  * Created by Тимур on 16.10.2016.
  */
+// Сервлет для добавления фильма
 public class AddFilm extends HttpServlet {
     private VideoService videoService = new VideoServiceImpl();
     private GenreService genreService;
@@ -38,6 +40,7 @@ public class AddFilm extends HttpServlet {
         //req.setAttribute("current_user",req.getSession().getAttribute("current_user"));
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
         requestDispatcher.forward(req, resp);
+        return;
     }
 
     @Override
@@ -50,7 +53,7 @@ public class AddFilm extends HttpServlet {
         String genres = req.getParameter("genres");
         String roles = req.getParameter("roles");
         String description = req.getParameter("description");
-        int remark = Integer.parseInt(req.getParameter("remark"));
+        String remark = req.getParameter("remark");
         String url = req.getParameter("url");
         String dateS = req.getParameter("date");
         String quantity = req.getParameter("quantity");
@@ -123,8 +126,16 @@ public class AddFilm extends HttpServlet {
 
         //genre exception
         try {
-            film = new Film(name, Integer.parseInt(producerId), Integer.parseInt(studioId), description, remark, url);
-            film.setDate(time);
+            if (Regulars.isNumber(producerId) && Regulars.isNumber(studioId) && Regulars.isNumber(remark)) {
+                film = new Film(name, Integer.parseInt(producerId), Integer.parseInt(studioId), description, Integer.parseInt(remark), url);
+                film.setDate(time);
+            } else {
+                req.setAttribute("template", "addfilm");
+                req.setAttribute("genresError", "Incorrect remark!");
+                RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+                requestDispatcher.forward(req, resp);
+                return;
+            }
         } catch (Exception e) {
             req.setAttribute("template", "addfilm");
             req.setAttribute("genresError", "Incorrect form!");
@@ -132,46 +143,81 @@ public class AddFilm extends HttpServlet {
             requestDispatcher.forward(req, resp);
             return;
         }
+        String message;
         try {
-            videoService.addFilm(film);
-
-            int filmId = videoService.getId(name);
-
-            if (!quantity.equals("") && !price.equals("")) {
-                int quant = Integer.parseInt(quantity);
-                double pric = Double.parseDouble(price);
-                DaoFactory.getInstance().getFilmExistanceDao().addExistance(filmId, quant, pric);
+            message = videoService.addFilm(film);
+            int filmId = -1;
+            if (message.equals("Запрос не вернул результатов.")) {
+                filmId = videoService.getId(name);
             }
 
-            boolean rolesOnFilm = rolesFilmService.addRolesOnFilm(roles, filmId);
-            boolean genresOnFilm = genresFilmService.addGenresOnFilm(genres, filmId);
-            if (!rolesOnFilm) {
-                videoService.deleteFilm("" + filmId);
-                req.setAttribute("template", "addfilm");
-                req.setAttribute("genresError", "Can't add video with this roles!");
-                RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
-                requestDispatcher.forward(req, resp);
-                return;
-            } else if (!genresOnFilm) {
-                videoService.deleteFilm("" + filmId);
-                req.setAttribute("template", "addfilm");
-                req.setAttribute("genresError", "Can't add video with this genres!");
-                RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
-                requestDispatcher.forward(req, resp);
-                return;
+            if (filmId != -1) {
+                boolean rolesOnFilm = rolesFilmService.addRolesOnFilm(roles, filmId);
+                boolean genresOnFilm = genresFilmService.addGenresOnFilm(genres, filmId);
+                if (!rolesOnFilm) {
+                    videoService.deleteFilm("" + filmId);
+                    req.setAttribute("template", "addfilm");
+                    req.setAttribute("genresError", message + "<br>" + "Can't add video with this roles!");
+                    RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+                    requestDispatcher.forward(req, resp);
+                    return;
+                } else if (!genresOnFilm) {
+                    videoService.deleteFilm("" + filmId);
+                    req.setAttribute("template", "addfilm");
+                    req.setAttribute("genresError", message + "<br>" + "Can't add video with this genres!");
+                    RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+                    requestDispatcher.forward(req, resp);
+                    return;
+                } else {
+                    if (!quantity.equals("") && !price.equals("")) {
+                        int quant, pric;
+                        boolean f = false, f1 = false;
+                        if (Regulars.isNumber(quantity)) {
+                            quant = Integer.parseInt(quantity);
+                            f = true;
+                        } else {
+                            videoService.deleteFilm("" + filmId);
+                            req.setAttribute("template", "addfilm");
+                            req.setAttribute("genresError", message + "<br>" + "Incorrect quantity!");
+                            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+                            requestDispatcher.forward(req, resp);
+                            return;
+                        }
+                        if (Regulars.isNumber(price)) {
+                            pric = Integer.parseInt(price);
+                            f1 = true;
+                        } else {
+                            videoService.deleteFilm("" + filmId);
+                            req.setAttribute("template", "addfilm");
+                            req.setAttribute("genresError", message + "<br>" + "Incorrect price(Set integer format)!");
+                            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+                            requestDispatcher.forward(req, resp);
+                            return;
+                        }
+                        if (f && f1) {
+                            DaoFactory.getInstance().getFilmExistanceDao().addExistance(filmId, quant, pric);
+                        }
+                    }
+                    req.setAttribute("template", "addfilm");
+                    req.setAttribute("filmIsAdded", "This video is successfully added!");
+                    RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
+                    requestDispatcher.forward(req, resp);
+                    return;
+                }
+
             } else {
                 req.setAttribute("template", "addfilm");
-                req.setAttribute("filmIsAdded", "This video is successfully added!");
+                req.setAttribute("genresError", message);
                 RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/home.jsp");
                 requestDispatcher.forward(req, resp);
                 return;
             }
-
         } catch (
                 Exception s
                 )
 
         {
+
             s.printStackTrace();
             req.setAttribute("template", "addfilm");
             req.setAttribute("genresError", "Can't to add video!");

@@ -49,6 +49,21 @@
             <%@include file='addfilmform.jsp' %>
             <%
                     break;
+                case "errortemplate":
+            %>
+            <%@include file='errortmp.jsp' %>
+            <%
+                    break;
+                case "orders":
+            %>
+            <%@include file='orders.jsp' %>
+            <%
+                    break;
+                case "buyOk":
+            %>
+            <%@include file='buyOk.jsp' %>
+            <%
+                    break;
                 case "filmIsNotAvailable":
             %>
             <%@include file='film404.jsp' %>
@@ -77,6 +92,16 @@
                 case "film":
             %>
             <%@include file='filmid.jsp' %>
+            <%
+                    break;
+                case "addgenre":
+            %>
+            <%@include file='addgenreform.jsp' %>
+            <%
+                    break;
+                case "addstudio":
+            %>
+            <%@include file='addstudio.jsp' %>
             <%
                     break;
                 case "profile":

@@ -26,10 +26,10 @@
         <br>
         <form action="/buy?id=<c:out value="${filmId}"/>" method="post">
             <label class="label" for="card" style="color: #000;">Input your credit card number</label>
-            <input type="text" id="card" name="card">
+            <input type="number" id="card" name="card">
             <br>
-            <label class="label" for="quantity" style="color:black">Quantity: </label>
-            <input type="text" id="quantity">
+            <label class="label" for="quantity" style="color:black" >Quantity: </label>
+            <input type="number" id="quantity" name="quantity">
             <br>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Buy</button>
         </form>

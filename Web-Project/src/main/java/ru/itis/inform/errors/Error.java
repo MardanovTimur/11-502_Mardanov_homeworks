@@ -4,6 +4,7 @@ package ru.itis.inform.errors;
  * Created by Тимур on 06.10.2016.
  */
 public class Error {
+    // Для всевозможного вывода ошибок
     private static String name;
     private static String message;
 

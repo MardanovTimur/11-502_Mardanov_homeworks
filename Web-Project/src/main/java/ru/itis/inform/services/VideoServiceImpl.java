@@ -3,8 +3,8 @@ package ru.itis.inform.services;
 import ru.itis.inform.dao.VideoStoreDao;
 import ru.itis.inform.dao.VideoStoreDaoImpl;
 import ru.itis.inform.models.Film;
-import ru.itis.inform.models.VideoStore;
 
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 /**
@@ -17,8 +17,8 @@ public class VideoServiceImpl implements VideoService {
         this.videoStore = new VideoStoreDaoImpl();
     }
 
-    public void addFilm(Film film) {
-        videoStore.add(film);
+    public String addFilm(Film film) throws SQLException {
+        return videoStore.add(film);
     }
 
     public void deleteFilm(String id) {
@@ -35,6 +35,11 @@ public class VideoServiceImpl implements VideoService {
             return videoStore.getAllFilms();
         else
             return null;
+    }
+
+    @Override
+    public LinkedList<Film> getSearchFilms(String s) {
+        return videoStore.getSearhFilms(s);
     }
 
     public Film getFilm(int id) {

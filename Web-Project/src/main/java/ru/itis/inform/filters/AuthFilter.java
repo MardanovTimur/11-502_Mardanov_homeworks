@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
+// Авторизационный фильтр (если юзер вошел ему нельзя уйти на авторизацию или регистрацию)
 public class AuthFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
 

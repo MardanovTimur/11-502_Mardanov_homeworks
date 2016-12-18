@@ -5,6 +5,7 @@ import java.security.SecureRandom;
 /**
  * Created by Тимур on 10.10.2016.
  */
+// Использование токенов для юзера
 public class Token {
     private String string = null;
 

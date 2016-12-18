@@ -9,6 +9,7 @@ import java.io.IOException;
 /**
  * Created by Тимур on 30.10.2016.
  */
+//Редирект на хоум при деплое серва
 public class Redir extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

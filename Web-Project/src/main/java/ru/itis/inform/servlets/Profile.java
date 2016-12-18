@@ -14,6 +14,7 @@ import java.io.IOException;
 /**
  * Created by Тимур on 04.11.2016.
  */
+//Профиль пользователя
 public class Profile extends HttpServlet {
     private RequestDispatcher requestDispatcher;
     private HttpSession session;
@@ -22,9 +23,8 @@ public class Profile extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
         session = req.getSession();
-        Object sessionObject = req.getSession().getAttribute("current_user");
-        System.out.println(sessionObject);
-        if (sessionObject != null) {
+        User user = (User)session.getAttribute("current_user");
+        if (user != null) {
             req.setAttribute("template", "profile");
             User userProfile = ServiceFactory.getInstance().getUserService().findId(id);
             req.setAttribute("name", userProfile.getName());

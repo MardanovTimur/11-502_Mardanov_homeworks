@@ -16,12 +16,17 @@ public class StudioServiceImpl implements StudioService {
         this.studioDao = new StudioDaoImpl();
     }
 
+    @Override
+    public Studio getStudioByFilmId(int id) {
+        return studioDao.getStudioByFilmId(id);
+    }
+
     public boolean addStudio(Studio studio) {
-        return false;
+       return studioDao.addStudio(studio);
     }
 
     public Studio getStudio(String name) {
-        return null;
+       return studioDao.getStudio(name);
     }
 
     public LinkedList<Studio> getAllStudio() {

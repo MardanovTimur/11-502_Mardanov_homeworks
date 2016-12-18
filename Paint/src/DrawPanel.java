@@ -6,6 +6,7 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.AffineTransform;
 
 import static java.lang.Math.sqrt;
+import static java.lang.Thread.sleep;
 
 
 public class DrawPanel extends JComponent {
@@ -37,6 +38,7 @@ public class DrawPanel extends JComponent {
             }
 
             public void mousePressed(MouseEvent e) {
+
                 g.setColor(MainFrame.color);
                 oldX = e.getX();
                 oldY = e.getY();
@@ -49,6 +51,7 @@ public class DrawPanel extends JComponent {
         addMouseMotionListener(new MouseMotionAdapter() {
 
             public void mouseDragged(MouseEvent e) {
+                g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 g.setColor(MainFrame.color);
                 currentX = e.getX();
                 currentY = e.getY();
@@ -76,11 +79,55 @@ public class DrawPanel extends JComponent {
 
         graphics.drawImage(image, 0, 0, null);
     }
-    public void affine(){
-        g.transform(new AffineTransform(1,0,0.939,1,0,0));
+    public void addImageForAphine() {
+        g.fillRect(180, 180, 120, 100);
         repaint();
-        g.transform(new AffineTransform(1,0.939,0,1,0,0));
     }
+
+    public void aphine1() {
+        clear();
+        AffineTransform affineTransform = g.getTransform();
+        affineTransform = new AffineTransform(1, 0, 1 / Math.sqrt(3), 1, 0, 0);
+        g.transform(affineTransform);
+        addImageForAphine();
+        repaint();
+    }
+
+    public void aphine2() {
+        clear();
+        AffineTransform affineTransform = g.getTransform();
+        affineTransform = AffineTransform.getRotateInstance(Math.PI / 4, 180, 180);
+        g.transform(affineTransform);
+        addImageForAphine();
+        repaint();
+    }
+
+    public void resetAphine() {
+        clear();
+        AffineTransform affineTransform = new AffineTransform();
+        g.setTransform(affineTransform);
+        addImageForAphine();
+        repaint();
+    }
+
+    public void animate() throws InterruptedException {
+        Thread ani = new Thread(new Runnable() {
+            public void run() {
+                for (int i = 0; i < 100; i++) {
+                    aphine2();
+                    try {
+                        sleep(30);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    repaint();
+                }
+            }
+        });
+        ani.start();
+
+    }
+
 
     public void clear() {
         g.setPaint(Color.white);

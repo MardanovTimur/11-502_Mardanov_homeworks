@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Тимур
   Date: 25.10.2016
@@ -31,6 +31,29 @@
     </H2></p>
     <button><a href="/addrole">Add another role.</a></button>
     <button><a href="/home">Go home!</a></button>
+</div>
+<%}%>
+<% if (request.getAttribute("genres")!=null) {%>
+<div class="container">
+    <p>Roles</p>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%if (request.getAttribute("genres")!=null) {%>
+        <% for (Role genre : (List<Role>)request.getAttribute("genres")) {%>
+        <tr>
+            <td><%=genre.getId()%></td>
+            <td><%=genre.getName()%></td>
+        </tr>
+        <%}%>
+        <%}%>
+        </tbody>
+    </table>
 </div>
 <%}%>
 </body>

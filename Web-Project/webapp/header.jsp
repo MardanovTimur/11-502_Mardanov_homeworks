@@ -36,9 +36,6 @@
                 <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <span class="icon-bar"></span>
                 <%}%>
-                <%if (current_user!=null && current_user.getIs_admin()) {%>
-                <span class="icon-bar"></span>
-                <%}%>
             </button>
             <% if (current_user!=null) {%>
             <a class="navbar-brand"
@@ -53,7 +50,7 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/home">Films</a></li>
-                <li><a href="/messages">Messages</a></li>
+                <li><a href="/orders">Orders</a></li>
                 <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <li><a href="/addfilm">Add film</a></li>
                 <%}%>
@@ -68,9 +65,6 @@
                 <%}%>
                 <%if (current_user!=null && current_user.getIs_admin()) {%>
                 <li><a href="/addstudio">Add studio</a></li>
-                <%}%>
-                <%if (current_user!=null && current_user.getIs_admin()) {%>
-                <li><a href="/adduser">Add user</a></li>
                 <%}%>
                 <%if (current_user!=null) {%>
                 <li><a href="/logout">Logout(<%=current_user.getLogin()%>)</a></li>

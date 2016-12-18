@@ -25,7 +25,7 @@ public class RoleServicesImpl implements RoleServices {
     }
 
     public List<Role> getAllRoles(){
-        return null;
+        return roleDao.getGenres();
     }
 
     public Role getRoleById(int roleId) {

@@ -6,6 +6,7 @@ import java.sql.Date;
 /**
  * Created by Тимур on 03.10.2016.
  */
+//Модель фильма
 public class Film {
 
     private String name;

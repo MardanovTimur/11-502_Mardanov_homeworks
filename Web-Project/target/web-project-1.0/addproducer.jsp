@@ -1,4 +1,4 @@
-<%--
+<%@ page import="ru.itis.inform.models.Producer" %><%--
   Created by IntelliJ IDEA.
   User: Тимур
   Date: 25.10.2016
@@ -31,6 +31,28 @@
     </H2></p>
     <button><a href="/addproducer">Add another producer.</a></button>
     <button><a href="/home">Go home!</a></button>
+</div>
+<%}%>
+<% if (request.getAttribute("genres")!=null) {%>
+<div class="container">
+    <p>Producers</p>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Producer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (Producer genre : (LinkedList<Producer>)request.getAttribute("genres")) {%>
+        <tr>
+            <td><%=genre.getId()%></td>
+            <td><%=genre.getName()%></td>
+        </tr>
+        <%}%>
+
+        </tbody>
+    </table>
 </div>
 <%}%>
 </body>

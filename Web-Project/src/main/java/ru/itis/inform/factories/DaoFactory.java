@@ -1,5 +1,7 @@
 package ru.itis.inform.factories;
 
+import ru.itis.inform.dao.BuyDao;
+import ru.itis.inform.dao.BuyDaoImpl;
 import ru.itis.inform.dao.CommentsDao;
 import ru.itis.inform.dao.FilmExistanceDao;
 
@@ -11,9 +13,11 @@ import java.util.Properties;
 /**
  * Created by Тимур on 02.11.2016.
  */
+//Фабрика для упр. дао
 public class DaoFactory {
     private static DaoFactory instance;
     private CommentsDao commentsDao;
+    private BuyDao buyDao;
     private FilmExistanceDao filmExistanceDao;
     private Properties properties;
     static {
@@ -27,9 +31,11 @@ public class DaoFactory {
 
             String commentsDaoImpl = properties.getProperty("commentdao.class");
             String filmExistanceDaoImpl = properties.getProperty("filmexistancedaoimpl.class");
+            String buyDaoImpl = properties.getProperty("buyDaoImpl.class");
 
             commentsDao = (CommentsDao)Class.forName(commentsDaoImpl).newInstance();
             filmExistanceDao = (FilmExistanceDao)Class.forName(filmExistanceDaoImpl).newInstance();
+            buyDao = (BuyDaoImpl)Class.forName(buyDaoImpl).newInstance();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -53,5 +59,9 @@ public class DaoFactory {
 
     public FilmExistanceDao getFilmExistanceDao() {
         return filmExistanceDao;
+    }
+
+    public BuyDao getBuyDao() {
+        return buyDao;
     }
 }

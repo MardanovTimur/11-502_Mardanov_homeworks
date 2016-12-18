@@ -15,7 +15,6 @@ public class GenresFilmServiceImpl implements GenresFilmService {
     public boolean addGenresOnFilm(String roles, int filmId) {
         GenreService genreServices = new GenreServiceImpl();
         LinkedList<GenreFilm> genreFilms = new LinkedList<GenreFilm>();
-        System.out.println("GenreFilmServiceImpl" + roles);
         String[] genreAllSplitted = roles.split(",");
         for (String genre : genreAllSplitted) {
             try {

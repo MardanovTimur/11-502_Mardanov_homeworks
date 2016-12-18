@@ -19,6 +19,7 @@ import java.io.PrintWriter;
 /**
  * Created by Тимур on 06.10.2016.
  */
+//Сервлет авторизации
 public class Authorization extends HttpServlet {
     HttpSession session;
     RequestDispatcher requestDispatcher;

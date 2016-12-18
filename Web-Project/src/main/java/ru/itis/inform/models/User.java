@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * Created by Тимур on 03.10.2016.
  */
+// Модель юзера
 public class User {
     private int id;
     private String name;

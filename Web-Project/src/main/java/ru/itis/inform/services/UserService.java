@@ -8,6 +8,8 @@ import java.util.List;
 /**
  * Created by Тимур on 05.10.2016.
  */
+//Все это сервисы с управлениями ДАО
+
 public interface UserService {
     Message add(String name, String login, String password, String passwordAgain, boolean is_admin);
     List<User> findAll();

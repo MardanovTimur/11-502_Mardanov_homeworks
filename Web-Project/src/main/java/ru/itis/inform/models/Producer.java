@@ -3,6 +3,7 @@ package ru.itis.inform.models;
 /**
  * Created by Тимур on 03.10.2016.
  */
+//Модель продюссер
 public class Producer {
     private String name;
     private int id;

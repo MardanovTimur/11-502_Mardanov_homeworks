@@ -5,6 +5,7 @@ import java.sql.Date;
 /**
  * Created by Тимур on 02.11.2016.
  */
+// Модель коммента
 public class Comment {
     private int filmId;
     private String userId;

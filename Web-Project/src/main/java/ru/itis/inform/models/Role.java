@@ -3,6 +3,7 @@ package ru.itis.inform.models;
 /**
  * Created by Тимур on 03.10.2016.
  */
+//Модель роль
 public class Role {
     private int id;
     private String name;

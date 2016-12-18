@@ -10,6 +10,7 @@ import java.util.Properties;
 /**
  * Created by Тимур on 02.11.2016.
  */
+//Фабрика для упр. сервисами
 public class ServiceFactory {
     private static ServiceFactory instance;
     private Properties properties;

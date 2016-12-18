@@ -20,13 +20,12 @@
 
 <c:set scope="request" var="producer" value="${producer}"/>
 <c:set scope="request" var="genres" value="${genres}"/>
-<div style="overflow: hidden; width: 1000px;">
+<div style="width: 1000px;">
     <div class="box" style="white-space:nowrap;margin-left: 20%;">
-        <div style="width: 300px; display: inline-block;">
-            <img class="img-responsive" src="<%=film.getImageURL()%>" width="700" height="400"
-                 style="max-height: 198px" alt=""></div>
-        <div style="width: 350px;display: inline-block; padding-right: 60%;
-                padding-bottom: 30%">
+        <div style="width: 300px; display: inline-block; height: 300px;">
+            <img src="<%=film.getImageURL()%>"
+                 style="max-height: 198px; margin-bottom:320px; max-width: 300px;" alt="Image"></div>
+        <div style="width: 350px;display: inline-block; padding-right: 60%;">
             <h1><%=film.getName()%>
             </h1>
 
@@ -55,12 +54,44 @@
             <p>Published date: <%=film.getDate().toString()%>
             </p>
             <div class="description">
-                <%=film.getDescription()%>
+                <%if (request.getAttribute("text_film") != null) {%>
+                <%=request.getAttribute("text_film")%>
+                <%}%>
             </div>
             <p>
-            <p>Remark: <%=film.getRemark()%>
-            </p>
-            <a class="btn btn-sm btn-primary btn-block" href="/buy?film_id=<%=film.getId()%>" role="button">Get film</a>
+            <p>Remark: <%=film.getRemark()%></p>
+            <%if (request.getAttribute("us_id")!=null) {%>
+            <form method="post" action="/film?id=<%=film.getId()%>">
+                <label for="namber">Write your remark(0-10):</label>
+                <br>
+                <input type="number" id ="namber" name = "remark">
+                <br>
+                <input type="submit" value="Send">
+            </form>
+            <%}%>
+            <%if (request.getAttribute("err_rem")!=null) {%>
+              <%=request.getAttribute("err_rem")%>
+            <%}%>
+
+            <br>
+            <% if (request.getAttribute("orders") != null && request.getAttribute("cost") != null) {%>
+            <a class="btn btn-sm btn-primary btn-block" style="width:100px;" href="/buy?film_id=<%=film.getId()%>"
+               role="button">Get film</a>
+            <br>
+            <b>Quantity: <%=request.getAttribute("orders")%>
+            </b>
+            <br>
+            <b>Money: <%=request.getAttribute("cost")%>
+            </b>
+            <%} else {%>
+            <b>This film is not available!</b>
+            <%}%>
+            <% if (request.getAttribute("deleteKey") != null) {%>
+            <a class="btn btn-sm btn-danger btn-block" style="width:100px;"
+               href="/deletefilm?film_id=<%=film.getId()%>" role="button">Delete film!</a>
+            <a class="btn btn-sm btn-warning btn-block" style="width:100px;"
+               href="/updatefilm?film_id=<%=film.getId()%>" role="button">Update film!</a>
+            <%}%>
         </div>
     </div>
 </div>
@@ -85,9 +116,11 @@
 
 <c:set scope="request" value="${comments}" var="commentsLL"/>
 <c:forEach var="item" items="${commentsLL}">
-    <div class="media" style="margin-left: 17%;">
-        <a class="pull-left" href="#">
-            <img class="media-object" src="http://placehold.it/64x64" alt="">
+    <div class="media" style="margin-left: 17%; padding-bottom: 12px">
+        <a class="pull-left" href="/profile?id=<c:out value="${item.getUserId()}"/>">
+            <img class="media-object"
+                 src="https://lh6.googleusercontent.com/-ozyE6akoJKQ/Uo64e5Z46zI/AAAAAAAAADk/8cPOKVVkUYk/w506-h750/718smiley.png"
+                 width="64" height="64" alt="">
         </a>
         <div class="media-body" style="link: black">
             <h4 class="media-heading"><a href="/profile?id=<c:out value="${item.getUserId()}"/>"><c:out
@@ -98,6 +131,8 @@
         </div>
     </div>
 </c:forEach>
+<br>
+<hr>
 
 <%--<!-- Comment -->
 <div class="media">

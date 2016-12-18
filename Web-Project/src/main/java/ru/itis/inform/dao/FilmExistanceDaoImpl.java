@@ -9,14 +9,14 @@ import java.sql.SQLException;
  * Created by Тимур on 08.11.2016.
  */
 public class FilmExistanceDaoImpl implements FilmExistanceDao {
-    public void addExistance(int id, int quantity, double price) {
+    public void addExistance(int id, int quantity, int price) {
         if (JDBConnection.getInstance().getConnection()!=null) {
             String request = "INSERT INTO film_existance (id,quantity,price) VALUES (?,?,?);";
             try {
                 JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
                 JDBConnection.statement.setInt(1,id);
                 JDBConnection.statement.setInt(2,quantity);
-                JDBConnection.statement.setDouble(3, price);
+                JDBConnection.statement.setInt(3, price);
                 JDBConnection.getInstance().getStatement().executeUpdate();
             } catch (SQLException sql) {
                 sql.printStackTrace();
@@ -50,7 +50,7 @@ public class FilmExistanceDaoImpl implements FilmExistanceDao {
                 JDBConnection.statement.setInt(1,id);
                 ResultSet resultSet = JDBConnection.getInstance().getStatement().executeQuery();
                 while (resultSet.next()) {
-                    return new FilmExistance(resultSet.getInt("id"),resultSet.getInt("quantity"), Double.parseDouble(resultSet.getString("price").split(" ")[0].replace(',','.')));
+                    return new FilmExistance(resultSet.getInt("id"),resultSet.getInt("quantity"),resultSet.getInt("price"));
                 }
                 return null;
             } catch (SQLException sql) {
@@ -64,7 +64,21 @@ public class FilmExistanceDaoImpl implements FilmExistanceDao {
 
     }
 
-    public boolean updateExistance(int id, int quantity, int price) {
+    public boolean updateExistance(int id, int quantity) {
+        if (JDBConnection.getInstance().getConnection()!=null) {
+            String request = "UPDATE film_existance SET (quantity)=(?) " +
+                    "WHERE id = ?;";
+            try {
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setInt(1,quantity);
+                JDBConnection.statement.setInt(2,id);
+                JDBConnection.getInstance().getStatement().executeUpdate();
+                return true;
+            } catch (SQLException sql) {
+                sql.printStackTrace();
+                return false;
+            }
+        }
         return false;
     }
 }

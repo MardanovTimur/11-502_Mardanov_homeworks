@@ -14,6 +14,7 @@ import java.util.Date;
 /**
  * Created by Тимур on 07.10.2016.
  */
+//Да, это мэйн. Просто мэйн. Его нет.
 public class Main {
     public static void main(String[] args) throws ParseException {
         String password = "admin";

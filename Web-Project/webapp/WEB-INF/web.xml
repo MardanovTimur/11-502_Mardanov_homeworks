@@ -9,6 +9,61 @@
     </welcome-file-list>
 
     <servlet>
+        <servlet-name>updateFilm</servlet-name>
+        <servlet-class>ru.itis.inform.servlets.UpdateFilm</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>updateFilm</servlet-name>
+        <url-pattern>/updatefilm</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deletefilm</servlet-name>
+        <servlet-class>ru.itis.inform.servlets.DeleteFilm</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>deletefilm</servlet-name>
+        <url-pattern>/deletefilm</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>deleteorder</servlet-name>
+        <servlet-class>ru.itis.inform.servlets.DeleteOrder</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteorder</servlet-name>
+        <url-pattern>/deleteorder</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>addstudio</servlet-name>
+        <servlet-class>ru.itis.inform.servlets.AddStudio</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addstudio</servlet-name>
+        <url-pattern>/addstudio</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addgenre</servlet-name>
+        <servlet-class>ru.itis.inform.servlets.AddGenre</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>addgenre</servlet-name>
+        <url-pattern>/addgenre</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>orders</servlet-name>
+        <servlet-class>ru.itis.inform.servlets.Orders</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>orders</servlet-name>
+        <url-pattern>/orders</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>buy</servlet-name>
         <servlet-class>ru.itis.inform.servlets.Buy</servlet-class>
     </servlet>
@@ -123,6 +178,7 @@
     <filter-mapping>
         <filter-name>loginrequire</filter-name>
         <url-pattern>/buy</url-pattern>
+        <url-pattern>/orders</url-pattern>
     </filter-mapping>
 
     <filter>
@@ -145,8 +201,14 @@
 
     <filter-mapping>
         <filter-name>adminFilter</filter-name>
+        <servlet-name>updateFilm</servlet-name>
+        <servlet-name>deleteorder</servlet-name>
         <servlet-name>addfilm</servlet-name>
         <servlet-name>addrole</servlet-name>
+        <servlet-name>addgenre</servlet-name>
+        <servlet-name>producer</servlet-name>
+        <servlet-name>addstudio</servlet-name>
+        <servlet-name>deletefilm</servlet-name>
         <!--<url-pattern>/addfilm</url-pattern>-->
     </filter-mapping>
 

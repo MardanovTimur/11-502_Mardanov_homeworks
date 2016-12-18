@@ -123,21 +123,70 @@ public class MainFrame extends JFrame implements Runnable {
         gridBagConstraints.gridx=4;
         editorPanel.add(imageButton,gridBagConstraints);
 
-        JButton translateAffine = new JButton("Affine translate 45.");
+        JButton translateAffine = new JButton("AffineIm.");
         translateAffine.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                paintPanel.affine();
+                paintPanel.addImageForAphine();
             }
         });
         gridBagConstraints.gridx = 5;
         editorPanel.add(translateAffine,gridBagConstraints);
-
+        JButton translateAffine1 = new JButton("1.");
+        translateAffine1.addActionListener(new AphineListener1());
+        gridBagConstraints.gridx = 6;
+        editorPanel.add(translateAffine1,gridBagConstraints);
+        JButton translateAffine2 = new JButton("2.");
+        translateAffine2.addActionListener(new AphineListener2());
+        gridBagConstraints.gridx = 7;
+        editorPanel.add(translateAffine2,gridBagConstraints);
+        JButton resetAffine = new JButton("Reset affine.");
+        resetAffine.addActionListener(new AphineResetListener());
+        gridBagConstraints.gridx = 8;
+        editorPanel.add(resetAffine,gridBagConstraints);
+        JButton animation = new JButton("Animation");
+        animation.addActionListener(new AphineAnimationListener());
+        gridBagConstraints.gridx = 9;
+        editorPanel.add(animation,gridBagConstraints);
 
         jFrame.add(editorPanel, BorderLayout.PAGE_END);
         jFrame.setBounds(100, 100, 600, 600);
         jFrame.setVisible(true);
+    }
+    private class AphineListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            paintPanel.addImageForAphine();
+        }
+    }
+
+
+    private class AphineListener1 implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            paintPanel.aphine1();
+        }
+    }
+
+    private class AphineListener2 implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            paintPanel.aphine2();
+        }
+    }
+
+    private class AphineResetListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            paintPanel.resetAphine();
+        }
+    }
+
+    private class AphineAnimationListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            try {
+                paintPanel.animate();
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+        }
     }
 
     private void jPanel2MousePressed(MouseEvent evt) {

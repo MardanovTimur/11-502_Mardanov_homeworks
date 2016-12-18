@@ -16,7 +16,8 @@ public class UserServiceImpl implements UserService {
     private Error error = null;
     private Message message = null;
 
-
+    public UserServiceImpl() {
+    }
     public Message add(String name, String login, String password, String passwordAgain, boolean is_admin) {
         message = null;
         //Check to size (2<x<30)

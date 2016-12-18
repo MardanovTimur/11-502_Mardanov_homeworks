@@ -8,6 +8,8 @@ import java.util.List;
 /**
  * Created by Тимур on 16.10.2016.
  */
+//Все это сервисы с управлениями ДАО
+
 public interface RoleServices {
     boolean addRole(Role role);
     Role getRole(String name);

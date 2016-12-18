@@ -19,6 +19,7 @@ import static org.mockito.Mockito.*;
 /**
  * Created by Тимур on 06.11.2016.
  */
+//Всеразличные тесты.
 public class GeneralTest {
 
     private ServiceFactory serviceFactory;

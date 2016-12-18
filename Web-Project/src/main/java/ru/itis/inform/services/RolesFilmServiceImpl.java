@@ -15,7 +15,6 @@ public class RolesFilmServiceImpl implements RolesFilmService {
     public boolean addRolesOnFilm(String roles, int filmId) {
         RoleServices roleServices = new RoleServicesImpl();
         LinkedList<RoleFilm> rolesfilms = new LinkedList<RoleFilm>();
-        System.out.println("RolesFilmServiceImpl" + roles);
         String[] rolesAllSplitted = roles.split(",");
         for (String role : rolesAllSplitted) {
             try {

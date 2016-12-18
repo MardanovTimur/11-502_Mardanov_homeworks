@@ -16,6 +16,7 @@ import java.io.IOException;
 /**
  * Created by Тимур on 11.11.2016.
  */
+// Фильтр требующий проверки о том чтобы поьзователь был залогиненым и чеки на подмену куки в реал тайм
 public class LoginRequiredFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
 

@@ -15,6 +15,8 @@ import java.io.IOException;
 /**
  * Created by Тимур on 16.10.2016.
  */
+
+//Фильтер для админовских страниц + спец. защита
 public class AdminFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
 

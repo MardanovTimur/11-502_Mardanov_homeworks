@@ -3,6 +3,7 @@ package ru.itis.inform.models;
 /**
  * Created by Тимур on 19.10.2016.
  */
+// Модель роль-фильм
 public class RoleFilm {
     private int filmId;
     private int roleId;

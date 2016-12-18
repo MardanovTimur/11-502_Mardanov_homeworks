@@ -15,6 +15,8 @@ import java.io.IOException;
 /**
  * Created by Тимур on 12.10.2016.
  */
+
+// Фильтр для зарегистрированных пользователей
 public class IndexFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
 

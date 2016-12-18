@@ -16,6 +16,7 @@ import java.util.LinkedList;
 /**
  * Created by Тимур on 09.10.2016.
  */
+// Главная страница с фильмами и проч
 public class Index extends HttpServlet {
     private RequestDispatcher requestDispatcher;
     private HttpSession session;
@@ -28,11 +29,21 @@ public class Index extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=UTF-8");
         req.setAttribute("template", "films");
+        String search = req.getParameter("search");
         if (videoService.getAllFilms() != null) {
 
             //View films
-            films = videoService.getAllFilms();
-            req.setAttribute("filmsAll",films);
+            if (search != null)
+                if (search.equals("")) {
+                    films = videoService.getAllFilms();
+                } else {
+                    films = videoService.getSearchFilms(search);
+                    req.setAttribute("search",search);
+                }
+            else {
+                films = videoService.getAllFilms();
+            }
+            req.setAttribute("filmsAll", films);
             ArrayList<Film> sendArrayList = new ArrayList<Film>();
 
             //Film columns
@@ -51,7 +62,7 @@ public class Index extends HttpServlet {
                     req.setAttribute("current_number", "" + ((films.size() / 9) + 1));
                     for (int i = 0; i < 9; i++) {
                         try {
-                            current_number = ""+(films.size()/9+1);
+                            current_number = "" + (films.size() / 9 + 1);
                             sendArrayList.add(i, films.get((films.size() / 9) * 9 + i));
                         } catch (IndexOutOfBoundsException e) {
 
@@ -77,11 +88,13 @@ public class Index extends HttpServlet {
 
                     }
                 }
-                req.setAttribute("films",sendArrayList);
+                req.setAttribute("films", sendArrayList);
                 requestDispatcher.forward(req, resp);
                 return;
             }
-        } else {
+        } else
+
+        {
             System.out.println("Null films!");
         }
 

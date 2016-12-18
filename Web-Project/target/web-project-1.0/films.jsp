@@ -14,6 +14,12 @@
     <!-- Page Header -->
     <div class="row">
         <div class="col-lg-12">
+            <form method="get" action="/home">
+                <input type="text" class="sadw" placeholder="Search" name ="search">
+                <input type="submit" value="submit">
+            </form>
+        </div>
+        <div class="col-lg-12">
             <h1 class="page-header">Catalog
                 <small>published films</small>
             </h1>
@@ -40,8 +46,6 @@
                 <a href="/film?id=<%=films.get((i-1)*3).getId()%>"><%=films.get((i - 1) * 3).getName()%>
                 </a>
             </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-                urna varius vitae.</p>
         </div>
         <%
             } catch (IndexOutOfBoundsException e) {
@@ -59,8 +63,6 @@
                 <a href="/film?id=<%=films.get((i-1)*3+1).getId()%>"><%=films.get((i - 1) * 3 + 1).getName()%>
                 </a>
             </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-                urna varius vitae.</p>
         </div>
         <%
             } catch (IndexOutOfBoundsException e) {
@@ -78,8 +80,6 @@
                 <a href="/film?id=<%=films.get((i-1)*3+2).getId()%>"><%=films.get((i - 1) * 3 + 2).getName()%>
                 </a>
             </h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-                urna varius vitae.</p>
         </div>
         <%
             } catch (IndexOutOfBoundsException e) {
@@ -122,12 +122,12 @@
                     <a href="/home?current_number=1">&laquo;</a>
                 </li>
                 <% if (Integer.parseInt(current_number) > 1) {%>
-                <li class="active">
+                <li >
                     <a href="/home?current_number=<%=Integer.parseInt(current_number)-1%>"><%=Integer.parseInt(current_number) - 1%>
                     </a>
                 </li>
                 <%}%>
-                <li>
+                <li class="active">
                     <a href="/home?current_number=<%=current_number%>"><%=Integer.parseInt(current_number)%>
                     </a>
                 </li>
