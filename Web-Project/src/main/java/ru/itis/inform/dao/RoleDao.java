@@ -16,4 +16,6 @@ public interface RoleDao {
     List<Role> getGenres();
     // Получить модель роли по айди
     Role getRoleById(int id);
+    //Delete role
+    void deleteRole(int id);
 }

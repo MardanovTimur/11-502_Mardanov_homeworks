@@ -60,6 +60,20 @@ public class GenreDaoImpl implements GenreDao {
         return null;
     }
 
+    @Override
+    public void deleteGenre(int id) {
+        if (JDBConnection.getInstance().getConnection() != null) {
+            String request = "DELETE FROM genres WHERE id = ? ";
+            try {
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setInt(1, id);
+                JDBConnection.getInstance().getStatement().execute();
+            } catch (SQLException sql) {
+                sql.printStackTrace();
+            }
+        }
+    }
+
     public LinkedList<Genre> getGenres() {
         LinkedList<Genre> genreLinkedList = new LinkedList<Genre>();
         if (JDBConnection.getInstance().getConnection() != null) {

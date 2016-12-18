@@ -41,6 +41,7 @@
         <tr>
             <th>id</th>
             <th>Genre</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -49,6 +50,8 @@
         <tr>
             <td><%=genre.getId()%></td>
             <td><%=genre.getName()%></td>
+            <td><a class="btn btn-sm btn-danger btn-block" style="width:100px;"
+                   href="/delete?genre_id=<%=genre.getId()%>" role="button">Delete</a></td>
         </tr>
         <%}%>
 

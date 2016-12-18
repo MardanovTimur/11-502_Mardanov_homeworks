@@ -78,4 +78,17 @@ public class StudioDaoImpl implements StudioDao {
         }
         return producerLinkedList;
     }
+
+    public void deleteStudio(int id) {
+        if (JDBConnection.getInstance().getConnection() != null) {
+            String request = "DELETE FROM studios WHERE id = ? ";
+            try {
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setInt(1, id);
+                JDBConnection.getInstance().getStatement().execute();
+            } catch (SQLException sql) {
+                sql.printStackTrace();
+            }
+        }
+    }
 }

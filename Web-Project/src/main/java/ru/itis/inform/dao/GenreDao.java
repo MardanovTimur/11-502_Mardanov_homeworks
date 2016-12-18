@@ -19,4 +19,6 @@ public interface GenreDao {
 
     //Получить модель жанра по айди
     Genre getGenreById(int id);
+
+    void deleteGenre(int id);
 }

@@ -45,6 +45,18 @@ public class ProducerDaoImpl implements ProducerDao {
         }
         return null;
     }
+    public void deleteProducer(int id) {
+        if (JDBConnection.getInstance().getConnection() != null) {
+            String request = "DELETE FROM producers WHERE id = ? ";
+            try {
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setInt(1, id);
+                JDBConnection.getInstance().getStatement().execute();
+            } catch (SQLException sql) {
+                sql.printStackTrace();
+            }
+        }
+    }
 
     public LinkedList<Producer> getProducers() {
         LinkedList<Producer> producerLinkedList = new LinkedList<Producer>();

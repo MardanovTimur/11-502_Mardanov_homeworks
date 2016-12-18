@@ -60,6 +60,18 @@ public class RoleDaoImpl implements RoleDao {
         }
         return roleList;
     }
+    public void deleteRole(int id) {
+        if (JDBConnection.getInstance().getConnection() != null) {
+            String request = "DELETE FROM roles WHERE id = ? ";
+            try {
+                JDBConnection.statement = JDBConnection.getInstance().getConnection().prepareStatement(request);
+                JDBConnection.statement.setInt(1, id);
+                JDBConnection.getInstance().getStatement().execute();
+            } catch (SQLException sql) {
+                sql.printStackTrace();
+            }
+        }
+    }
 
     public Role getRoleById(int id) {
         if (JDBConnection.getInstance().getConnection() != null) {

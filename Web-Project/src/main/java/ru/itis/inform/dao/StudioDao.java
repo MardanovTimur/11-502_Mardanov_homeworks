@@ -19,4 +19,7 @@ public interface StudioDao {
 
     //Получить весь список студий моделей студио
     LinkedList<Studio> getStudios();
+
+    //Delete studio
+    void deleteStudio(int id);
 }
