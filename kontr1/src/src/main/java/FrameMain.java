@@ -100,46 +100,4 @@ public class FrameMain extends Frame {
         createGui();
     }
     private final String USER_AGENT = "Mozilla/5.0";
-    private String sendGet() throws Exception {
-
-        String url = "http://localhost:3000/usersJ";
-
-        URL obj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
-        // optional default is GET
-        con.setRequestMethod("GET");
-
-        //add request header
-        con.setRequestProperty("User-Agent", USER_AGENT);
-
-        int responseCode = con.getResponseCode();
-
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-
-        JSONParser jp = new JSONParser();
-        try {
-
-            Object object = jp.parse(new FileReader("/home/azuharu/output.json"));
-            JSONObject jso = (JSONObject) object;
-
-            String city = (String) jso.get("city");
-            String country = (String) jso.get("country");
-
-            System.out.println("city: "+city);
-            System.out.println("country: "+country);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
 }

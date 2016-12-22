@@ -26,7 +26,7 @@ public class Main {
     }
 
     public static boolean check(String s) {
-        pattern = Pattern.compile("^(\\w+)@([a-z_0-9]+)(?:\\.[a-z]+)+$  ");
+        pattern = Pattern.compile("^\\d-?\\d\\d\\d-?+\\d$");
         matcher = pattern.matcher(s);
         return matcher.matches();
     }

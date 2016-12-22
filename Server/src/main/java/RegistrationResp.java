@@ -2,15 +2,10 @@
  * Created by Тимур on 21.12.2016.
  */
 public class RegistrationResp {
-    private String name;
-    private String password;
-    private String message;
+    public String name;
+    public String password;
+    public String message;
 
-    public RegistrationResp(String name, String password, String message) {
-        this.name = name;
-        this.password = password;
-        this.message = message;
-    }
 
     public String getMessage() {
         return message;

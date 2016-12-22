@@ -1,9 +1,9 @@
 import com.esotericsoftware.kryonet.Connection;
 
 public class User {
-    private String name;
-    private String password;
-    private Connection connection;
+    public String name;
+    public String password;
+    public Connection connection;
 
     public User(String name, String password, Connection connection) {
         this.name = name;

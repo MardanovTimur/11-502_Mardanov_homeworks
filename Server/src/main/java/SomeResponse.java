@@ -4,10 +4,6 @@
 public class SomeResponse {
     public String text;
 
-    public SomeResponse(String text) {
-        this.text = text;
-    }
-
     public void setText(String text) {
         this.text = text;
     }

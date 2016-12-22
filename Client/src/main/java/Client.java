@@ -1,9 +1,8 @@
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+
 import java.io.IOException;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -13,8 +12,8 @@ public class Client {
     private static boolean active = true;
     private static Scanner scanner = new Scanner(System.in);
     public static com.esotericsoftware.kryonet.Client client;
-    private static String username;
-    private static String password;
+    private static String username="";
+    private static String password="";
     private static String text;
     private static boolean registerIsTrue = false;
     private static boolean loginIsTrue = false;
@@ -35,7 +34,8 @@ public class Client {
         System.out.print(username+": ");
         message = scanner.nextLine();
         if (!message.equals("exit")) {
-            SomeRequest request = new SomeRequest(username, message);
+            SomeRequest request = new SomeRequest();
+            request.text = message;
             client.sendTCP(request);
         } else {
             loginIsTrue = false;
@@ -60,7 +60,9 @@ public class Client {
         username = scanner.nextLine();
         System.out.print("Password: ");
         password = scanner.nextLine();
-        RegistrationReq registrationReq = new RegistrationReq(username,password);
+        RegistrationReq registrationReq = new RegistrationReq();
+        registrationReq.name = username;
+        registrationReq.password = password;
         client.sendTCP(registrationReq);
     }
 
@@ -70,7 +72,9 @@ public class Client {
         username = scanner.nextLine();
         System.out.print("Password: ");
         password = scanner.nextLine();
-        LoginReq req = new LoginReq(username,password);
+        LoginReq req = new LoginReq();
+        req.name = username;
+        req.password = password;
         client.sendTCP(req);
     }
 
@@ -86,8 +90,6 @@ public class Client {
         kryo.register(User.class);
         client.start();
         client.connect(5000, "localhost", 22222, 22223);
-        client.sendTCP(new SomeRequest("22","2"));
-
         client.addListener(new Listener() {
             public void received(Connection connection, Object object) {
                 if (object instanceof RegistrationResp) {

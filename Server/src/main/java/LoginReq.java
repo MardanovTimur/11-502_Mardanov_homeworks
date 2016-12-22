@@ -2,13 +2,9 @@
  * Created by Тимур on 21.12.2016.
  */
 public class LoginReq {
-    private String name;
-    private String password;
-
-    public LoginReq(String name, String password) {
-        this.name = name;
-        this.password = password;
-    }
+    public String name;
+    public String password;
+    public String message;
 
     public String getName() {
         return name;

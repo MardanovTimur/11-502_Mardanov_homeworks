@@ -27,7 +27,9 @@ public class ServerC {
     private static void sendMessage(String username, String text) {
         for (User user :
                 logined) {
-            user.getConnection().sendTCP(new SomeResponse(username + ": " + text));
+            SomeResponse someResponse = new SomeResponse();
+            someResponse.text = username + ": " + text;
+            user.getConnection().sendTCP(someResponse);
         }
     }
 
@@ -42,15 +44,27 @@ public class ServerC {
         if (!isRegisteredByName) {
             connectionsList.add(user);
             System.out.println("User is registered");
-            connection.sendTCP(new RegistrationResp(req.getName(), req.getPassword(), req.getName().concat(registered)));
+            RegistrationResp resp = new RegistrationResp();
+            resp.name = req.getName();
+            resp.password = req.getPassword();
+            resp.message = req.getName().concat(registered);
+            connection.sendTCP(resp);
         } else {
-            connection.sendTCP(new RegistrationResp(req.getName(), req.getPassword(), "Please write another username!"));
+            RegistrationResp resp = new RegistrationResp();
+            resp.name = req.getName();
+            resp.password = req.getPassword();
+            resp.message = "Please write another username!";
+            connection.sendTCP(resp);
         }
     }
 
     public static void checkLogIn(LoginReq loginReq, Connection connection) {
         if (!login(loginReq, connection)) {
-            connection.sendTCP(new LoginResp(loginReq.getName(), loginReq.getPassword(), "You aren't registered!"));
+            LoginResp loginResp = new LoginResp();
+            loginResp.name = loginReq.getName();
+            loginResp.password = loginReq.getPassword();
+            loginResp.message = "You aren't registered!";
+            connection.sendTCP(loginResp);
         }
     }
 
@@ -59,9 +73,17 @@ public class ServerC {
                 connectionsList) {
             if (user.getName().equals(loginReq.getName()) && user.getPassword().equals(loginReq.getPassword())) {
                 System.out.println("Logined" + loginReq.getName());
-                connection.sendTCP(new LoginResp(user.getName(), user.getPassword(), "logined!"));
+                LoginResp loginResp = new LoginResp();
+                loginResp.name = user.getName();
+                loginResp.password = user.getPassword();
+                loginResp.message = "logined!";
+                connection.sendTCP(loginResp);
                 for (User item : logined) {
-                    item.getConnection().sendTCP(new LoginResp(item.getName(), item.getPassword(), user.getName() + " is logined!!!"));
+                    LoginResp loginResp1 = new LoginResp();
+                    loginResp1.name = item.getName();
+                    loginResp1.password = item.getPassword();
+                    loginResp1.message =  user.getName() + " is logined!!!";
+                    item.getConnection().sendTCP(loginResp1);
                 }
                 logined.add(user);
                 return true;
