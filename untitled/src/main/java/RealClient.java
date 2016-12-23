@@ -1,19 +1,20 @@
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
 /**
  * Created by Тимур on 22.12.2016.
  */
-public class RealClient {
+public class RealClient extends Thread {
     public static Socket fromserver;
-    private static String username = "";
+    public static String username = "";
     public static PrintWriter printWriter;
     private static Scanner sc;
+    static boolean f = false;
 
-
-    public static void main(String[] argc) throws InterruptedException {
-
+    @Override
+    public void run() {
         try {
             fromserver = new Socket("localhost", 1234);
             printWriter = new PrintWriter(fromserver.getOutputStream());
@@ -29,10 +30,23 @@ public class RealClient {
                     "write /exit to leave this chat");
             System.out.println("Write your username!");
             sc = new Scanner(System.in);
-            printWriter.println(sc.nextLine());
+            while (username.equals("")) {
+                synchronized (MainGUI.username) {
+
+                }
+            }
+            printWriter.println(MainGUI.username);
             printWriter.flush();
+            String test = "";
             while (true) {
-                String message = sc.nextLine();
+                synchronized (MainGUI.text) {
+                    while (test.equals(MainGUI.text)) {
+                        synchronized (MainGUI.text) {
+                        }
+                    }
+                }
+                String message = MainGUI.text;
+                test = MainGUI.text;
                 if (message.equals("/exit")) {
                     printWriter.println(message);
                     printWriter.flush();
@@ -45,6 +59,8 @@ public class RealClient {
             System.out.println("!BYE!");
             printWriter.close();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
