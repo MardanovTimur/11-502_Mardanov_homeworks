@@ -1,5 +1,8 @@
 package ru.itis.inform.servlets;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ru.itis.inform.config.SpringConfig;
 import ru.itis.inform.errors.Error;
 import ru.itis.inform.messages.Message;
 import ru.itis.inform.models.User;
@@ -26,6 +29,12 @@ public class Authorization extends HttpServlet {
     Cookie cookie;
     UserService userService;
     TokenService tokenService;
+    ApplicationContext beansF;
+
+    @Override
+    public void init() throws ServletException {
+        beansF = new AnnotationConfigApplicationContext(SpringConfig.class);
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,7 +50,7 @@ public class Authorization extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         String checkCookie = req.getParameter("cookie");
-        userService = new UserServiceImpl();
+        userService = beansF.getBean(UserService.class);
 
         User currentUser = userService.find(login);
 

@@ -1,5 +1,7 @@
 package ru.itis.inform.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ru.itis.inform.dao.UserDao;
 import ru.itis.inform.dao.UserDaoImpl;
 import ru.itis.inform.errors.Error;
@@ -8,16 +10,23 @@ import ru.itis.inform.models.User;
 import ru.itis.inform.utils.Hash;
 import ru.itis.inform.verifiers.UserVerify;
 
+import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.List;
 
+
+@Component
 public class UserServiceImpl implements UserService {
-    private UserDao userDao = new UserDaoImpl();
+
+    @Autowired
+    private UserDao userDao;
     private Error error = null;
     private Message message = null;
 
     public UserServiceImpl() {
+        userDao = new UserDaoImpl();
     }
+
     public Message add(String name, String login, String password, String passwordAgain, boolean is_admin) {
         message = null;
         //Check to size (2<x<30)

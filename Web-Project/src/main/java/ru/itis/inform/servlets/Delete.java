@@ -1,5 +1,8 @@
 package ru.itis.inform.servlets;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ru.itis.inform.config.SpringConfig;
 import ru.itis.inform.dao.*;
 import ru.itis.inform.verifiers.Regulars;
 
@@ -13,6 +16,7 @@ import java.io.IOException;
  * Created by Тимур on 18.12.2016.
  */
 public class Delete extends HttpServlet {
+    ApplicationContext beanF;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=utf-8");
@@ -54,7 +58,7 @@ public class Delete extends HttpServlet {
         if (studioId != null) {
             if (Regulars.isNumber(studioId)) {
                 int id = Integer.parseInt(studioId);
-                StudioDao studioDao = new StudioDaoImpl();
+                StudioDao studioDao = beanF.getBean(StudioDao.class);
                 studioDao.deleteStudio(id);
                 resp.sendRedirect("/addstudio");
             } else {
@@ -72,5 +76,6 @@ public class Delete extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
+        beanF = new AnnotationConfigApplicationContext(SpringConfig.class);
     }
 }

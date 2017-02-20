@@ -1,5 +1,8 @@
 package ru.itis.inform.servlets;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import ru.itis.inform.config.SpringConfig;
 import ru.itis.inform.factories.ServiceFactory;
 import ru.itis.inform.messages.Message;
 import ru.itis.inform.services.UserService;
@@ -17,7 +20,7 @@ import java.io.IOException;
  */
 public class SignUp extends HttpServlet{
     RequestDispatcher requestDispatcher;
-    ServiceFactory serviceFactory;
+    ApplicationContext beanFactory;
     Message message;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,7 +36,9 @@ public class SignUp extends HttpServlet{
         String login = req.getParameter("username");
         String password = req.getParameter("password");
         String checkPassword = req.getParameter("confirm");
-        message = ServiceFactory.getInstance().getUserService().add(username,login,password,checkPassword, false);
+
+        UserService userService = beanFactory.getBean(UserService.class);
+        message = userService.add(username,login,password,checkPassword, false);
         req.setAttribute("username",username);
 
         req.setAttribute(message.getName(),message.getMessage());
@@ -44,5 +49,6 @@ public class SignUp extends HttpServlet{
     @Override
     public void init() throws ServletException {
         requestDispatcher = getServletContext().getRequestDispatcher("/signup.jsp");
+        beanFactory = new AnnotationConfigApplicationContext(SpringConfig.class);
     }
 }

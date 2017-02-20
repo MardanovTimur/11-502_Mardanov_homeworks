@@ -1,5 +1,7 @@
 package ru.itis.inform.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ru.itis.inform.dao.StudioDao;
 import ru.itis.inform.dao.StudioDaoImpl;
 import ru.itis.inform.models.Studio;
@@ -9,12 +11,11 @@ import java.util.LinkedList;
 /**
  * Created by Тимур on 27.10.2016.
  */
+@Component
 public class StudioServiceImpl implements StudioService {
-    private StudioDao studioDao;
 
-    public StudioServiceImpl() {
-        this.studioDao = new StudioDaoImpl();
-    }
+    @Autowired
+    private StudioDao studioDao;
 
     @Override
     public Studio getStudioByFilmId(int id) {
