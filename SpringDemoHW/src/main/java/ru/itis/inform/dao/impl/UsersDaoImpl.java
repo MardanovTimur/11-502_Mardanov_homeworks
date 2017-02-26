@@ -24,7 +24,7 @@ import java.util.*;
  * Created by Тимур on 15.02.2017.
  */
 
-@Component
+@Component("jdbc.users.dao")
 public class UsersDaoImpl implements UsersDao {
 
     private JdbcTemplate jdbcTemplate;
@@ -54,7 +54,7 @@ public class UsersDaoImpl implements UsersDao {
 
     private RowMapper<User> rowMapper = new RowMapper<User>() {
         public User mapRow(ResultSet resultSet, int i) throws SQLException {
-            User user = new User(resultSet.getLong("id"),resultSet.getInt("age"),resultSet.getString("name"), new LinkedList<Book>());
+            User user = new User(resultSet.getLong("id"),resultSet.getInt("age"),resultSet.getString("name"), new LinkedList<Book>(), new LinkedList<User>());
             listOfUserBooks.put(user.getId(), user);
             return user;
         }
@@ -81,6 +81,16 @@ public class UsersDaoImpl implements UsersDao {
         } catch (EmptyResultDataAccessException e) {
             return new LinkedList<User>();
         }
+    }
+
+    @Override
+    public boolean addFriend(Long fid, Long sid) {
+        return false;
+    }
+
+    @Override
+    public boolean isFriends(Long fId, Long sId) {
+        return false;
     }
 
     public Long save(final User user) {

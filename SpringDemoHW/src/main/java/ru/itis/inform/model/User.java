@@ -12,15 +12,26 @@ public class User implements Comparable<User> {
     private int age;
     private String name;
     private List<Book> books;
+    private List<User> friends;
 
     public User() {
     }
 
-    public User(Long id, int age, String name, List<Book> books) {
+    public User(Long id, int age, String name, List<Book> books, List<User> friends) {
         this.id = id;
         this.age = age;
         this.name = name;
         this.books = books;
+        this.friends = friends;
+    }
+
+    public void setFriends(List<User> friends) {
+        this.friends = friends;
+    }
+
+    public List<User> getFriends() {
+
+        return friends;
     }
 
     public void setId(Long id) {

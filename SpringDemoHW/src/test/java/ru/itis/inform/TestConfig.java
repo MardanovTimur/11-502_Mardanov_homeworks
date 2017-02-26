@@ -9,6 +9,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import ru.itis.inform.dao.UsersDao;
+import ru.itis.inform.dao.hibernate.HibernateUsersDao;
 import ru.itis.inform.dao.impl.UsersDaoImpl;
 import javax.sql.DataSource;
 
@@ -23,7 +24,8 @@ public class TestConfig {
     DataSource dataSource() {
         EmbeddedDatabase embeddedDatabase = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).
             addScript("/DB/schema.sql").
-            addScript("/DB/data.sql").build();
+            addScript("/DB/data.sql").
+            build();
         return embeddedDatabase;
     }
 }

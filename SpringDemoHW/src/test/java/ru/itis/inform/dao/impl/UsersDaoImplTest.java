@@ -31,7 +31,7 @@ public class UsersDaoImplTest {
 
     @org.junit.Test
     public void findByAge() throws Exception {
-        expectedUser = new User(1L,19,"Alexey",new LinkedList<Book>());
+        expectedUser = new User(1L,19,"Alexey",new LinkedList<Book>(), new LinkedList<>());
         Book book = new Book(1L,"Master and Margarita",expectedUser);
         expectedUser.setBook(book);
         actualUser = usersDao.findByAge(19).get(0);
@@ -46,7 +46,7 @@ public class UsersDaoImplTest {
 
     @org.junit.Test
     public void find() throws Exception {
-        expectedUser = new User(1L,19,"Alexey",new LinkedList<Book>());
+        expectedUser = new User(1L,19,"Alexey",new LinkedList<Book>(), new LinkedList<>());
         Book book = new Book(1L,"Master and Margarita",expectedUser);
         expectedUser.setBook(book);
         boolean f = false;
@@ -63,13 +63,13 @@ public class UsersDaoImplTest {
     @org.junit.Test
     public void insert() throws Exception {
         long expectedUserId = 2L;
-        long actualUserId = usersDao.save(new User(2L,18,"Marat",new LinkedList<Book>()));
+        long actualUserId = usersDao.save(new User(2L,18,"Marat",new LinkedList<Book>(),new LinkedList<User>()));
         assertEquals(expectedUserId,actualUserId);
     }
 
     @org.junit.Test
     public void update() throws Exception {
-        expectedUser = new User(1L,19,"Alexee",new LinkedList<Book>());
+        expectedUser = new User(1L,19,"Alexee",new LinkedList<Book>(), new LinkedList<>());
         Book book = new Book(1L,"Master and Margarita",expectedUser);
         expectedUser.setBook(book);
         actualUser = expectedUser;

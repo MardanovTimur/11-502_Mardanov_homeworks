@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface UsersDao extends BaseDao<User>{
     List<User> findByAge(int age);
+    boolean addFriend(Long fId, Long sId);
+    boolean isFriends(Long fId, Long sId);
 }
