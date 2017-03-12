@@ -1,6 +1,7 @@
 package ru.itis.inform.model;
 
 import javax.jws.soap.SOAPBinding;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class User implements Comparable<User> {
     private Long id;
     private int age;
     private String name;
-    private List<Book> books;
+    private List<Book> books = new ArrayList<Book>();
     private List<User> friends;
 
     public User() {

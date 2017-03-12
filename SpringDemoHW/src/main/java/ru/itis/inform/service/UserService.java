@@ -1,5 +1,6 @@
 package ru.itis.inform.service;
 
+import ru.itis.inform.dao.UsersDao;
 import ru.itis.inform.model.Book;
 import ru.itis.inform.model.User;
 
@@ -13,6 +14,8 @@ public interface UserService {
     boolean addFriend(Long fid, Long sid);
 
     boolean isRegistered(String name);
+
+    UsersDao getUsersDao();
 
     List<Book> getAllBooks();
 }

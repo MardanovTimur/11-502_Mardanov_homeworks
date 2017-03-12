@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by Тимур on 15.02.2017.
  */
-@Component
+@Component("userService")
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Qualifier("hibernate.book.dao")
     private BookDao bookDao;
 
-    @Override
+
     public boolean addFriend(Long fid, Long sid) {
         return usersDaoH.addFriend(fid,sid);
     }
@@ -44,6 +44,11 @@ public class UserServiceImpl implements UserService {
             }
         }
         return false;
+    }
+
+
+    public UsersDao getUsersDao() {
+        return usersDao;
     }
 
     public List<Book> getAllBooks() {

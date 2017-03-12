@@ -7,11 +7,13 @@
     <groupId>ru.itis.inform</groupId>
     <artifactId>Spring2demo</artifactId>
     <version>1.0</version>
+    <packaging>war</packaging>
 
     <properties>
         <spring.version>4.3.6.RELEASE</spring.version>
         <jdk.version>1.6</jdk.version>
     </properties>
+
 
     <dependencies>
         <dependency>
@@ -71,17 +73,32 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+
 
     </dependencies>
+
+
     <build>
-        <plugins><plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <configuration>
-                <source>1.8</source>
-                <target>1.8</target>
-            </configuration>
-        </plugin></plugins>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <configuration>
+                            <webXml>src\main\web\WEB-INF\web.xml</webXml>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 
 </project>

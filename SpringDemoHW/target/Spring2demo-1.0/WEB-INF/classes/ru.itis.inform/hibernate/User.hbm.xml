@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ru.itis.inform.model.User" table="users" catalog="public">
+        <id name="id" type="java.lang.Long" column="id">
+            <generator class="identity"/>
+        </id>
+
+        <property name="name" column="name" type="string"/>
+        <property name="age" column="age" type="int"/>
+
+        <bag name="books" fetch="select" cascade="all">
+            <key>
+                <column name="user_id"/>
+            </key>
+            <one-to-many class="ru.itis.inform.model.Book"/>
+        </bag>
+
+        <bag name="friends" cascade="all" table="friendship" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="f_id" not-null="true"/>
+            </key>
+            <many-to-many entity-name="ru.itis.inform.model.User">
+                <column name="s_id" not-null="true"/>
+            </many-to-many>
+        </bag>
+    </class>
+</hibernate-mapping>

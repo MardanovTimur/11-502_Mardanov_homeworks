@@ -11,7 +11,7 @@
         
         <property name="name" column="name" type="java.lang.String"/>
         
-        <many-to-one name="user" class="ru.itis.inform.model.User" fetch="select" cascade="all">
+        <many-to-one name="user" class="ru.itis.inform.model.User" fetch="select" cascade="all" >
             <column name="user_id" not-null="true"/>
         </many-to-one>
 

@@ -20,7 +20,6 @@ public class HibernateUsersDao implements UsersDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    @Override
     public List<User> findByAge(int age) {
         Session session = getSession();
         Criteria criteria = session.createCriteria(User.class);
@@ -29,7 +28,7 @@ public class HibernateUsersDao implements UsersDao {
         return userList;
     }
 
-    @Override
+
     public boolean addFriend(Long fId, Long sId) {
         if (fId.longValue() != sId.longValue()) {
             Session session = getSession();
@@ -57,7 +56,7 @@ public class HibernateUsersDao implements UsersDao {
         }
     }
 
-    @Override
+
     public boolean isFriends(Long fId, Long sId) {
         Session session = getSession();
         User userFirst = session.get(User.class, fId);
@@ -72,7 +71,6 @@ public class HibernateUsersDao implements UsersDao {
     }
 
 
-    @Override
     public Long save(User user) {
         Session session = getSession();
         session.beginTransaction();
@@ -88,7 +86,7 @@ public class HibernateUsersDao implements UsersDao {
         return user.getId();
     }
 
-    @Override
+
     public void update(User user) {
         Session session = getSession();
         session.beginTransaction();
@@ -101,14 +99,13 @@ public class HibernateUsersDao implements UsersDao {
         }
     }
 
-    @Override
     public User find(Long id) {
         Session session = getSession();
         User user = session.get(User.class, id);
         return user;
     }
 
-    @Override
+
     public void delete(Long id) {
         Session session = getSession();
         User user = session.get(User.class, id);
@@ -122,7 +119,7 @@ public class HibernateUsersDao implements UsersDao {
         }
     }
 
-    @Override
+
     public List<User> findAll() {
         Session session = getSession();
         List<User> userList = session.createQuery("from User", User.class).list();

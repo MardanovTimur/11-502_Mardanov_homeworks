@@ -16,4 +16,6 @@ public interface BaseDao<Model> {
     void delete(Long id);
 
     List<Model> findAll();
+
+    // TODO: replace update and save methods merge()
 }

@@ -9,6 +9,7 @@ import ru.itis.inform.dao.BookDao;
 import ru.itis.inform.model.Book;
 import ru.itis.inform.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public class HibernateBookDao implements BookDao {
             session.getTransaction().commit();
             return bookList;
         } else {
-            return null;
+            return new ArrayList<Book>();
         }
     }
 
@@ -72,9 +73,7 @@ public class HibernateBookDao implements BookDao {
 
     public List<Book> findAll() {
         Session session = getSession();
-        session.beginTransaction();
         List<Book> list = session.createQuery("from Book", Book.class).list();
-        session.beginTransaction().commit();
         return list;
     }
 

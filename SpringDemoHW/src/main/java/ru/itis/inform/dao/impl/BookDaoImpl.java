@@ -40,7 +40,7 @@ public class BookDaoImpl implements BookDao {
     private RowMapper<Book> rowMapper = new RowMapper<Book>() {
         public Book mapRow(ResultSet resultSet, int i) throws SQLException {
             if (user==null)
-                user = new User(resultSet.getLong("user_id"),resultSet.getInt("age"),resultSet.getString("user_name"),new LinkedList<Book>(), new LinkedList<>());
+                user = new User(resultSet.getLong("user_id"),resultSet.getInt("age"),resultSet.getString("user_name"),new LinkedList<Book>(), new LinkedList<User>());
             Book book = new Book(resultSet.getLong("book_id"),resultSet.getString("book_name"),null);
             user.getBooks().add(book);
             book.setUser(user);

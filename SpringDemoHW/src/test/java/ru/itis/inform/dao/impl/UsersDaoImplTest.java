@@ -21,6 +21,8 @@ public class UsersDaoImplTest {
 
     @Autowired
     private UsersDao usersDao;
+
+    // TODO: make it final
     private User actualUser;
     private User expectedUser;
 
@@ -31,22 +33,23 @@ public class UsersDaoImplTest {
 
     @org.junit.Test
     public void findByAge() throws Exception {
-        expectedUser = new User(1L,19,"Alexey",new LinkedList<Book>(), new LinkedList<>());
+        expectedUser = new User(1L,19,"Alexey",new LinkedList<Book>(), new LinkedList<User>());
         Book book = new Book(1L,"Master and Margarita",expectedUser);
         expectedUser.setBook(book);
         actualUser = usersDao.findByAge(19).get(0);
         boolean f = false;
-        if (actualUser.compareTo(expectedUser)==1) {
+        // TODO: use equals
+        if (actualUser.compareTo(expectedUser) == 1) {
             f = true;
         } else {
             f =false;
         }
-        assertEquals(true,f);
+        assertTrue(f);
     }
 
     @org.junit.Test
     public void find() throws Exception {
-        expectedUser = new User(1L,19,"Alexey",new LinkedList<Book>(), new LinkedList<>());
+        expectedUser = new User(1L,19,"Alexey",new LinkedList<Book>(), new LinkedList<User>());
         Book book = new Book(1L,"Master and Margarita",expectedUser);
         expectedUser.setBook(book);
         boolean f = false;
@@ -69,7 +72,7 @@ public class UsersDaoImplTest {
 
     @org.junit.Test
     public void update() throws Exception {
-        expectedUser = new User(1L,19,"Alexee",new LinkedList<Book>(), new LinkedList<>());
+        expectedUser = new User(1L,19,"Alexee",new LinkedList<Book>(), new LinkedList<User>());
         Book book = new Book(1L,"Master and Margarita",expectedUser);
         expectedUser.setBook(book);
         actualUser = expectedUser;

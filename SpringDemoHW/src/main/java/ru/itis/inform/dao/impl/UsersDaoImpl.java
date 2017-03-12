@@ -83,12 +83,12 @@ public class UsersDaoImpl implements UsersDao {
         }
     }
 
-    @Override
+
     public boolean addFriend(Long fid, Long sid) {
         return false;
     }
 
-    @Override
+
     public boolean isFriends(Long fId, Long sId) {
         return false;
     }
