@@ -58,7 +58,7 @@ public class Program2 {
 
         boolean f = usersDao.addFriend(1L,4L);
 
-        System.out.println(1);
+        System.out.println(f);
 
     }
 }

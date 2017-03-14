@@ -33,6 +33,7 @@ public class Program {
         List<User> s = usersDao.findByAge(18);
         System.out.println(s.get(0).getName());
 
+        System.out.println("Привет я идия на ubuntu");
         //User newUser = new User(4L,20,"Marat");
 
         //long marselsID = usersDao.save(newUser);
