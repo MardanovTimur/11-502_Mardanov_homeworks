@@ -62,6 +62,7 @@
             <version>${spring.version}</version>
         </dependency>
 
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
@@ -106,8 +107,6 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
-
 
 
     </dependencies>

@@ -53,8 +53,7 @@ public class SpringConfig {
 
     @Bean
     public ViewResolver viewResolver() {
-        ViewResolver viewResolver = new InternalResourceViewResolver("/",".jsp");
-        return viewResolver;
+        return new InternalResourceViewResolver("/",".jsp");
     }
 
     @Bean(name = "/all-users")
