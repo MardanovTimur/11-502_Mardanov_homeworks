@@ -5,6 +5,7 @@ ru/itis/inform/service/impl/UserServiceImpl.class
 ru/itis/inform/dao/impl/UsersDaoImpl$2.class
 ru/itis/inform/Program.class
 ru/itis/inform/dao/hibernate/HibernateUsersDao.class
+ru/itis/inform/REST/RestController.class
 ru/itis/inform/servlets/AddModel.class
 ru/itis/inform/Program2.class
 ru/itis/inform/dao/UsersDao.class
@@ -17,6 +18,7 @@ ru/itis/inform/config/SpringConfig.class
 ru/itis/inform/service/UserService.class
 ru/itis/inform/dao/BaseDao.class
 ru/itis/inform/dao/impl/UsersDaoImpl$4.class
+ru/itis/inform/realController/SimpleController.class
 ru/itis/inform/dao/impl/BookDaoImpl$1.class
 ru/itis/inform/dao/impl/UsersDaoImpl.class
 ru/itis/inform/model/Book.class

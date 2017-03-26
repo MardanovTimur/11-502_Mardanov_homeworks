@@ -1,11 +1,25 @@
 package ru.itis.inform.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+
 /**
  * Created by Тимур on 18.02.2017.
  */
+
+@Entity
+@Table(name = "books")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "name")
     private String name;
+
+    @ManyToOne
+    @JsonIgnore
     private User user;
 
     public Book(long id, String name, User user) {

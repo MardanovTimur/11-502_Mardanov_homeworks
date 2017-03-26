@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.Controller;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import ru.itis.inform.controllers.UsersController;
 import ru.itis.inform.dao.hibernate.HibernateBookDao;
+import ru.itis.inform.model.Book;
 
 import javax.sql.DataSource;
 
@@ -35,7 +36,7 @@ public class SpringConfig {
     @Bean
     public SessionFactory sessionFactory() {
         LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource());
-        builder.addResource("ru.itis.inform/hibernate/Book.hbm.xml");
+        builder.addAnnotatedClass(Book.class);
         builder.addResource("ru.itis.inform/hibernate/User.hbm.xml");
         builder.setProperty("hibernate.dialect","org.hibernate.dialect.PostgreSQL82Dialect");
         return builder.buildSessionFactory();
