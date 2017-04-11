@@ -11,6 +11,7 @@ import ru.itis.inform.model.User;
 import ru.itis.inform.service.UserService;
 
 import java.io.IOException;
+import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Map;
 
@@ -23,37 +24,37 @@ public class RestController {
     UserService userService;
 
 
+
+
     @RequestMapping(value = "/users/all", method = RequestMethod.GET)
-    public String allUsers(Map<String, Object> map){
-        map.put("user",userService.getUsersDao().findAll());
-        return "all";
+    public String allUsers(Map<String, Object> map) {
+        map.put("user", userService.getUsersDao().findAll());
+           return "all";
     }
 
     @JsonIgnore
-    @RequestMapping(value ="/users/{user-id}", method = RequestMethod.GET)
-    public String smthUser(@PathVariable("user-id") int userId, @RequestParam("action") String action, Map<String, Object> map) {
+    @RequestMapping(value = "/users/{user-id}", method = RequestMethod.GET)
+    @ResponseBody
+    public String smthUser(@PathVariable("user-id") int userId, @RequestParam("action") String action){
+        String postAsJSON = null;
         if (action.equals("books")) {
             List<Book> books = userService.getUsersDao().find((long) userId).getBooks();
-            map.put("user", userService.getUsersDao().find((long) userId));
-            map.put("books", books);
             ObjectMapper objectMapper = new ObjectMapper();
-            String postAsJSON = null;
             try {
                 postAsJSON = objectMapper.writeValueAsString(books);
-                System.out.println(postAsJSON);
             } catch (JsonProcessingException e) {
-                e.printStackTrace();
+                throw new EmptyStackException();
             }
         }
-        return "userBooks";
+        return "{\"books\": " + postAsJSON + "}";
     }
 
-    @RequestMapping(value = "/users/add", method = RequestMethod.POST)
+    @RequestMapping(value = "users/add", method = RequestMethod.POST)
     public void addPost(@RequestBody String userValue) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             User user = objectMapper.readValue(userValue, User.class);
-            System.out.println(user.getName());
+            userService.save(user);
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
         }

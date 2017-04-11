@@ -31,6 +31,10 @@ public class UserServiceImpl implements UserService {
     private BookDao bookDao;
 
 
+    public Long save(User user) {
+        return usersDaoH.save(user);
+    }
+
     public boolean addFriend(Long fid, Long sid) {
         return usersDaoH.addFriend(fid,sid);
     }

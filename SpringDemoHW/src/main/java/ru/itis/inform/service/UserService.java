@@ -11,6 +11,8 @@ import java.util.List;
  */
 public interface UserService {
 
+    Long save(User user);
+
     boolean addFriend(Long fid, Long sid);
 
     boolean isRegistered(String name);

@@ -2,6 +2,7 @@
 /home/timur/Рабочий стол/11-502_Mardanov_homeworks/SpringDemoHW/src/main/java/ru/itis/inform/dao/BookDao.java
 /home/timur/Рабочий стол/11-502_Mardanov_homeworks/SpringDemoHW/src/main/java/ru/itis/inform/Program2.java
 /home/timur/Рабочий стол/11-502_Mardanov_homeworks/SpringDemoHW/src/main/java/ru/itis/inform/dao/BaseDao.java
+/home/timur/Рабочий стол/11-502_Mardanov_homeworks/SpringDemoHW/src/main/java/ru/itis/inform/config/WebAppConfig.java
 /home/timur/Рабочий стол/11-502_Mardanov_homeworks/SpringDemoHW/src/main/java/ru/itis/inform/servlets/AddModel.java
 /home/timur/Рабочий стол/11-502_Mardanov_homeworks/SpringDemoHW/src/main/java/ru/itis/inform/model/Book.java
 /home/timur/Рабочий стол/11-502_Mardanov_homeworks/SpringDemoHW/src/main/java/ru/itis/inform/Program.java

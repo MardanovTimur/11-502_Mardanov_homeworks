@@ -5,6 +5,7 @@ ru/itis/inform/service/impl/UserServiceImpl.class
 ru/itis/inform/dao/impl/UsersDaoImpl$2.class
 ru/itis/inform/Program.class
 ru/itis/inform/dao/hibernate/HibernateUsersDao.class
+ru/itis/inform/config/WebAppConfig.class
 ru/itis/inform/REST/RestController.class
 ru/itis/inform/servlets/AddModel.class
 ru/itis/inform/Program2.class
