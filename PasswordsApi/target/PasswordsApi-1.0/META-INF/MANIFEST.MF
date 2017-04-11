@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Implementation-Version: 1.0
+Built-By: timur
+Implementation-Vendor-Id: ru.timur.itis
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_121
+Main-Class: ${start-class}
+

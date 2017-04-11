@@ -25,6 +25,7 @@ import java.util.List;
  * Created by timur on 30.03.17.
  */
 @Controller
+@CrossOrigin(origins = "http://127.0.0.1:7072", maxAge = 3600)
 public class UserController {
     @Autowired
     UsersDao usersDao;
@@ -51,7 +52,6 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-    @ResponseBody
     public ResponseEntity<String> registration(@RequestBody String userValue) {
         HttpHeaders headers = getHeaders();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -145,13 +145,12 @@ public class UserController {
 
     public static HttpHeaders getHeaders() {
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Access-Control-Allow-Headers", "x-requested-with, Content-Type, x-requested-with");
+        httpHeaders.add("Access-Control-Allow-Headers", "x-requested-with, Content-Type, x-requested-with,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers");
         httpHeaders.add("Access-Control-Allow-Origin", "*");
         httpHeaders.add("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
         httpHeaders.add("Access-Control-Max-Age", "3600");
         httpHeaders.add("Access-Control-Allow-Headers", "x-requested-with");
         httpHeaders.add("Content-Type", "application/json");
-        httpHeaders.add("access-control-allow-origin", "*");
         return httpHeaders;
     }
 }
