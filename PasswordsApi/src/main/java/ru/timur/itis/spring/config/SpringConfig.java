@@ -58,10 +58,10 @@ public class SpringConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-        driverManagerDataSource.setDriverClassName(environment.getProperty("driver"));
-        driverManagerDataSource.setUrl(environment.getProperty("url"));
-        driverManagerDataSource.setUsername(environment.getProperty("username"));
-        driverManagerDataSource.setPassword(environment.getProperty("password"));
+        driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
+        driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5432/passwords_api");
+        driverManagerDataSource.setUsername("postgres");
+        driverManagerDataSource.setPassword("alisa654789");
         return driverManagerDataSource;
     }
 

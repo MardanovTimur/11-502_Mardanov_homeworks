@@ -81,7 +81,6 @@ public class UsersDaoImpl implements UsersDao {
     }
 
 
-    @Override
     public User findByUsername(String username) {
         Session session = session1.getSession();
         Criteria criteria = session.createCriteria(User.class);
@@ -89,10 +88,9 @@ public class UsersDaoImpl implements UsersDao {
         return (User) criteria.uniqueResult();
     }
 
-    @Override
     public List<User> findAll() {
         Session session = session1.getSession();
-        return (ArrayList<User>)session.createCriteria(User.class).list();
+        return session.createCriteria(User.class).list();
     }
 
 

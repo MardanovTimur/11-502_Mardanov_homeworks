@@ -1,12 +1,8 @@
 package ru.timur.itis.dao;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import ru.timur.itis.model.Data;
 import ru.timur.itis.model.User;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 /**
@@ -28,5 +24,5 @@ public interface UsersDao extends CRUD<User>{
 
     User findByUsername(String name);
 
-    List<User> findAll();
+    List findAll();
 }
