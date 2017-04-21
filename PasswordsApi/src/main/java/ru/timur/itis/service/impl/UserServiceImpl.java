@@ -2,8 +2,10 @@ package ru.timur.itis.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.timur.itis.converter.UsersConverter;
 import ru.timur.itis.dao.DataDao;
 import ru.timur.itis.dao.UsersDao;
+import ru.timur.itis.dto.UserDto;
 import ru.timur.itis.model.Data;
 import ru.timur.itis.model.User;
 import ru.timur.itis.service.UserService;
@@ -21,13 +23,13 @@ public class UserServiceImpl implements UserService {
     DataDao dataDao;
 
     @Override
-    public List<User> findAll() {
+    public List<UserDto> findAll() {
         return usersDao.findAll();
     }
 
     @Override
-    public User get(int id) {
-        return usersDao.get(id);
+    public UserDto get(int id) {
+        return UsersConverter.convertToUserDto(usersDao.get(id));
     }
 
     @Override
@@ -41,30 +43,30 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User update(User object) {
-        return usersDao.update(object);
+    public UserDto update(User object) {
+        return UsersConverter.convertToUserDto(usersDao.update(object));
     }
 
     @Override
-    public User addData(User user, Data data) {
-        return usersDao.addData(user,data);
+    public UserDto addData(User user, Data data) {
+        return UsersConverter.convertToUserDto(usersDao.addData(user,data));
     }
 
 
     @Override
-    public User findByUsername(String name) {
-        return usersDao.findByUsername(name);
+    public UserDto findByUsername(String name) {
+        return UsersConverter.convertToUserDto(usersDao.findByUsername(name));
     }
 
-    public User getUserByName(String username) {
-        return usersDao.getUserByName(username);
+    public UserDto getUserByName(String username) {
+        return UsersConverter.convertToUserDto(usersDao.getUserByName(username));
     }
 
-    public User addDataForUser(User user, Data data) {
+    public UserDto addDataForUser(User user, Data data) {
         user.getDataList().add(data);
         data.setUser(user);
         dataDao.saveObject(data);
         usersDao.update(user);
-        return user;
+        return UsersConverter.convertToUserDto(user);
     }
 }

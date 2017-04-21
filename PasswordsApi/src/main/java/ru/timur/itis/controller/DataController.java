@@ -8,7 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import ru.timur.itis.converter.DataConverter;
 import ru.timur.itis.dao.UsersDao;
+import ru.timur.itis.dto.DataDto;
+import ru.timur.itis.dto.UserDto;
 import ru.timur.itis.model.Data;
 import ru.timur.itis.model.User;
 import ru.timur.itis.service.UserService;
@@ -54,17 +57,18 @@ public class DataController {
         HttpHeaders headers = getHeaders();
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            User user = userService.get(userId);
+            User user = usersDao.get(userId);
             Data data = objectMapper.readValue(dataValue, Data.class);
             if (user != null) {
-                user = userService.addDataForUser(user, data);
-                String userData = objectMapper.writeValueAsString(user.getDataList().get(user.getDataList().size() - 1));
+                UserDto userDto = userService.addDataForUser(user, data);
+                DataDto dataDto = DataConverter.converter(user.getDataList().get(user.getDataList().size() - 1));
+                String userData = objectMapper.writeValueAsString(dataDto);
                 return new ResponseEntity<String>(userData, headers, HttpStatus.OK);
             } else {
-                return new ResponseEntity<String>("{\"status\":\"User not found\"", headers, HttpStatus.OK);
+                return new ResponseEntity<String>("{\"status\":\"Data not found\"", headers, HttpStatus.OK);
             }
         } catch (IOException e) {
-            return new ResponseEntity<String>("{\"status\":\"User not found\"", headers, HttpStatus.OK);
+            return new ResponseEntity<String>("{\"status\":\"Data not found\"", headers, HttpStatus.OK);
         }
     }
 

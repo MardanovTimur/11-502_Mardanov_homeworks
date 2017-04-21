@@ -1,5 +1,6 @@
 package ru.timur.itis.service;
 
+import ru.timur.itis.dto.UserDto;
 import ru.timur.itis.model.Data;
 import ru.timur.itis.model.User;
 
@@ -10,21 +11,21 @@ import java.util.List;
  */
 public interface UserService {
 
-    List<User> findAll();
+    List<UserDto> findAll();
 
-    User get(int id);
+    UserDto get(int id);
 
     int saveObject(User object);
 
     void delete(int id);
 
-    User update(User object);
+    UserDto update(User object);
 
-    User addData(User user, Data data);
+    UserDto addData(User user, Data data);
 
-    User findByUsername(String name);
+    UserDto findByUsername(String name);
 
-    User getUserByName(String username);
+    UserDto getUserByName(String username);
 
-    User addDataForUser(User user, Data data);
+    UserDto addDataForUser(User user, Data data);
 }

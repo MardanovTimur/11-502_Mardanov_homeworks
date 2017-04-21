@@ -1,13 +1,11 @@
 package ru.timur.itis.dao;
 
+import ru.timur.itis.dto.UserDto;
 import ru.timur.itis.model.Data;
 import ru.timur.itis.model.User;
 
 import java.util.List;
 
-/**
- * Created by timur on 30.03.17.
- */
 public interface UsersDao extends CRUD<User>{
 
     User getUserByName(String name);
@@ -24,5 +22,5 @@ public interface UsersDao extends CRUD<User>{
 
     User findByUsername(String name);
 
-    List findAll();
+    List<UserDto> findAll();
 }

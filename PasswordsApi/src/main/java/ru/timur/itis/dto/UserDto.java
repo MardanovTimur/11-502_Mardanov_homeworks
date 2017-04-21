@@ -3,12 +3,12 @@ package ru.timur.itis.dto;
 /**
  * Created by timur on 10.04.17.
  */
-public class UsersDto {
+public class UserDto {
     private int id;
     private String name;
     private String username;
 
-    public UsersDto(int id, String name, String username) {
+    public UserDto(int id, String name, String username) {
         this.id = id;
         this.name = name;
         this.username = username;

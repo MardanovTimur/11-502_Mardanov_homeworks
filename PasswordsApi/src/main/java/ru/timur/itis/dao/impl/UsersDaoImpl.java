@@ -8,13 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import ru.timur.itis.converter.UsersConverter;
 import ru.timur.itis.dao.DataDao;
 import ru.timur.itis.dao.UsersDao;
+import ru.timur.itis.dto.UserDto;
 import ru.timur.itis.model.Data;
 import ru.timur.itis.model.User;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -88,9 +91,14 @@ public class UsersDaoImpl implements UsersDao {
         return (User) criteria.uniqueResult();
     }
 
-    public List<User> findAll() {
+    public List<UserDto> findAll() {
         Session session = session1.getSession();
-        return session.createCriteria(User.class).list();
+        Iterator<User> iterator = session.createCriteria(User.class).list().iterator();
+        ArrayList<UserDto> userDtos = new ArrayList<>();
+        while (iterator.hasNext()) {
+            userDtos.add(UsersConverter.convertToUserDto(iterator.next()));
+        }
+        return userDtos;
     }
 
 

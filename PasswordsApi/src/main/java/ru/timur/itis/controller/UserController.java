@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.timur.itis.dao.UsersDao;
+import ru.timur.itis.dto.UserDto;
 import ru.timur.itis.model.Data;
 import ru.timur.itis.model.User;
 import ru.timur.itis.service.UserService;
@@ -40,7 +41,7 @@ public class UserController {
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public ResponseEntity<String> getAllUsers() {
         HttpHeaders httpHeaders = getHeaders();
-        ArrayList<User> arrayList = (ArrayList<User>) userService.findAll();
+        ArrayList<UserDto> arrayList = (ArrayList<UserDto>) userService.findAll();
         ObjectMapper objectMapper = new ObjectMapper();
         String listAsJson = null;
         try {
@@ -59,8 +60,8 @@ public class UserController {
         try {
             User user = objectMapper.readValue(userValue, User.class);
             usersDao.saveObject(user);
-            user.setPassword("considered");
-            userAsJSON = objectMapper.writeValueAsString(user);
+            UserDto userDto = new UserDto(user.getId(), user.getName(), user.getUsername());
+            userAsJSON = objectMapper.writeValueAsString(userDto);
         } catch (IOException e) {
             return new ResponseEntity<String>("{\"operation\":\"error\"}", headers, HttpStatus.CONFLICT);
         }
@@ -74,9 +75,8 @@ public class UserController {
         String userAsJSON;
         try {
             User user = objectMapper.readValue(userValue, User.class);
-            usersDao.update(user);
-            user.setPassword("considered");
-            userAsJSON = objectMapper.writeValueAsString(user);
+            UserDto userDto = new UserDto(user.getId(), user.getName(), user.getUsername());
+            userAsJSON = objectMapper.writeValueAsString(userDto);
         } catch (IOException e) {
             return new ResponseEntity<String>("{\"operation\":\"error\"}", headers, HttpStatus.CONFLICT);
         }
@@ -89,7 +89,7 @@ public class UserController {
         ObjectMapper objectMapper = new ObjectMapper();
         String userAsJSON;
         userService.delete(userId);
-        return new ResponseEntity<String>("{\"status\":\"deleted\"}", headers, HttpStatus.OK);
+        return new ResponseEntity<String>("{\"status\":\""+userId+" deleted\"}", headers, HttpStatus.OK);
     }
 
 
@@ -98,7 +98,7 @@ public class UserController {
         HttpHeaders httpHeaders = getHeaders();
         if (parameter.equals("username")) {
             String postAsJSON = null;
-            User user = usersDao.findByUsername(username);
+            UserDto user = userService.findByUsername(username);
             ObjectMapper objectMapper = new ObjectMapper();
             try {
                 httpHeaders.set("testHeader", "hello_header");
@@ -110,7 +110,7 @@ public class UserController {
         } else {
             if (parameter.equals("id")) {
                 String postAsJSON = null;
-                User user = usersDao.get(Integer.parseInt(username));
+                UserDto user = userService.get(Integer.parseInt(username));
                 ObjectMapper objectMapper = new ObjectMapper();
                 try {
                     httpHeaders.set("testHeader", "hello_header");
