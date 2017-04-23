@@ -16,7 +16,7 @@
         </init-param>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>ru.timur.itis.spring.config.SpringConfig</param-value>
+            <param-value>ru.itis.inform.spring.config.SpringConfig</param-value>
         </init-param>
 
     </servlet>
