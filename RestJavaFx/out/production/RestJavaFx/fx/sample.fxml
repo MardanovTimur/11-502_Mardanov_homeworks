@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<Pane cache="false" disable="false" focusTraversable="false" mouseTransparent="false" prefHeight="400.0"
+      prefWidth="600.0" rotate="0.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2"
+      fx:controller="fx.Controller">
+    <Button fx:id="signIn" layoutX="373.0" layoutY="269.0" mnemonicParsing="false" text="Sign In"/>
+    <MenuBar fx:id="menu" layoutX="0.0" layoutY="0.0" prefWidth="600.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="File">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Close"/>
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Delete"/>
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="About"/>
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+    <Label layoutX="174.0" layoutY="175.0" text="Login"/>
+    <Label layoutX="174.0" layoutY="222.0" text="Password"/>
+    <TextField fx:id="login" layoutX="230.0" layoutY="172.0" prefWidth="200.0"/>
+    <TextField fx:id="password" layoutX="230.0" layoutY="219.0" prefWidth="200.0"/>
+    <Text layoutX="233.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password Keeper">
+        <font>
+            <Font name="Georgia Bold" size="15.0"/>
+        </font>
+    </Text>
+    <Button fx:id="signUp" layoutX="368.0" layoutY="306.0" mnemonicParsing="false" text="Sign Up"/>
+</Pane>
