@@ -1,0 +1,7 @@
+ru\itis\inform\Main.class
+ru\itis\inform\model\Data.class
+ru\itis\inform\view\DataController.class
+ru\itis\inform\reg\RegisterController.class
+ru\itis\inform\reg\RegisterFrame.class
+ru\itis\inform\Controller.class
+ru\itis\inform\model\User.class

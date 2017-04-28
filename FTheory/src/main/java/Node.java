@@ -17,6 +17,16 @@ public class Node {
         this.isNegative = isNegative;
     }
 
+    public Node(Character key, boolean isNegative, boolean isBound) {
+        this.key = key;
+        this.isNegative = isNegative;
+        this.isBound = isBound;
+    }
+
+    public boolean getNegative() {
+        return isNegative();
+    }
+
     public Character getKey() {
         return key;
     }
