@@ -6,8 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import org.springframework.web.client.RestTemplate;
-import ru.itis.inform.ServerModel.User;
-import ru.itis.inform.ServerModel.UserForRegister;
+import ru.itis.inform.model.ServerModel.User;
+import ru.itis.inform.model.ServerModel.UserForRegister;
 
 
 /**

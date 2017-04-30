@@ -1,4 +1,4 @@
-package ru.itis.inform.ServerModel;
+package ru.itis.inform.model.ServerModel;
 
 public class UserForRegister {
     private String name;
