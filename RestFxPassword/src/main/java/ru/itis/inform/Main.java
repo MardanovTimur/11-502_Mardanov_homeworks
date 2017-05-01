@@ -10,8 +10,11 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+    public static final Main main = new Main();
+
     private Stage primaryStage;
     private Pane rootLayout;
+    private static Controller controller = new Controller();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -20,21 +23,14 @@ public class Main extends Application {
         initRootLayout();
     }
 
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
-
-    public Pane getRootLayout() {
-        return rootLayout;
-    }
-
     public void initRootLayout() {
         try {
             // Загружаем корневой макет из fxml файла.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getClassLoader().getResource("sample.fxml"));
             rootLayout = (Pane) loader.load();
-
+            controller = (Controller)loader.getController();
+            setController((Controller) loader.getController());
             // Отображаем сцену, содержащую корневой макет.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
@@ -44,6 +40,17 @@ public class Main extends Application {
         }
     }
 
+    public static Main getMain() {
+        return main;
+    }
+
+    public Controller getController() {
+        return controller;
+    }
+
+    public static void setController(Controller controller) {
+        Main.controller = controller;
+    }
 
     public static void main(String[] args) {
         launch(args);

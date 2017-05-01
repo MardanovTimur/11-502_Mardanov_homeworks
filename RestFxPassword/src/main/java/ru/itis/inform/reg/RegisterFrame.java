@@ -13,16 +13,17 @@ import java.io.IOException;
  */
 public class RegisterFrame extends Application{
 
-    private Stage primaryStage;
+    public static Stage primaryStage;
     private Pane rootLayout;
+    private RegisterController registerController;
 
     public void initRootLayout() {
         try {
             // Загружаем корневой макет из fxml файла.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getClassLoader().getResource("register.fxml"));
+            loader.setLocation(getClass().getClassLoader().getResource  ("register.fxml"));
             rootLayout = (Pane) loader.load();
-
+            registerController = (RegisterController) loader.getController();
             // Отображаем сцену, содержащую корневой макет.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
@@ -32,6 +33,9 @@ public class RegisterFrame extends Application{
         }
     }
 
+    public RegisterController getRegisterController() {
+        return registerController;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {

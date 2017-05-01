@@ -28,4 +28,6 @@ public interface UserService {
     UserDto getUserByName(String username);
 
     UserDto addDataForUser(User user, Data data);
+
+    String login(String password, String login);
 }

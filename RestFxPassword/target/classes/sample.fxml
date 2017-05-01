@@ -32,14 +32,14 @@
     </MenuBar>
     <Label layoutX="174.0" layoutY="175.0" text="Login" />
     <Label layoutX="174.0" layoutY="222.0" text="Password" />
-    <TextField fx:id="login" layoutX="230.0" layoutY="172.0" prefWidth="200.0" promptText="username" />
+    <TextField fx:id="login" layoutX="230.0" layoutY="172.0" prefWidth="200.0" promptText="Введите свой username" />
     <Text layoutX="233.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password Keeper">
       <font>
         <Font name="Georgia Bold" size="15.0" />
       </font>
     </Text>
     <Button fx:id="signUp" layoutX="174.0" layoutY="269.0" mnemonicParsing="false" onAction="#signUpFrame" text="Sign Up" />
-    <PasswordField fx:id="password" layoutX="230.0" layoutY="219.0" prefWidth="200.0" promptText="your password" />
+    <PasswordField fx:id="password" layoutX="230.0" layoutY="219.0" prefWidth="200.0" promptText="Введите пароль" />
     <TextArea fx:id="message" disable="false" editable="false" focusTraversable="true" layoutX="174.0" layoutY="301.0" mouseTransparent="false" opacity="1.0" prefHeight="77.0" prefWidth="256.0" visible="false" wrapText="true" />
   </children>
 </Pane>

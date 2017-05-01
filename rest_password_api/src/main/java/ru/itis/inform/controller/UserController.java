@@ -125,20 +125,20 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/users/login", method = RequestMethod.POST)
-    @ResponseBody
+    @PostMapping(value ="/users/login")
     public String login(@RequestHeader("login") String login, @RequestHeader("password") String password,
                         HttpServletResponse response) {
         User user = usersDao.findByUsername(login);
+        HttpHeaders headers = getHeaders();
         if (user != null) {
             if (user.getPassword().equals(password)) {
-                response.setHeader("Token", String.valueOf(user.hashCode()));
-                return "{\"login\":\"success\"}";
+                headers.add("Token", String.valueOf(user.hashCode()));
+                return new ResponseEntity<String>("{\"login\":\"success\"}", httpHeaders, HttpStatus.FOUND);
             } else {
-                return "{\"login\":\"failed\"}";
+                return "{\"login\":\"Incorrect password\"}";
             }
         } else {
-            return "{\"login\":\"failed\"}";
+            return "{\"login\":\"User not found\"}";
         }
     }
 

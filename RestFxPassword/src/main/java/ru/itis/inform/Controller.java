@@ -28,7 +28,12 @@ public class Controller {
     }
 
     public void logIn(ActionEvent actionEvent) {
-        System.out.println(password.getText());
+
+    }
+
+    public void setLoginPassword(String username, String password) {
+        login.setText(username);
+        this.password.setText(password);
     }
 
 }
