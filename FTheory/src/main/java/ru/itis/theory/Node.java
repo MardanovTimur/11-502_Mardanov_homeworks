@@ -1,3 +1,5 @@
+package ru.itis.theory;
+
 /**
  * Created by alisa on 17.04.2017.
  */
@@ -10,6 +12,20 @@ public class Node {
     private boolean isBound = true;
 
     public Node() {
+    }
+
+    public static String getBinary(int i) {
+        String binCode = "";
+        while (i > 0) {
+            binCode = binCode.concat(String.valueOf(i % 2));
+            i = i / 2;
+        }
+
+        while (binCode.length()!=4) {
+            binCode = binCode.concat("0");
+        }
+
+        return new StringBuilder(binCode).reverse().toString();
     }
 
     public Node(char key, boolean isNegative) {

@@ -1,3 +1,5 @@
+package ru.itis.theory;
+
 import java.util.*;
 
 /**
@@ -67,7 +69,7 @@ public class Quine4Params {
                         r = "";
                     }
                     if (j != 0 && str.length() > 0 && firstIsSet) {
-                        str = str.concat("*");
+                        str = str.concat("");
                     }
                     str = str.concat(r.concat(nodesP[i][j].getKey().toString()));
                     firstIsSet = true;

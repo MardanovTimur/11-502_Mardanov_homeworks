@@ -7,6 +7,51 @@
     <groupId>ru.itis.theory</groupId>
     <artifactId>FTheory</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-
+    <packaging>jar</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                <artifactId>launch4j-maven-plugin</artifactId>
+                <version>1.7.16</version>
+                <executions>
+                    <execution>
+                        <id>l4j-console</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>launch4j</goal>
+                        </goals>
+                        <configuration>
+                            <headerType>console</headerType>
+                            <outfile>target/DNF.exe</outfile>
+                            <jar>target/${project.artifactId}-${project.version}.jar</jar>
+                            <!-- if <dontWrapJar>true</dontWrapJar> change to this conf <jar>${project.artifactId}-${project.version}.jar</jar> -->
+                            <dontWrapJar>false</dontWrapJar>
+                            <errTitle>Error in launch4j plugin</errTitle>
+                            <classPath>
+                                <mainClass>ru.itis.theory.Test</mainClass>
+                            </classPath>
+                            <jre>
+                                <minVersion>1.8.0_121</minVersion>
+                                <initialHeapSize>512</initialHeapSize>
+                                <maxHeapSize>1024</maxHeapSize>
+                            </jre>
+                            <versionInfo>
+                                <fileVersion>1.0.0.0</fileVersion>
+                                <txtFileVersion>1.0.0.0</txtFileVersion>
+                                <fileDescription>des</fileDescription>
+                                <copyright>Copyright(Timur Mardanov and Ivan Shevyakov) (c) 2017</copyright>
+                                <companyName>comp</companyName>
+                                <productVersion>3.0.0.0</productVersion>
+                                <txtProductVersion>${project.version}</txtProductVersion>
+                                <productName>DNF</productName>
+                                <internalName>DNF</internalName>
+                                <originalFilename>DNF.exe</originalFilename>
+                            </versionInfo>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

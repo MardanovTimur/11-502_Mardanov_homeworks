@@ -1,21 +1,35 @@
-import java.lang.reflect.Array;
+package ru.itis.theory;
+
 import java.util.ArrayList;
 
 public class Typic {
 
     private static boolean table[][] = new boolean[1000][1000];
 
-    public static void main(String[] args) {
-        Node[][] nodes = new Node[2][4];
-        Node node1 = new Node('x',true,false);
-        Node node2 = new Node('y',true,false);
-        Node node3 = new Node('z',true,false);
-        Node node4 = new Node('t',true,false);
-        Node node5 = new Node('t',false,false);
-        nodes[0] = new Node[]{node1,node2,node3,node4};
-        nodes[1] = new Node[]{node1,node2,node3,node5};
-        String function = "1100000000000000";
-        buildTypic(function,nodes,2);
+    public static void samp(String function,Node[][] nodes, int size) {
+
+        /*ru.itis.theory.Node[][] nodes = new ru.itis.theory.Node[size+1][4];
+        ru.itis.theory.Node node1 = new ru.itis.theory.Node('x',true,false);
+        ru.itis.theory.Node node11 = new ru.itis.theory.Node('x',true,true);
+        ru.itis.theory.Node node2 = new ru.itis.theory.Node('y',true,false);
+        ru.itis.theory.Node node9 = new ru.itis.theory.Node('y',true,true);
+        ru.itis.theory.Node node10 = new ru.itis.theory.Node('t',false,true);
+        ru.itis.theory.Node node3 = new ru.itis.theory.Node('z',true,true);
+        ru.itis.theory.Node node4 = new ru.itis.theory.Node('t',true,true);
+        ru.itis.theory.Node node5 = new ru.itis.theory.Node('z',true,false);
+        ru.itis.theory.Node node6 = new ru.itis.theory.Node('t',true,false);
+        ru.itis.theory.Node node7 = new ru.itis.theory.Node('x',false,false);
+        ru.itis.theory.Node node8 = new ru.itis.theory.Node('y',false,false);
+        ru.itis.theory.Node node13 = new ru.itis.theory.Node('t',false,false);
+        ru.itis.theory.Node node14 = new ru.itis.theory.Node('z',false,false);
+        nodes[0] = new ru.itis.theory.Node[]{node1,node2,node3,node4};
+        nodes[1] = new ru.itis.theory.Node[]{node11,node2,node3,node6};
+        nodes[2] = new ru.itis.theory.Node[]{node1,node9,node5,node13};
+        nodes[3] = new ru.itis.theory.Node[]{node7,node9,node3,node6};
+        nodes[4] = new ru.itis.theory.Node[]{node7,node8,node14,node4};
+        *//*String function = "1111010010101011";
+        */
+        buildTypic(function,nodes, size);
     }
 
     public static void buildTypic(String function, Node[][] nodes, int size) {
@@ -44,7 +58,7 @@ public class Typic {
                 list.add(nodes1);
             }
         }
-        System.out.println(list);
+        //System.out.println(list);
         ArrayList<ArrayList<ArrayList<Node[]>>> list1 = list;
 
         for (int i = 1; i < list1.size(); i++){
@@ -65,18 +79,21 @@ public class Typic {
                 }
 
             }
-        list1.set(i,buildStolbec(stolbec));
+            list1.set(i,buildStolbec(stolbec));
         }
 
-        System.out.println(list1);
+        //System.out.println(list1);
+        System.out.println("Тупиковые");
         show(list1.get(list1.size()-1));
+        System.out.println("Минимальные");
+        int count = showMin(list1.get(list1.size()-1));
     }
 
 
     public static boolean isOne(int i, Node[] nodes) {
         String kon = Node.getBinary(i);
         for (int k = 0; k < nodes.length; k++) {
-            if ((kon.charAt(k) == '1' && nodes[k].getNegative() || (kon.charAt(k) == '0' && !nodes[k].getNegative())) && !nodes[k].isBound()) {
+            if ((kon.charAt(k) == '1' && nodes[k].getNegative() || (kon.charAt(k) == '0' && !nodes[k].getNegative())) && nodes[k].isBound()) {
                 return false;
             }
         }
@@ -86,7 +103,7 @@ public class Typic {
 
         for (int i=0; i<stolbec.size();i++){
             if (ks.size()==stolbec.get(i).size()){
-                if (ks.containsAll(stolbec.get(i))&&stolbec.containsAll(ks)){
+                if (ks.containsAll(stolbec.get(i))&&stolbec.get(i).containsAll(ks)){
                     return true;
                 }
             }
@@ -109,12 +126,19 @@ public class Typic {
             ArrayList<Node[]> ks = stolbec.get(i);
             for (int j=i+1;j<stolbec.size();j++){
                 ArrayList<Node[]> ks1 = stolbec.get(j);
+                int count = 0;
                 if (ks1.containsAll(ks) && !excces.contains(ks1)){
                     excces.add(ks1);
+                    count++;
                 }
                 if (ks.containsAll(ks1) && !excces.contains(ks)){
                     excces.add(ks);
+                    count++;
                 }
+                if (count==2) {
+                    excces.remove(ks1);
+                }
+
             }
         }
         stolbec.removeAll(excces);
@@ -125,7 +149,7 @@ public class Typic {
             for (int j=0; j<stolbec.get(i).size();j++){
                 showNode(stolbec.get(i).get(j));
                 if (j!=stolbec.get(i).size()-1) {
-                    System.out.print("+");
+                    System.out.print(" v ");
                 }
             }
             System.out.println();
@@ -133,7 +157,7 @@ public class Typic {
     }
     public static void showNode(Node[] nodes){
         for (Node node: nodes){
-            if (!node.isBound()){
+            if (node.isBound()){
                 if (node.getNegative()){
                     System.out.print("-"+node.getKey());
                 }
@@ -142,6 +166,37 @@ public class Typic {
                 }
             }
         }
+    }
+    public static int showMin(ArrayList<ArrayList<Node[]>> stolbec){
+        int min=countVar(stolbec.get(0));
+        for (int i=0; i<stolbec.size();i++){
+            if (countVar(stolbec.get(i))<min){
+                min=countVar(stolbec.get(i));
+            }
+        }
+        for (int i=0; i<stolbec.size();i++){
+            if (countVar(stolbec.get(i))==min){
+                for (int j=0; j<stolbec.get(i).size();j++){
+                    showNode(stolbec.get(i).get(j));
+                    if (j!=stolbec.get(i).size()-1) {
+                        System.out.print(" v ");
+                    }
+                }
+                System.out.println();
+            }
+        }
+        return min;
+    }
+    public static int countVar(ArrayList<Node[]> ks){
+        int count = 0;
+        for (Node[] nodes: ks){
+            for (int i=0; i<nodes.length;i++){
+                if (nodes[i].isBound()){
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
 
