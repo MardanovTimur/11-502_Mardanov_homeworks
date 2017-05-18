@@ -6,21 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.itis.inform.dao.UsersDao;
 import ru.itis.inform.dto.UserDto;
-import ru.itis.inform.model.Data;
 import ru.itis.inform.model.User;
 import ru.itis.inform.model.UserForRegister;
 import ru.itis.inform.service.UserService;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
-import java.util.List;
 
 /**
  * Created by timur on 30.03.17.
@@ -56,7 +52,7 @@ public class UserController {
         try {
             UserForRegister user = objectMapper.readValue(userValue, UserForRegister.class);
             if (user.getPassword().equals(user.getPassword_again())) {
-                User userA = usersDao.save(new User(user.getName(),user.getUsername(),user.getPassword(),"",new ArrayList<>()));
+                User userA = usersDao.save(new User(user.getName(), user.getUsername(), user.getPassword(), "", new ArrayList<>()));
                 UserDto userDto = new UserDto(userA.getId(), userA.getName(), userA.getUsername());
                 userAsJSON = objectMapper.writeValueAsString(userDto);
             } else {
@@ -89,7 +85,7 @@ public class UserController {
         ObjectMapper objectMapper = new ObjectMapper();
         String userAsJSON;
         userService.delete(userId);
-        return new ResponseEntity<String>("{\"status\":\""+userId+" deleted\"}", headers, HttpStatus.OK);
+        return new ResponseEntity<String>("{\"status\":\"" + userId + " deleted\"}", headers, HttpStatus.OK);
     }
 
 
@@ -125,20 +121,22 @@ public class UserController {
     }
 
 
-    @PostMapping(value ="/users/login")
-    public String login(@RequestHeader("login") String login, @RequestHeader("password") String password,
-                        HttpServletResponse response) {
+    @PostMapping(value = "/users/login")
+    public ResponseEntity<String> login(@RequestHeader("login") String login, @RequestHeader("password") String password,
+                                        HttpServletResponse response) {
         User user = usersDao.findByUsername(login);
         HttpHeaders headers = getHeaders();
         if (user != null) {
-            if (user.getPassword().equals(password)) {
-                headers.add("Token", String.valueOf(user.hashCode()));
-                return new ResponseEntity<String>("{\"login\":\"success\"}", httpHeaders, HttpStatus.FOUND);
-            } else {
-                return "{\"login\":\"Incorrect password\"}";
+            String token = "";
+            try {
+                token = userService.login(password, login);
+            } catch (Exception e) {
+                return new ResponseEntity<String>("{\"login\":\"failed\"}", headers, HttpStatus.OK);
             }
+            headers.add("Auth-Token", token);
+            return new ResponseEntity<String>("{\"login\":\"success\"}", headers, HttpStatus.OK);
         } else {
-            return "{\"login\":\"User not found\"}";
+            return new ResponseEntity<String>("{\"login\":\"failed\"}", headers, HttpStatus.OK);
         }
     }
 

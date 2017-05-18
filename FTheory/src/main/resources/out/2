@@ -1,0 +1,8 @@
+Совершенная ДНФ:
+-x-y-zt v -x-yzt v -xy-z-t v -xyz-t v x-y-z-t v x-y-zt v x-yzt v xy-z-t v xy-zt
+Сокращенная ДНФ:
+-xy-t v x-z v -yt v y-z-t
+Тупиковые
+x-z v -yt v -xy-t
+Минимальные
+x-z v -yt v -xy-t

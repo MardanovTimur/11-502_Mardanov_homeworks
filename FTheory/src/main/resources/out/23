@@ -1,0 +1,82 @@
+Совершенная ДНФ:
+-x-y-zt v -x-yz-t v -x-yzt v -xy-z-t v -xy-zt v -xyz-t v x-y-z-t v x-y-zt v x-yz-t v xy-z-t
+Сокращенная ДНФ:
+-x-yz v -xy-t v x-y-t v -x-zt v x-z-t v y-z-t v -yz-t v x-y-z v -y-zt v -x-yt v -xz-t v -xy-z
+Тупиковые
+x-z-t v x-y-t v x-y-z v -xy-t v -x-zt v -x-yz
+x-z-t v x-y-t v x-y-z v -xy-t v -xy-z v -x-yt v -x-yz
+x-z-t v x-y-t v x-y-z v -xz-t v -x-zt v -xy-t v -x-yt
+x-z-t v x-y-t v x-y-z v -xz-t v -xy-z v -x-yz v -x-zt
+x-z-t v x-y-t v x-y-z v -xz-t v -xy-z v -x-yt
+x-z-t v x-y-t v -y-zt v -xy-t v -x-zt v -x-yz
+x-z-t v x-y-t v -y-zt v -xy-t v -xy-z v -x-yz
+x-z-t v x-y-t v -y-zt v -xz-t v -x-zt v -xy-t v -x-yt
+x-z-t v x-y-t v -y-zt v -xz-t v -xy-z v -x-yz
+x-z-t v x-y-t v -y-zt v -xz-t v -xy-z v -x-yt
+x-z-t v -yz-t v x-y-z v -xy-t v -x-zt v -x-yz
+x-z-t v -yz-t v x-y-z v -xy-t v -x-zt v -x-yt
+x-z-t v -yz-t v x-y-z v -xy-t v -xy-z v -x-yt
+x-z-t v -yz-t v x-y-z v -xz-t v -xy-z v -x-yz v -x-zt
+x-z-t v -yz-t v x-y-z v -xz-t v -xy-z v -x-yt
+x-z-t v -yz-t v -y-zt v -xy-t v -x-zt v -x-yz
+x-z-t v -yz-t v -y-zt v -xy-t v -x-zt v -x-yt
+x-z-t v -yz-t v -y-zt v -xy-t v -xy-z v -x-yz
+x-z-t v -yz-t v -y-zt v -xy-t v -xy-z v -x-yt
+x-z-t v -yz-t v -y-zt v -xz-t v -xy-z v -x-yz
+x-z-t v -yz-t v -y-zt v -xz-t v -xy-z v -x-yt
+y-z-t v x-y-t v x-y-z v -xy-t v -x-zt v -x-yz
+y-z-t v x-y-t v x-y-z v -xy-t v -xy-z v -x-yt v -x-yz
+y-z-t v x-y-t v x-y-z v -xz-t v -x-zt v -x-yz
+y-z-t v x-y-t v x-y-z v -xz-t v -x-zt v -x-yt
+y-z-t v x-y-t v x-y-z v -xz-t v -xy-z v -x-yt
+y-z-t v x-y-t v -y-zt v -xy-t v -x-zt v -x-yz
+y-z-t v x-y-t v -y-zt v -xy-t v -xy-z v -x-yz
+y-z-t v x-y-t v -y-zt v -xz-t v -x-zt v -x-yz
+y-z-t v x-y-t v -y-zt v -xz-t v -x-zt v -x-yt
+y-z-t v x-y-t v -y-zt v -xz-t v -xy-z v -x-yz
+y-z-t v x-y-t v -y-zt v -xz-t v -xy-z v -x-yt
+y-z-t v -yz-t v x-y-z v -xy-t v -x-zt v -x-yz
+y-z-t v -yz-t v x-y-z v -xy-t v -x-zt v -x-yt
+y-z-t v -yz-t v x-y-z v -xy-t v -xy-z v -x-yt
+y-z-t v -yz-t v x-y-z v -xz-t v -x-zt v -x-yz
+y-z-t v -yz-t v x-y-z v -xz-t v -x-zt v -x-yt
+y-z-t v -yz-t v x-y-z v -xz-t v -xy-z v -x-yt
+y-z-t v -yz-t v -y-zt v x-y-t v -xy-t v -x-zt v -x-yt
+y-z-t v -yz-t v -y-zt v x-y-t v -xy-t v -xy-z v -x-yt
+y-z-t v -yz-t v -y-zt v x-z-t v -xz-t v -x-zt v -x-yz
+y-z-t v -yz-t v -y-zt v x-z-t v -xz-t v -x-zt v -x-yt
+y-z-t v -yz-t v -y-zt v x-y-z v -xy-t v -xy-z v -x-yz
+y-z-t v -yz-t v -y-zt v x-y-z v -xz-t v -xy-z v -x-yz
+Минимальные
+x-z-t v x-y-t v x-y-z v -xy-t v -x-zt v -x-yz
+x-z-t v x-y-t v x-y-z v -xz-t v -xy-z v -x-yt
+x-z-t v x-y-t v -y-zt v -xy-t v -x-zt v -x-yz
+x-z-t v x-y-t v -y-zt v -xy-t v -xy-z v -x-yz
+x-z-t v x-y-t v -y-zt v -xz-t v -xy-z v -x-yz
+x-z-t v x-y-t v -y-zt v -xz-t v -xy-z v -x-yt
+x-z-t v -yz-t v x-y-z v -xy-t v -x-zt v -x-yz
+x-z-t v -yz-t v x-y-z v -xy-t v -x-zt v -x-yt
+x-z-t v -yz-t v x-y-z v -xy-t v -xy-z v -x-yt
+x-z-t v -yz-t v x-y-z v -xz-t v -xy-z v -x-yt
+x-z-t v -yz-t v -y-zt v -xy-t v -x-zt v -x-yz
+x-z-t v -yz-t v -y-zt v -xy-t v -x-zt v -x-yt
+x-z-t v -yz-t v -y-zt v -xy-t v -xy-z v -x-yz
+x-z-t v -yz-t v -y-zt v -xy-t v -xy-z v -x-yt
+x-z-t v -yz-t v -y-zt v -xz-t v -xy-z v -x-yz
+x-z-t v -yz-t v -y-zt v -xz-t v -xy-z v -x-yt
+y-z-t v x-y-t v x-y-z v -xy-t v -x-zt v -x-yz
+y-z-t v x-y-t v x-y-z v -xz-t v -x-zt v -x-yz
+y-z-t v x-y-t v x-y-z v -xz-t v -x-zt v -x-yt
+y-z-t v x-y-t v x-y-z v -xz-t v -xy-z v -x-yt
+y-z-t v x-y-t v -y-zt v -xy-t v -x-zt v -x-yz
+y-z-t v x-y-t v -y-zt v -xy-t v -xy-z v -x-yz
+y-z-t v x-y-t v -y-zt v -xz-t v -x-zt v -x-yz
+y-z-t v x-y-t v -y-zt v -xz-t v -x-zt v -x-yt
+y-z-t v x-y-t v -y-zt v -xz-t v -xy-z v -x-yz
+y-z-t v x-y-t v -y-zt v -xz-t v -xy-z v -x-yt
+y-z-t v -yz-t v x-y-z v -xy-t v -x-zt v -x-yz
+y-z-t v -yz-t v x-y-z v -xy-t v -x-zt v -x-yt
+y-z-t v -yz-t v x-y-z v -xy-t v -xy-z v -x-yt
+y-z-t v -yz-t v x-y-z v -xz-t v -x-zt v -x-yz
+y-z-t v -yz-t v x-y-z v -xz-t v -x-zt v -x-yt
+y-z-t v -yz-t v x-y-z v -xz-t v -xy-z v -x-yt

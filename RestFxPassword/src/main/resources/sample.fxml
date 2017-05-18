@@ -40,6 +40,6 @@
     </Text>
     <Button fx:id="signUp" layoutX="174.0" layoutY="269.0" mnemonicParsing="false" onAction="#signUpFrame" text="Sign Up" />
     <PasswordField fx:id="password" layoutX="230.0" layoutY="219.0" prefWidth="200.0" promptText="Введите пароль" />
-    <TextArea fx:id="message" disable="false" editable="false" focusTraversable="true" layoutX="174.0" layoutY="301.0" mouseTransparent="false" opacity="1.0" prefHeight="77.0" prefWidth="256.0" visible="false" wrapText="true" />
+    <TextArea fx:id="message" editable="false" layoutX="174.0" layoutY="301.0" prefHeight="63.0" prefWidth="256.0" visible="false" wrapText="true" />
   </children>
 </Pane>

@@ -1,0 +1,18 @@
+Совершенная ДНФ:
+-x-y-zt v -x-yzt v -xy-z-t v -xy-zt v -xyz-t v x-y-z-t v x-y-zt v xy-z-t
+Сокращенная ДНФ:
+-y-zt v y-z-t v -x-zt v -x-yt v -xy-z v x-y-z v x-z-t v -xy-t
+Тупиковые
+y-z-t v x-y-z v -xy-t v -x-zt v -x-yt
+y-z-t v x-y-z v -xy-t v -xy-z v -x-yt
+x-z-t v -y-zt v -xy-t v -x-zt v -x-yt
+x-z-t v -y-zt v -xy-t v -xy-z v -x-yt
+x-z-t v x-y-z v -xy-t v -x-zt v -x-yt
+x-z-t v x-y-z v -xy-t v -xy-z v -x-yt
+Минимальные
+y-z-t v x-y-z v -xy-t v -x-zt v -x-yt
+y-z-t v x-y-z v -xy-t v -xy-z v -x-yt
+x-z-t v -y-zt v -xy-t v -x-zt v -x-yt
+x-z-t v -y-zt v -xy-t v -xy-z v -x-yt
+x-z-t v x-y-z v -xy-t v -x-zt v -x-yt
+x-z-t v x-y-z v -xy-t v -xy-z v -x-yt

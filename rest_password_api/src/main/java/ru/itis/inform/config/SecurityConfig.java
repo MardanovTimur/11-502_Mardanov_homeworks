@@ -7,8 +7,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,6 +22,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.transaction.PlatformTransactionManager;
 import ru.itis.inform.model.Data;
 import ru.itis.inform.model.User;
 import ru.itis.inform.security.details.UserDetailsServiceImpl;
@@ -31,6 +36,7 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 @ComponentScan("ru.itis.inform")
+@EnableJpaRepositories("ru.itis.inform.dao")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
@@ -95,5 +101,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public Filter tokenAuthenticationFilter(AuthenticationManager authenticationManager) {
         return new TokenAuthFilter(authenticationManager);
+    }
+
+    @Bean
+    PlatformTransactionManager transactionManager() {
+        return new JpaTransactionManager(entityManagerFactory().getObject());
+    }
+
+    @Bean
+    LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean =
+                new LocalContainerEntityManagerFactoryBean();
+
+        localContainerEntityManagerFactoryBean.setDataSource(dataSource());
+        localContainerEntityManagerFactoryBean.setJpaVendorAdapter(hibernateJpaVendorAdapter());
+        localContainerEntityManagerFactoryBean.setPackagesToScan("ru.itis.inform.model");
+        return localContainerEntityManagerFactoryBean;
+    }
+
+    @Bean
+    HibernateJpaVendorAdapter hibernateJpaVendorAdapter() {
+        HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
+        adapter.setShowSql(true);
+        return adapter;
     }
 }

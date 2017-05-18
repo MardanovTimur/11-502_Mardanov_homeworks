@@ -74,7 +74,6 @@ public class UserServiceImpl implements UserService {
     public String login(String password, String login) {
         // TODO: проверить, найден ли пользователь
         User registeredUser = usersDao.findByLogin(login);
-
         if (encoder.matches(password, registeredUser.getPassword())) {
             String token = generator.generateToken();
             usersDao.updateToken(registeredUser.getId(), token);

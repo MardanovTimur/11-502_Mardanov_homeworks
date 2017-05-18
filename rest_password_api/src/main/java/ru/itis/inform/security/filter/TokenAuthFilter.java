@@ -25,9 +25,8 @@ public class TokenAuthFilter extends GenericFilterBean {
     private AuthenticationManager authenticationManager;
 
     /**
-    @Autowired
-    private AuthenticationEntryPoint authenticationEntryPoint;
-    **/
+     * @Autowired private AuthenticationEntryPoint authenticationEntryPoint;
+     **/
 
     public TokenAuthFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
@@ -58,6 +57,6 @@ public class TokenAuthFilter extends GenericFilterBean {
         System.out.println(request.getMethod());
         return request.getRequestURI().startsWith("/users") && request.getMethod().equals("POST")
                 || request.getRequestURI().endsWith("favicon.ico")
-                || request.getRequestURI().startsWith("/login") && request.getMethod().equals("POST");
+                || request.getRequestURI().startsWith("/users/login") && request.getMethod().equals("POST");
     }
 }

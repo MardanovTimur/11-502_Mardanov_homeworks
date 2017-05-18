@@ -1,12 +1,16 @@
 package ru.itis.theory;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class Typic {
 
+    public static ArrayList<ArrayList<Node[]>> tupics = new ArrayList<ArrayList<Node[]>>();
+    public static ArrayList<ArrayList<Node[]>> min = new ArrayList<ArrayList<Node[]>>();
+
     private static boolean table[][] = new boolean[1000][1000];
 
-    public static void samp(String function,Node[][] nodes, int size) {
+    public static void samp(String function, Node[][] nodes, int size, PrintWriter pw) {
 
         /*ru.itis.theory.Node[][] nodes = new ru.itis.theory.Node[size+1][4];
         ru.itis.theory.Node node1 = new ru.itis.theory.Node('x',true,false);
@@ -29,10 +33,10 @@ public class Typic {
         nodes[4] = new ru.itis.theory.Node[]{node7,node8,node14,node4};
         *//*String function = "1111010010101011";
         */
-        buildTypic(function,nodes, size);
+        buildTypic(function,nodes, size, pw);
     }
 
-    public static void buildTypic(String function, Node[][] nodes, int size) {
+    public static void buildTypic(String function, Node[][] nodes, int size,PrintWriter pw) {
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < function.length(); j++) {
@@ -83,10 +87,12 @@ public class Typic {
         }
 
         //System.out.println(list1);
-        System.out.println("Тупиковые");
-        show(list1.get(list1.size()-1));
-        System.out.println("Минимальные");
-        int count = showMin(list1.get(list1.size()-1));
+        pw.println("Тупиковые");
+        show(list1.get(list1.size()-1),pw);
+        tupics = list1.get(list1.size()-1);
+        pw.println("Минимальные");
+        int count = showMin(list1.get(list1.size()-1),pw);
+        min = list1.get(list1.size()-1);
     }
 
 
@@ -144,30 +150,30 @@ public class Typic {
         stolbec.removeAll(excces);
         return stolbec;
     }
-    public static void show(ArrayList<ArrayList<Node[]>> stolbec){
+    public static void show(ArrayList<ArrayList<Node[]>> stolbec,PrintWriter pw){
         for (int i=0; i<stolbec.size();i++){
             for (int j=0; j<stolbec.get(i).size();j++){
-                showNode(stolbec.get(i).get(j));
+                showNode(stolbec.get(i).get(j),pw);
                 if (j!=stolbec.get(i).size()-1) {
-                    System.out.print(" v ");
+                    pw.print(" v ");
                 }
             }
-            System.out.println();
+            pw.println();
         }
     }
-    public static void showNode(Node[] nodes){
+    public static void showNode(Node[] nodes,PrintWriter pw){
         for (Node node: nodes){
             if (node.isBound()){
                 if (node.getNegative()){
-                    System.out.print("-"+node.getKey());
+                    pw.print("-"+node.getKey());
                 }
                 else{
-                    System.out.print(node.getKey());
+                    pw.print(node.getKey());
                 }
             }
         }
     }
-    public static int showMin(ArrayList<ArrayList<Node[]>> stolbec){
+    public static int showMin(ArrayList<ArrayList<Node[]>> stolbec,PrintWriter pw){
         int min=countVar(stolbec.get(0));
         for (int i=0; i<stolbec.size();i++){
             if (countVar(stolbec.get(i))<min){
@@ -177,12 +183,12 @@ public class Typic {
         for (int i=0; i<stolbec.size();i++){
             if (countVar(stolbec.get(i))==min){
                 for (int j=0; j<stolbec.get(i).size();j++){
-                    showNode(stolbec.get(i).get(j));
+                    showNode(stolbec.get(i).get(j),pw);
                     if (j!=stolbec.get(i).size()-1) {
-                        System.out.print(" v ");
+                        pw.print(" v ");
                     }
                 }
-                System.out.println();
+                pw.println();
             }
         }
         return min;
