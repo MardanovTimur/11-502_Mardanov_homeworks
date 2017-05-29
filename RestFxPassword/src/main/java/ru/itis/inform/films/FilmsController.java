@@ -3,10 +3,8 @@ package ru.itis.inform.films;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.util.Callback;
-import ru.itis.inform.model.Film;
+import ru.itis.inform.model.ServerModel.Film;
 
 import java.util.Set;
 
@@ -29,15 +27,5 @@ public class FilmsController {
         stringSet.add(new Film());
         stringSet.add(new Film());
         stringSet.add(new Film());
-        oList.setAll(stringSet);
-        listFilms.setItems(oList);
-        listFilms.setCellFactory(new Callback<ListView<String>, ListCell<String>>()
-        {
-            @Override
-            public ListCell<String> call(ListView<String> listView)
-            {
-                return new ListViewCell();
-            }
-        });
     }
 }

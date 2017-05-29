@@ -21,7 +21,7 @@ public class RegisterFrame extends Application{
         try {
             // Загружаем корневой макет из fxml файла.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getClassLoader().getResource  ("register.fxml"));
+            loader.setLocation(getClass().getClassLoader().getResource ("register.fxml"));
             rootLayout = (Pane) loader.load();
             registerController = (RegisterController) loader.getController();
             // Отображаем сцену, содержащую корневой макет.

@@ -7,6 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.itis.inform.converter.UsersConverter;
 import ru.itis.inform.dao.UsersDao;
 import ru.itis.inform.dto.UserDto;
 import ru.itis.inform.model.User;
@@ -52,7 +53,7 @@ public class UserController {
         try {
             UserForRegister user = objectMapper.readValue(userValue, UserForRegister.class);
             if (user.getPassword().equals(user.getPassword_again())) {
-                User userA = usersDao.save(new User(user.getName(), user.getUsername(), user.getPassword(), "", new ArrayList<>()));
+                User userA = usersDao.save(new User(user.getName(), user.getUsername(), user.getPassword(), "", new ArrayList<>(), new ArrayList<>()));
                 UserDto userDto = new UserDto(userA.getId(), userA.getName(), userA.getUsername());
                 userAsJSON = objectMapper.writeValueAsString(userDto);
             } else {
@@ -90,34 +91,20 @@ public class UserController {
 
 
     @RequestMapping(value = "/users/{username}", method = RequestMethod.GET)
-    public ResponseEntity<String> getUserByName(@PathVariable("username") String username, @RequestParam("parameter") String parameter) {
+    public ResponseEntity<UserDto> getUserByName(@PathVariable("username") String username, @RequestParam("parameter") String parameter) {
         HttpHeaders httpHeaders = getHeaders();
         if (parameter.equals("username")) {
             String postAsJSON = null;
-            UserDto user = userService.findByUsername(username);
-            ObjectMapper objectMapper = new ObjectMapper();
-            try {
-                httpHeaders.set("testHeader", "hello_header");
-                postAsJSON = objectMapper.writeValueAsString(user);
-            } catch (JsonProcessingException e) {
-                throw new EmptyStackException();
-            }
-            return new ResponseEntity<String>(postAsJSON, httpHeaders, HttpStatus.FOUND);
+            UserDto user = UsersConverter.convertToUserDto(usersDao.findByLogin(username));
+            return new ResponseEntity<UserDto>(user, httpHeaders, HttpStatus.OK);
         } else {
             if (parameter.equals("id")) {
                 String postAsJSON = null;
                 UserDto user = userService.get(Integer.parseInt(username));
-                ObjectMapper objectMapper = new ObjectMapper();
-                try {
-                    httpHeaders.set("testHeader", "hello_header");
-                    postAsJSON = objectMapper.writeValueAsString(user);
-                } catch (JsonProcessingException e) {
-                    throw new EmptyStackException();
-                }
-                return new ResponseEntity<String>(postAsJSON, httpHeaders, HttpStatus.FOUND);
+                return new ResponseEntity<UserDto>(user, httpHeaders, HttpStatus.OK);
             }
         }
-        return new ResponseEntity<String>("{\"error\":\"not found\"+}", httpHeaders, HttpStatus.NO_CONTENT);
+        return new ResponseEntity<UserDto>(null, httpHeaders, HttpStatus.NOT_FOUND);
     }
 
 

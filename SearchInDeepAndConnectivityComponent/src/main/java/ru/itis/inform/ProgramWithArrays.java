@@ -10,23 +10,23 @@ import java.util.Scanner;
  */
 public class ProgramWithArrays {
 
-    public static Integer matrix[][];
+    public static int matrix[][];
     public static int size = 0;
 
     public static void main(String[] args) throws FileNotFoundException {
         Scanner sc = new Scanner(new File("C:\\Users\\alisa\\Desktop\\11-502_Mardanov_homeworks\\SearchInDeepAndConnectivityComponent\\src\\main\\resources\\input"));
         size = sc.nextInt();
         int i = 0;
-        matrix = new Integer[size][size];
+        matrix = new int[size][size];
         while (sc.hasNextLine()) {
-            matrix[i] = new Integer[size];
+            matrix[i] = new int[size];
             for (int j = 0; j < size; j++) {
                 matrix[i][j] = sc.nextInt();
             }
             i++;
         }
 
-        SearchInDeep<Integer> searchInDeep = new SearchInDeep<>(matrix);
+        SearchInDeep searchInDeep = new SearchInDeep(matrix);
 
     }
 }

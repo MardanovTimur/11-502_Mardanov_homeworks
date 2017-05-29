@@ -14,6 +14,7 @@ import ru.itis.inform.model.Film;
 import ru.itis.inform.service.impl.FilmServiceImpl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static ru.itis.inform.controller.UserController.getHeaders;
 
@@ -29,7 +30,7 @@ public class FilmController {
     FilmServiceImpl filmService;
 
     @RequestMapping(value = "/films", method = RequestMethod.GET)
-    public ResponseEntity<String> getAllFilms() {
+    public ResponseEntity<List<Film>> getAllFilms() {
         HttpHeaders httpHeaders = getHeaders();
         ArrayList<Film> arrayList = (ArrayList<Film>) filmService.getFilms();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -37,9 +38,9 @@ public class FilmController {
         try {
             listAsJson = objectMapper.writeValueAsString(arrayList);
         } catch (JsonProcessingException e) {
-            return new ResponseEntity<String>("{\"error\":\"json\"}", httpHeaders, HttpStatus.OK);
+            return new ResponseEntity<List<Film>>(null, httpHeaders, HttpStatus.OK);
         }
-        return new ResponseEntity<String>(listAsJson, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<List<Film>>(arrayList, httpHeaders, HttpStatus.OK);
     }
 
 

@@ -1,6 +1,7 @@
 package ru.itis.inform.model;
 
 
+import ru.itis.inform.model.ServerModel.Booking;
 import java.util.List;
 
 /**
@@ -13,16 +14,26 @@ public class User {
     private String username;
     private String password;
     private List<Data> data;
+    private List<Booking>  bookingList;
 
-    public User(Integer id, String name, String username, String password, List<Data> data) {
+    public User(Integer id, String name, String username, String password, List<Data> data, List<Booking> bookingList) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.password = password;
         this.data = data;
+        this.bookingList = bookingList;
     }
 
     public User() {
+    }
+
+    public List<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
     }
 
     public Integer getId() {

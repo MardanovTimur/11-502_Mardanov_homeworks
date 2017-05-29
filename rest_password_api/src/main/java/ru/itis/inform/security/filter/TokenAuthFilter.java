@@ -55,6 +55,7 @@ public class TokenAuthFilter extends GenericFilterBean {
     private boolean isNotRequiringProtection(HttpServletRequest request) {
         System.out.println(request.getRequestURI());
         System.out.println(request.getMethod());
+        System.out.println(request.getHeader("Auth-Token"));
         return request.getRequestURI().startsWith("/users") && request.getMethod().equals("POST")
                 || request.getRequestURI().endsWith("favicon.ico")
                 || request.getRequestURI().startsWith("/users/login") && request.getMethod().equals("POST");

@@ -1,6 +1,7 @@
 package ru.itis.inform.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "users")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 
     @Id
@@ -28,28 +30,25 @@ public class User {
     @Column(name = "token")
     private String token;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private List<Data> dataList;
 
+    @JsonIgnore
+    @org.codehaus.jackson.annotate.JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private List<Booking> bookingList;
 
-    public User(String name, String username, String password, String token, List<Data> dataList) {
+
+    public User(String name, String username, String password, String token, List<Data> dataList, List<Booking> bookingList) {
         this.name = name;
         this.username = username;
         this.password = password;
         this.token = token;
         this.dataList = dataList;
+        this.bookingList = bookingList;
     }
 
-    protected User() {
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
+    public User() {
     }
 
     public int getId() {
@@ -84,11 +83,27 @@ public class User {
         this.password = password;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public List<Data> getDataList() {
         return dataList;
     }
 
     public void setDataList(List<Data> dataList) {
         this.dataList = dataList;
+    }
+
+    public List<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
     }
 }

@@ -20,13 +20,16 @@ public class User {
 
     private List<Data> dataList;
 
+    private List<Booking> bookingList;
 
-    public User(String name, String username, String password, String token, List<Data> dataList) {
+
+    public User(String name, String username, String password, String token, List<Data> dataList, List<Booking> bookingList) {
         this.name = name;
         this.username = username;
         this.password = password;
         this.token = token;
         this.dataList = dataList;
+        this.bookingList = bookingList;
     }
 
     public User(String name, String username, String password) {
@@ -36,6 +39,15 @@ public class User {
     }
 
     protected User() {
+    }
+
+
+    public List<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
     }
 
     public String getToken() {

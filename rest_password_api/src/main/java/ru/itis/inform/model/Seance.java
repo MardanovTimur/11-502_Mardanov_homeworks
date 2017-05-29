@@ -1,5 +1,7 @@
 package ru.itis.inform.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import javax.persistence.*;
@@ -12,14 +14,16 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "seance")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Seance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @JsonIgnore
-    @ManyToOne
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="film")
     private Film film;
 
@@ -36,6 +40,7 @@ public class Seance {
     public Seance() {
     }
 
+
     public Seance(Film film, int price, Timestamp timebegin, boolean[][] places) {
         this.film = film;
         this.price = price;
@@ -43,11 +48,11 @@ public class Seance {
         this.places = places;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -81,5 +86,10 @@ public class Seance {
 
     public void setPlaces(boolean[][] places) {
         this.places = places;
+    }
+
+    @Override
+    public String toString() {
+        return this.film.getName();
     }
 }

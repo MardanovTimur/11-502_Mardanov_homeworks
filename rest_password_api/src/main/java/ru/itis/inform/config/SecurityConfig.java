@@ -1,5 +1,7 @@
 package ru.itis.inform.config;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.jsonschema.JsonSerializableSchema;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.transaction.PlatformTransactionManager;
-import ru.itis.inform.model.Data;
-import ru.itis.inform.model.User;
+import ru.itis.inform.model.*;
 import ru.itis.inform.security.details.UserDetailsServiceImpl;
 import ru.itis.inform.security.filter.TokenAuthFilter;
 import ru.itis.inform.security.provider.TokenAuthenticationProvider;
@@ -64,6 +65,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource());
         builder.addAnnotatedClass(User.class);
         builder.addAnnotatedClass(Data.class);
+        builder.addAnnotatedClasses(Booking.class);
+        builder.addAnnotatedClasses(Seance.class);
+        builder.addAnnotatedClasses(Film.class);
         builder.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL82Dialect");
         return builder.buildSessionFactory();
     }

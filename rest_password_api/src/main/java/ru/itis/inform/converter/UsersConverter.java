@@ -9,8 +9,7 @@ import ru.itis.inform.model.User;
 public class UsersConverter {
 
     public static UserDto convertToUserDto(User user) {
-        UserDto userDto = new UserDto(user.getId(), user.getName(), user.getUsername());
-        return userDto;
+        return new UserDto(user.getId(), user.getName(), user.getUsername(),user.getDataList(), user.getBookingList());
     }
 
 

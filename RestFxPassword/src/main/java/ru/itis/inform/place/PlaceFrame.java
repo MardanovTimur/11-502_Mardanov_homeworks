@@ -12,15 +12,20 @@ import java.io.IOException;
  * Created by alisa on 01.05.2017.
  */
 public class PlaceFrame extends Application {
+    public static PlaceFrame placeFrame;
     public static Stage primaryStage;
     private Pane rootLayout;
     private PlaceController placeController;
+
+    public PlaceFrame() {
+        placeFrame = this;
+    }
 
     public void initRootLayout() {
         try {
             // Загружаем корневой макет из fxml файла.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getClassLoader().getResource  ("register.fxml"));
+            loader.setLocation(getClass().getClassLoader().getResource("place.fxml"));
             rootLayout = (Pane) loader.load();
             placeController = (PlaceController) loader.getController();
             // Отображаем сцену, содержащую корневой макет.
@@ -32,10 +37,26 @@ public class PlaceFrame extends Application {
         }
     }
 
+    public static PlaceFrame getPlaceFrame() {
+        return placeFrame;
+    }
+
+    public static Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public Pane getRootLayout() {
+        return rootLayout;
+    }
+
+    public PlaceController getPlaceController() {
+        return placeController;
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Registration");
+        this.primaryStage.setTitle("Booking");
         initRootLayout();
 
     }

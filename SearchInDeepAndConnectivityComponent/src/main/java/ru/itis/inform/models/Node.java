@@ -1,5 +1,7 @@
 package ru.itis.inform.models;
 
+import java.util.List;
+
 /**
  * Created by Timur Mardanov on 09.05.2017.
  * ITIS
@@ -7,6 +9,7 @@ package ru.itis.inform.models;
 public class Node<T> {
     private int key;
     private T value;
+    private List<Node> list;
 
     public Node(int key, T value) {
         this.key = key;

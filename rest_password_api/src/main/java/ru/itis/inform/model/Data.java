@@ -1,6 +1,7 @@
 package ru.itis.inform.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -9,6 +10,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "data")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
 public class Data {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +25,7 @@ public class Data {
 
     @JsonIgnore
     @JoinColumn(name = "user_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
     public Data(String key, String value, User user) {
