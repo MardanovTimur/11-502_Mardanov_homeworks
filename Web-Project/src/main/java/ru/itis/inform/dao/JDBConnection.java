@@ -5,7 +5,7 @@ import java.net.URL;
 import java.sql.*;
 import java.util.Properties;
 
-public class JDBConnection {
+public class    JDBConnection {
 //Класс для связи postgresql с ядром java
     private static JDBConnection instance = new JDBConnection();
     private Properties classDB;

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="ru.itis.inform.model.Book" table="books">
+        <id name="id" column="id" type="java.lang.Long">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="name" column="name" type="java.lang.String"/>
+        
+        <many-to-one name="user" class="ru.itis.inform.model.User" fetch="select" cascade="all" >
+            <column name="user_id" not-null="true"/>
+        </many-to-one>
+
+    </class>
+</hibernate-mapping>
