@@ -27,6 +27,7 @@ public class Quad {
         double desc = b*b-4*a*c;
         x1 = (-1*b + Math.sqrt(desc))/2*a;
         x2 = (-1*b - Math.sqrt(desc))/2*a;
+        System.out.println("x1= "+x1+"; x2= "+x2+";");
         return "x1= "+x1+"; x2= "+x2+";";
     }
 
@@ -56,11 +57,11 @@ public class Quad {
         this.c = c;
     }
 
-    public double getX1() {
-        return x1;
+    public String getX1() {
+        return "x1= "+x1;
     }
 
-    public double getX2() {
-        return x2;
+    public String getX2() {
+        return "x2= "+x2;
     }
 }

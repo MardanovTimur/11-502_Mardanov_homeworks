@@ -1,0 +1,6 @@
+2[asaaa, zxczxcsds, asdasd, Adsdsds, sasda, sss, asxcvffadsfa]
+//////////////////
+1[sasda, Adsdsds, asaaa, asdasd, sss, asxcvffadsfa, zxczxcsds]
+//////////////////
+0[Adsdsds, asaaa, asdasd, asxcvffadsfa, sasda, sss, zxczxcsds]
+//////////////////
